@@ -1,0 +1,70 @@
+---
+layout: default
+title: Web Developer & Hobby Photographer
+---
+
+<link rel="stylesheet" href="/css/intro-header.css">
+<header class="container intro-header">
+  <img src="/images/avatar.svg" alt="Avatar of Andreas Remdt" width="200" height="200">
+  <h1>Web Developer & Hobby Photographer</h1>
+  <p>Fast, secure and good looking websites? Yes please! That's what I do.</p>
+</header>
+
+
+
+<link rel="stylesheet" href="/css/about-section.css">
+<section class="about-section">
+  <div class="container is-small">
+    <h2>Hi, I'm Andreas.</h2>
+    <p>I love to craft semantic, beautiful, accessible and lightweight web applications that users enjoy to use. For me, great user experience values more than developer experience. That's why I tend to build my projects without <i>insert latest buzzword framework here</i>.</p>
+  </div>
+</section>
+
+
+
+<link rel="stylesheet" href="/css/skill-section.css">
+<section class="container skill-section">
+  <header class="section-header">
+    <h2 class="title">Skills</h2>
+    <p class="subtitle">These are the technologies, languages and tools that I know and like to use.</p>
+  </header>
+  
+  <div class="skill-wrapper">
+    {% for category in site.data.skills %}
+      <article>
+        <h3>{{ category.name }}</h3>
+        <ul class="skills">
+          {% for skill in category.skills %}
+            <li>
+              <img src="/images/{{ skill | downcase | slugify }}.svg" width="18" height="18"> {{ skill }}
+            </li>
+          {% endfor %}
+        </ul>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+
+
+<link rel="stylesheet" href="/css/work-section.css">
+<section class="container work-section">
+  <header class="section-header">
+    <h2 class="title">Work</h2>
+    <p class="subtitle">Interested in what I have done? Here's an overview.</p>
+  </header>
+
+  <div class="work-wrapper">
+    {% for project in site.projects %}
+      <figure class="work-item">
+        <img class="image" src="https://res.cloudinary.com/ds3jhexob/image/upload/c_fill,g_center,h_850,q_75,w_850/portfolio/{{ project.title | slugify }}.jpg" width="300">
+        <figcaption class="caption">
+          <p>{{ project.description }}</p>
+          <a href="{{ project.url }}" class="button -secondary -small">View details</a>
+        </figcaption>
+      </figure>
+    {% endfor %}
+  </div>
+
+  <a href="/projects/" class="button -primary -large">There's more! See all projects</a>
+</section>

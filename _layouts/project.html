@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<link rel="stylesheet" href="/css/project-section.css">
+<main class="container project-section">
+  <article class="main">
+    <h1 class="page-title">{{ page.title }}</h1>
+
+    {{ content }}
+  </article>
+  
+  <aside class="sidebar">
+    <figure>
+      <picture>
+        <source srcset="https://res.cloudinary.com/ds3jhexob/image/upload/c_fill,g_center,h_650,q_75,w_1300/portfolio/{{ page.title | slugify }}.webp" type="image/webp">
+        <img src="https://res.cloudinary.com/ds3jhexob/image/upload/c_fill,g_center,h_650,q_75,w_1300/portfolio/{{ page.title | slugify }}.jpg" class="image" alt="{{ page.title }}" width="1300" height="650">
+      </picture>
+    </figure>
+
+    <ul class="details">
+      <li><b>Published in:</b> {{ page.published_in }}</li>
+      <li><b>Technologies:</b> {{ page.technologies | join: ', ' }}</li>
+    </ul>
+
+    <a href="javascript:history.back()" class="button -secondary -small">Return</a>
+    <a href="{{ page.link }}" class="button -primary -small" target="_blank" rel="noopener">View project</a>
+  </aside>
+</main>

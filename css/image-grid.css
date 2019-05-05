@@ -1,0 +1,49 @@
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 1rem;
+  grid-auto-rows: 125px;
+}
+
+.image-grid > .item {
+  background: linear-gradient(45deg, var(--orange), var(--pink));
+
+  border-radius: var(--spacing-small);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, .1);
+
+  overflow: hidden;
+  transition: box-shadow .2s ease-in-out;
+}
+
+.image-grid > .item.-potrait {
+  grid-row: span 2;
+}
+
+.image-grid > .item.-panorama {
+  grid-column: span 2;
+}
+
+.image-grid > .item.-highlight {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.image-grid > .item .image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  border-radius: var(--spacing-small);
+
+  transition: filter .2s ease-in-out, transform .3s ease-in-out, opacity .2s ease-in-out;
+}
+
+.image-grid > .item:hover {
+  box-shadow: 0 30px 20px -10px rgba(0, 0, 0, .2);
+}
+
+.image-grid > .item:hover .image {
+  opacity: .4;
+  filter: blur(2px);
+  transform: scale(1.1);
+}

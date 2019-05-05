@@ -1,0 +1,46 @@
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 5rem);
+
+  text-align: center;
+}
+
+.contact-section > header > h1 {
+  margin: unset;
+}
+
+.contact-form {
+  margin: var(--spacing-large) 0;
+  width: 50%;
+}
+
+.contact-form > .group {
+  display: flex;
+  margin: 0 -.5rem var(--spacing-normal);
+}
+
+.contact-form > .button {
+  margin-top: var(--spacing-normal);
+}
+
+.contact-form > .group > .input-group {
+  margin: 0 var(--spacing-small);
+  flex: 1;
+}
+
+.contact-form > .honeypot {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.contact-form > .form-message.is-error {
+  color: var(--orange);
+}
+
+.contact-form > .form-message.is-success {
+  color: var(--green-color);
+}

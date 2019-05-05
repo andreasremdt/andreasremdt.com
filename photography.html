@@ -1,0 +1,29 @@
+---
+layout: default
+title: Photography
+---
+
+<link rel="stylesheet" href="/css/photography-section.css">
+<main class="photography-section container">
+  <h1 class="page-title">Photography</h1>
+  <p>Capturing the beauty of our planet is worth more than just reading about it. Being in the wild, observing and learning to protect our environment is something everyone of us should strive to achieve.</p>
+  <p>During the 2 years I spent as a volunteer, teacher and friend in the Dominican Republic, below photos where taken.</p>
+  
+  <link rel="stylesheet" href="/css/image-grid.css">
+  <link rel="stylesheet" href="/css/litebox.css">
+  <figure class="image-grid">
+    {% for image in site.data.images %}
+      <a class="item {{ image.format | prepend: "-"}}" href="https://res.cloudinary.com/ds3jhexob/image/upload/c_scale,q_90,w_1920/photography/{{ image.name }}.jpg" data-litebox data-gallery="nature">
+        <picture>
+          <source type="image/webp" srcset="https://res.cloudinary.com/ds3jhexob/image/upload/c_scale,q_75,w_600/photography/{{ image.name }}.webp">
+          <img class="image" src="https://res.cloudinary.com/ds3jhexob/image/upload/c_scale,q_75,w_600/photography/{{ image.name }}.jpg" alt="{{ image.caption }}">
+        </picture>
+      </a>
+    {% endfor %}
+  </figure>
+</main>
+
+<script src="/js/litebox.min.js"></script>
+<script>
+  new Litebox();
+</script>

@@ -1,0 +1,32 @@
+---
+layout: default
+title: Contact
+---
+
+<link rel="stylesheet" href="/css/contact-section.css">
+<script src="/js/form.js" defer></script>
+<main class="container contact-section">
+  <header>
+    <h1>Glad that you'd like to get in touch.</h1>
+    <p>Fill out the form below and I'll get back to you as soon as possible. Promise.</p>
+  </header>
+
+  <form class="contact-form" action="/" method="POST">
+    <input type="checkbox" name="contact-by-fax-only" class="honeypot">
+
+    <div class="group">
+      <div class="input-group">
+        <input type="text" class="input" name="name" placeholder="Name" required>
+      </div>
+      <div class="input-group">
+        <input type="email" class="input" name="email" placeholder="Email address" required>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <textarea class="input" name="message" rows="7" placeholder="Message" minlength="10" required></textarea>
+    </div>
+
+    <button class="button -primary -large" type="submit">Send message</button>
+  </form>
+</main>

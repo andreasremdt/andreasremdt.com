@@ -1,0 +1,27 @@
+- name: Frontend
+  skills:
+    - HTML5
+    - CSS3
+    - JavaScript
+    - React
+    - Vue.js
+    - MobX
+- name: Backend
+  skills:
+    - PHP
+    - Node.js
+    - Laravel
+    - Vue.js
+    - MySQL
+    - MongoDB
+- name: Tooling
+  skills:
+    - Git, GitHub
+    - Gulp
+    - Webpack
+    - Babel
+    - SASS
+- name: Others
+  skills:
+    - WordPress
+    - Jekyll
