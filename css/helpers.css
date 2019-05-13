@@ -1,6 +1,23 @@
-.page-title {
+.page-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header.-right {
+  align-items: flex-end;
+  
+  text-align: right;
+}
+
+.page-header > .title {
+  margin-bottom: unset;
+
   font-size: 3rem;
   line-height: 1;
 
   color: var(--pink);
+}
+
+.page-header > .intro {
+  max-width: 60%;
 }

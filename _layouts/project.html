@@ -5,7 +5,9 @@ layout: default
 <link rel="stylesheet" href="/css/project-section.css">
 <main class="container project-section">
   <article class="main">
-    <h1 class="page-title">{{ page.title }}</h1>
+    <header class="page-header">
+      <h1 class="title">{{ page.title }}</h1>
+    </header>
 
     {{ content }}
   </article>
@@ -24,6 +26,6 @@ layout: default
     </ul>
 
     <a href="javascript:history.back()" class="button -secondary -small">Return</a>
-    <a href="{{ page.link }}" class="button -primary -small" target="_blank" rel="noopener">View project</a>
+    <a href="{{ page.link }}" class="button -primary -small" target="_blank" rel="noopener">Open project</a>
   </aside>
 </main>
