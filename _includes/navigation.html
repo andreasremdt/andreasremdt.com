@@ -2,8 +2,16 @@
 <nav class="container main-navigation">
   <a class="title" href="/" title="{{ site.title }}">{{ site.title }}</a>
 
-  <a class="link" href="/blog/">Blog</a>
-  <a class="link" href="/photography/">Photography</a>
-  <a class="link" href="/cv-andreas-remdt.pdf">Résumé</a>
-  <a class="link" href="/contact/">Contact</a>
+  <a class="link{% if page.url == '/blog.html' %} -active{% endif %}" href="/blog/">
+    <span class="hover" data-hover="Blog">Blog</span>
+  </a>
+  <a class="link{% if page.url == '/photography.html' %} -active{% endif %}" href="/photography/">
+    <span class="hover" data-hover="Photography">Photography</span>
+  </a>
+  <a class="link" href="/cv-andreas-remdt.pdf">
+    <span class="hover" data-hover="Résumé">Résumé</span>
+  </a>
+  <a class="link{% if page.url == '/contact.html' %} -active{% endif %}" href="/contact/">
+    <span class="hover" data-hover="Contact">Contact</span>
+  </a>
 </nav>

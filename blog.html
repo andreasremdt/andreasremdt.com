@@ -4,14 +4,14 @@ title: Blog
 ---
 
 <main class="container">
-  <h1 class="page-title">Blog</h1>
+  <header class="page-header -right">
+    <h1 class="title">{{ page.title }}</h1>
+  </header>
 
+  <link rel="stylesheet" href="/css/pages/blog.css">
+  
   {% for post in site.posts %}
-    <article>
-      <figure>
-        
-      </figure>
-
+    <article class="post-preview">
       <h2>{{ post.title }}</h2>
       <p>{{ post.excerpt }}</p>
       <a href="{{ post.url }}" class="button -small -primary">Continue reading</a>

@@ -39,6 +39,14 @@ img {
   vertical-align: middle;
 }
 
+strong, b {
+  font-weight: bold;
+}
+
+blockquote {
+  font-style: italic;
+}
+
 .section-header {
   text-align: center;
 }

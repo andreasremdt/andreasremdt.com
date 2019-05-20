@@ -1,0 +1,37 @@
+.post-preview {
+  max-width: 70%;
+  margin-left: auto;
+}
+
+.post-preview:not(:last-child) {
+  margin-bottom: var(--spacing-large);
+  padding-bottom: var(--spacing-large);
+  
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.post-content {
+  max-width: 700px;
+}
+
+.post-content a,
+.post-preview a {
+  color: var(--pink);
+}
+
+.post-header {
+  margin: 4rem 0 var(--spacing-large);
+}
+
+.post-header > .title {
+  margin-bottom: unset;
+
+  font-size: 3rem;
+  line-height: 1;
+
+  color: var(--pink);
+}
+
+.post-header > .time {
+  font-size: 22px;
+}

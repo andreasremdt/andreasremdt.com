@@ -10,39 +10,45 @@
 
   font-weight: bold;
   color: white;
-
-  border-top: 2px solid white;
-  border-left: 2px solid white;
 }
 
 .main-navigation > .link {
-  position: relative;
   margin-left: var(--spacing-normal);
+  padding: 0 2px;
 
-  color: var(--pink);
-
-  transition: color .2s linear;
-}
-
-.main-navigation > .link::before {
-  content: "";
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-
-  background: linear-gradient(to right, var(--orange), var(--pink));
-
-  transform: scaleX(0);
-  transition: transform .2s ease-in-out;
-}
-
-.main-navigation > .link:hover {
   color: var(--font-color);
+  
+  overflow: hidden;
+  outline: none;
 }
 
-.main-navigation > .link:hover::before {
-  transform: scaleX(1);
+.main-navigation > .link.-active {
+  border-bottom: 2px solid var(--pink);
+
+  font-weight: bold;
+}
+
+.main-navigation > .link > .hover {
+  position: relative;
+
+  display: inline-block;
+  
+  transition: transform 0.3s;
+}
+
+.main-navigation > .link > .hover::before {
+  position: absolute;
+  top: 100%;
+  
+  font-weight: 700;
+  
+  color: var(--pink);
+  
+  content: attr(data-hover);
+  transform: translate3d(0,0,0);
+}
+
+.main-navigation > .link:hover > .hover,
+.main-navigation > .link:focus > .hover {
+  transform: translateY(-100%);
 }
