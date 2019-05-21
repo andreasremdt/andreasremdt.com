@@ -1,3 +1,6 @@
+---
+---
+
 :root {
   font: lighter 18px/1.6 Roboto, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 
@@ -12,6 +15,9 @@
   --spacing-small: .5rem;
   --spacing-normal: 1rem;
   --spacing-large: 2.5rem;
+
+  --border-radius-small: 4px;
+  --border-radius-large: 6px;
 }
 
 body {
@@ -20,8 +26,13 @@ body {
   color: var(--font-color);
 
   background: transparent url("/images/intro-bg.svg") top left no-repeat;
+  background-size: 40%;
 
   overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: antialiased;
+	font-smoothing: antialiased;
 }
 
 a {
@@ -75,7 +86,7 @@ blockquote {
   display: inline-block;
   
   border: none;
-  border-radius: .3rem;
+  border-radius: var(--border-radius-large);
   box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 
   font-family: inherit;
@@ -84,6 +95,7 @@ blockquote {
   text-transform: uppercase;
   letter-spacing: 1px;
 
+  outline: none;
   cursor: pointer;
   -webkit-appearance: none;
   transition: box-shadow .1s linear;
@@ -118,6 +130,10 @@ blockquote {
 
 .button:not([disabled]):hover {
   box-shadow: 0 25px 15px -10px rgba(0, 0, 0, .2);
+}
+
+.button:not([disabled]):active {
+  box-shadow: 0 10px 5px -5px rgba(0, 0, 0, .3);
 }
 
 .input {

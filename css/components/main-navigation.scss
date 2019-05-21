@@ -1,3 +1,6 @@
+---
+---
+
 .main-navigation {
   display: flex;
   align-items: center;
@@ -14,21 +17,27 @@
 
 .main-navigation > .link {
   margin-left: var(--spacing-normal);
-  padding: 0 2px;
 
   color: var(--font-color);
+
+  border-bottom: 2px solid transparent;
   
   overflow: hidden;
   outline: none;
+  transition: border-color .1s linear;
 }
 
 .main-navigation > .link.-active {
-  border-bottom: 2px solid var(--pink);
+  border-color: var(--pink);
 
-  font-weight: bold;
+  color: var(--pink);
 }
 
-.main-navigation > .link > .hover {
+.main-navigation > .link:focus {
+  border-color: var(--font-color);
+}
+
+.main-navigation > .link > .mirror {
   position: relative;
 
   display: inline-block;
@@ -36,19 +45,15 @@
   transition: transform 0.3s;
 }
 
-.main-navigation > .link > .hover::before {
+.main-navigation > .link > .mirror::before {
   position: absolute;
   top: 100%;
-  
-  font-weight: 700;
   
   color: var(--pink);
   
   content: attr(data-hover);
-  transform: translate3d(0,0,0);
 }
 
-.main-navigation > .link:hover > .hover,
-.main-navigation > .link:focus > .hover {
+.main-navigation > .link:hover > .mirror {
   transform: translateY(-100%);
 }

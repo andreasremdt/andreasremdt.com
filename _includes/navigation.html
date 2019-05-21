@@ -1,17 +1,20 @@
-<link rel="stylesheet" href="/css/main-navigation.css">
+<link rel="stylesheet" href="/css/components/main-navigation.css">
 <nav class="container main-navigation">
   <a class="title" href="/" title="{{ site.title }}">{{ site.title }}</a>
 
+  <a class="link{% if page.url == '/projects.html' %} -active{% endif %}" href="/projects/">
+    <span class="mirror" data-hover="Projects">Projects</span>
+  </a>
   <a class="link{% if page.url == '/blog.html' %} -active{% endif %}" href="/blog/">
-    <span class="hover" data-hover="Blog">Blog</span>
+    <span class="mirror" data-hover="Blog">Blog</span>
   </a>
   <a class="link{% if page.url == '/photography.html' %} -active{% endif %}" href="/photography/">
-    <span class="hover" data-hover="Photography">Photography</span>
+    <span class="mirror" data-hover="Photography">Photography</span>
   </a>
   <a class="link" href="/cv-andreas-remdt.pdf">
-    <span class="hover" data-hover="Résumé">Résumé</span>
+    <span class="mirror" data-hover="Résumé">Résumé</span>
   </a>
   <a class="link{% if page.url == '/contact.html' %} -active{% endif %}" href="/contact/">
-    <span class="hover" data-hover="Contact">Contact</span>
+    <span class="mirror" data-hover="Contact">Contact</span>
   </a>
 </nav>

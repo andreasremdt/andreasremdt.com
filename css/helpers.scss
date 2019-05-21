@@ -1,11 +1,14 @@
+---
+---
+
 .page-header {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 4rem;
 }
 
 .page-header.-right {
-  align-items: flex-end;
-  
+  max-width: 60%;
+  margin-left: auto;
+
   text-align: right;
 }
 
@@ -16,8 +19,4 @@
   line-height: 1;
 
   color: var(--pink);
-}
-
-.page-header > .intro {
-  max-width: 60%;
 }

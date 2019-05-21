@@ -1,3 +1,6 @@
+---
+---
+
 .image-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -8,7 +11,7 @@
 .image-grid > .item {
   background: linear-gradient(45deg, var(--orange), var(--pink));
 
-  border-radius: var(--spacing-small);
+  border-radius: var(--border-radius-large);
   box-shadow: 0 10px 10px rgba(0, 0, 0, .1);
 
   overflow: hidden;
@@ -33,7 +36,7 @@
   height: 100%;
   object-fit: cover;
 
-  border-radius: var(--spacing-small);
+  border-radius: var(--border-radius-large);
 
   transition: filter .2s ease-in-out, transform .3s ease-in-out, opacity .2s ease-in-out;
 }

@@ -1,3 +1,6 @@
+---
+---
+
 .main-footer {
   position: relative;
   padding: 5rem 0 var(--spacing-normal);
@@ -41,4 +44,8 @@
   box-shadow: -10px 0 20px rgba(0, 0, 0, .1);
 
   transform: translateX(60%) translateY(60%);
+}
+
+.main-footer .copyright {
+  font-size: 90%;
 }

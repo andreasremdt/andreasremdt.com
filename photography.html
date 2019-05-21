@@ -3,14 +3,15 @@ layout: default
 title: Photography
 ---
 
-<link rel="stylesheet" href="/css/photography-section.css">
-<main class="photography-section container">
-  <h1 class="page-title">Photography</h1>
-  <p>Capturing the beauty of our planet is worth more than just reading about it. Being in the wild, observing and learning to protect our environment is something everyone of us should strive to achieve.</p>
-  <p>During the 2 years I spent as a volunteer, teacher and friend in the Dominican Republic, below photos where taken.</p>
+<main class="container">
+  <header class="page-header -right">
+    <h1 class="title">Photography</h1>
+    
+    <p>The below photos were taken during the 2 years I spent in the Dominican Republic. They aim to show the beauty of nature and how important its preservation is.</p>
+  </header>
   
-  <link rel="stylesheet" href="/css/image-grid.css">
-  <link rel="stylesheet" href="/css/litebox.css">
+  <link rel="stylesheet" href="/css/components/image-grid.css">
+  <link rel="stylesheet" href="/css/components/litebox.css">
   <figure class="image-grid">
     {% for image in site.data.images %}
       <a class="item {{ image.format | prepend: "-"}}" href="https://res.cloudinary.com/ds3jhexob/image/upload/c_scale,q_90,w_1920/photography/{{ image.name }}.jpg" data-litebox data-gallery="nature">
