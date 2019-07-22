@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/css/components/main-navigation.css">
-<nav class="container main-navigation">
+<nav class="container main-navigation" data-element="menu">
   <a class="title" href="/" title="{{ site.title }}">{{ site.title }}</a>
 
   <a class="link{% if page.url == '/projects.html' %} -active{% endif %}" href="/projects/">
@@ -17,4 +17,12 @@
   <a class="link{% if page.url == '/contact.html' %} -active{% endif %}" href="/contact/">
     <span class="mirror" data-hover="Contact">Contact</span>
   </a>
+
+  <button type="button" class="toggle" aria-label="Show Menu" data-element="menu-toggle">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </button>
 </nav>

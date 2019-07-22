@@ -5,8 +5,8 @@ title: Web Developer & Hobby Photographer
 
 <link rel="stylesheet" href="/css/components/intro-header.css">
 <header class="container intro-header">
-  <img src="/images/avatar.svg" alt="Avatar of Andreas Remdt" width="200" height="200">
-  <h1>Web Developer & Hobby Photographer</h1>
+  <img src="/images/avatar.svg" class="image" alt="Avatar of Andreas Remdt" width="200" height="200">
+  <h1 class="title">Web Developer & Hobby Photographer</h1>
   <p>Fast, secure and good looking websites? Yes please! That's what I do.</p>
 </header>
 
@@ -31,7 +31,7 @@ title: Web Developer & Hobby Photographer
   
   <div class="skill-wrapper">
     {% for category in site.data.skills %}
-      <article>
+      <article class="skill-category">
         <h3>{{ category.name }}</h3>
         <ul class="skills">
           {% for skill in category.skills %}

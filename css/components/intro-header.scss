@@ -7,8 +7,18 @@
   align-items: center;
   justify-content: center;
   height: calc(100vh - 5rem);
+
+  text-align: center;
 }
 
-.intro-header h1 {
+.intro-header > .title {
   margin: var(--spacing-large) 0 0;
+
+  line-height: 1.2;
+}
+
+.intro-header > .image {
+  @media screen and (max-width: 700px) {
+    width: 150px;
+  }
 }

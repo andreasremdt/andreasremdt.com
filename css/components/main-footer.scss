@@ -47,5 +47,9 @@
 }
 
 .main-footer .copyright {
+  position: relative;
+
   font-size: 90%;
+
+  z-index: 1;
 }

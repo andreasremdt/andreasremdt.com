@@ -9,35 +9,51 @@
   background: linear-gradient(to right, var(--orange), var(--pink));
 
   text-align: center;
-}
 
-.about-section::before {
-  content: "";
+  &::before {
+    content: "";
+    
+    position: absolute;
+    
+    @media screen and (min-width: 1200px) {
+      top: -220px;
+      right: -100px;
+      width: 350px;
+      height: 350px;
+    }
+    
+    @media screen and (max-width: 1200px) {
+      top: -100px;
+      right: -100px;
+      width: 200px;
+      height: 200px;
+    }
+    
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
+    
+    background: linear-gradient(45deg, #E77E99, var(--pink));
+    
+    border-radius: 50%;
+    box-shadow: -10px 10px 20px rgba(0, 0, 0, .1);
+  }
 
-  position: absolute;
-  top: -220px;
-  right: -100px;
-  width: 350px;
-  height: 350px;
+  &::after {
+    @media screen and (min-width: 1170px) {
+      content: "";
 
-  background: linear-gradient(45deg, #E77E99, var(--pink));
-  
-  border-radius: 50%;
-  box-shadow: -10px 10px 20px rgba(0, 0, 0, .1);
-}
+      position: absolute;
+      bottom: 0;
+      left: -30px;
+      right: -30px;
+      height: 200px;
+      
+      background-color: white;
 
-.about-section::after {
-  content: "";
+      border-radius: 50% 50% 0 0;
 
-  position: absolute;
-  bottom: 0;
-  left: -30px;
-  right: -30px;
-  height: 200px;
-  
-  background-color: white;
-
-  border-radius: 50% 50% 0 0;
-
-  transform: translateY(100px);
+      transform: translateY(100px);
+    }
+  }
 }

@@ -3,9 +3,17 @@
 
 .social-navigation {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-large);
+
+  @media screen and (min-width: 800px) {
+    padding: var(--spacing-large);
+  }
+
+  @media screen and (max-width: 800px) {
+    padding: var(--spacing-normal);
+  }
 
   background-color: var(--font-color);
 
@@ -17,6 +25,11 @@
 
 .social-navigation > .text {
   margin: 0 var(--spacing-large) 0;
+
+  @media screen and (max-width: 800px) {
+    flex-basis: 100%;
+    margin: 0 0 var(--spacing-normal) 0;
+  }
 }
 
 .social-navigation > .link {
