@@ -2,22 +2,15 @@
 ---
 
 .contact-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: calc(100vh - 5rem);
-
   text-align: center;
 }
 
-.contact-section > header > h1 {
-  margin: unset;
-}
-
-.contact-form {
-  margin: var(--spacing-large) 0;
-  width: 50%;
+.contact-form {  
+  margin: auto;
+  
+  @media screen and (min-width: 800px) {
+    max-width: 50%;
+  }
 }
 
 .contact-form > .group {

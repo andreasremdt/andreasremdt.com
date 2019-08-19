@@ -93,7 +93,7 @@ blockquote {
   
   border: none;
   border-radius: var(--border-radius-large);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+  box-shadow: 0 10px 10px -5px rgba(0, 0, 0, .2);
 
   font-family: inherit;
   
@@ -120,7 +120,7 @@ blockquote {
 .button.-large {
   padding: 1rem 5rem;
 
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .button.-small {
@@ -135,11 +135,11 @@ blockquote {
 }
 
 .button:not([disabled]):hover {
-  box-shadow: 0 25px 15px -10px rgba(0, 0, 0, .2);
+  box-shadow: 0 20px 15px -10px rgba(0, 0, 0, .2);
 }
 
 .button:not([disabled]):active {
-  box-shadow: 0 10px 5px -5px rgba(0, 0, 0, .3);
+  box-shadow: 0 10px 5px -5px rgba(0, 0, 0, .2);
 }
 
 .input {
@@ -149,7 +149,7 @@ blockquote {
 
   border: 1px solid var(--light-gray);
   border-radius: .3rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+  box-shadow: 0 4px 6px -4px rgba(0, 0, 0, .1);
 
   color: inherit;
 
@@ -163,7 +163,7 @@ blockquote {
 }
 
 .input:hover, .input:focus {
-  box-shadow: 0 25px 15px -10px rgba(0, 0, 0, .1);
+  box-shadow: 0 15px 15px -10px rgba(0, 0, 0, .1);
 }
 
 .input.has-error {
