@@ -3,20 +3,48 @@
 
 .page-header {
   margin-bottom: 4rem;
-}
 
-.page-header.-right {
-  max-width: 60%;
-  margin-left: auto;
+  @media screen and (max-width: 800px) {
+    margin-top: 4.2rem;
+  }
 
-  text-align: right;
-}
+  &.-right {
+    margin-left: auto;
+    max-width: var(--max-width);
+    
+    text-align: right;
+    
+    @media screen and (min-width: 800px) {
+      --max-width: 60%;
+    }
 
-.page-header > .title {
-  margin-bottom: unset;
+    @media screen and (max-width: 800px) and (min-width: 600px) {
+      --max-width: 80%;
+    }
 
-  font-size: 3rem;
-  line-height: 1;
+    @media screen and (max-width: 600px) {
+      --max-width: none;
+    }
+  }
 
-  color: var(--pink);
+  > .title {
+    margin-bottom: unset;
+
+    font-size: var(--font-size);
+    line-height: 1;
+
+    color: var(--pink);
+
+    @media screen and (min-width: 800px) {
+      --font-size: 3rem;
+    }
+
+    @media screen and (max-width: 800px) and (min-width: 600px) {
+      --font-size: 2.2rem;
+    }
+
+    @media screen and (max-width: 600px) {
+      --font-size: 1.5rem;
+    }
+  }
 }
