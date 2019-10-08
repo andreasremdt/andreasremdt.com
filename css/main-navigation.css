@@ -1,0 +1,24 @@
+.main-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  height: 100px;
+}
+
+.main-navigation > .link {
+  margin-left: var(--spacing-medium);
+
+  border-top: 2px solid transparent;
+  
+  transition: border-color .15s linear;
+}
+
+.main-navigation > .link.-active {
+  color: var(--dark-yellow);
+}
+
+.main-navigation > .link:hover,
+.main-navigation > .link:focus {
+  border-top-color: var(--dark-yellow);
+}

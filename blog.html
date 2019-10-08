@@ -1,20 +1,26 @@
 ---
-layout: default
+layout: page
 title: Blog
+description: Technical articles I published to Medium, covering web development topics.
 ---
 
-<main class="container">
-  <header class="page-header -right">
-    <h1 class="title">{{ page.title }}</h1>
-  </header>
-
-  <link rel="stylesheet" href="/css/pages/blog.css">
-  
+<link rel="stylesheet" href="/css/post-preview.css">
+<link rel="stylesheet" href="/css/blog-section.css">
+<main class="container blog-section">
   {% for post in site.posts %}
     <article class="post-preview">
-      <h2>{{ post.title }}</h2>
-      <p>{{ post.excerpt }}</p>
-      <a href="{{ post.url }}" class="button -small -primary">Continue reading</a>
+      <header>
+        <time class="date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
+        <h2 class="title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      </header>
+      <figure>
+        <a href="{{ post.url }}">
+          <picture>
+            <source type="image/webp" srcset="https://res.cloudinary.com/ds3jhexob/image/upload/c_scale,q_75,w_600/blog/{{ post.title | slugify }}.webp">
+            <img class="image" loading="lazy" src="https://res.cloudinary.com/ds3jhexob/image/upload/c_scale,q_75,w_600/blog/{{ post.title | slugify }}.jpg" alt="{{ post.title }}">
+          </picture>
+        </a>
+      </figure>
     </article>
   {% endfor %}
 </main>

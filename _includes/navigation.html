@@ -1,28 +1,6 @@
-<link rel="stylesheet" href="/css/components/main-navigation.css">
-<nav class="container main-navigation" data-element="menu">
-  <a class="title" href="/" title="{{ site.title }}">{{ site.title }}</a>
-
-  <a class="link{% if page.url == '/projects.html' %} -active{% endif %}" href="/projects/">
-    <span class="mirror" data-hover="Projects">Projects</span>
-  </a>
-  <a class="link{% if page.url == '/blog.html' %} -active{% endif %}" href="/blog/">
-    <span class="mirror" data-hover="Blog">Blog</span>
-  </a>
-  <a class="link{% if page.url == '/photography.html' %} -active{% endif %}" href="/photography/">
-    <span class="mirror" data-hover="Photography">Photography</span>
-  </a>
-  <a class="link" href="/cv-andreas-remdt.pdf">
-    <span class="mirror" data-hover="Résumé">Résumé</span>
-  </a>
-  <a class="link{% if page.url == '/contact.html' %} -active{% endif %}" href="/contact/">
-    <span class="mirror" data-hover="Contact">Contact</span>
-  </a>
-
-  <button type="button" class="toggle" aria-label="Show Menu" data-element="menu-toggle">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
-  </button>
+<link rel="stylesheet" href="/css/main-navigation.css">
+<nav class="container main-navigation">
+  {% for entry in site.data.menu_entries %}
+    <a class="link{% if page.url == entry.file %} -active{% endif %}" href="{{ entry.url }}">{{ entry.name }}</a>
+  {% endfor %}
 </nav>

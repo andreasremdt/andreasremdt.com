@@ -1,0 +1,9 @@
+.post-content .title {
+  line-height: 1;
+}
+
+.post-content .image {
+  margin-bottom: var(--spacing-large);
+  
+  border-radius: .5rem;
+}

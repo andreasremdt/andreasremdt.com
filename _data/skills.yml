@@ -1,5 +1,5 @@
 - name: Frontend
-  skills:
+  entries:
     - HTML5
     - CSS3
     - JavaScript
@@ -7,20 +7,23 @@
     - Vue.js
     - MobX
 - name: Backend
-  skills:
-    - PHP
+  entries:
     - Node.js
+    - PHP
     - Laravel
     - MySQL
     - MongoDB
-- name: Tooling
-  skills:
+- name: Tools
+  entries:
     - Git, GitHub
     - Gulp
     - Webpack
     - Babel
-    - SASS
+    - Sass
+    - LESS
 - name: Others
-  skills:
+  entries:
     - WordPress
     - Jekyll
+    - Netlify
+    - Contao CMS

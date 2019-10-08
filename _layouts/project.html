@@ -2,18 +2,16 @@
 layout: default
 ---
 
-<link rel="stylesheet" href="/css/pages/project.css">
-<main class="container project-section">
-  <article class="main">
-    <header class="page-header">
-      <h1 class="title">{{ page.title }}</h1>
-    </header>
+{% include header.html %}
 
+<link rel="stylesheet" href="/css/single-project.css">
+<main class="container single-project">
+  <article class="content">
     {{ content }}
   </article>
-  
+
   <aside class="sidebar">
-    <figure>
+    <figure class="figure _bordered">
       <picture>
         <source srcset="https://res.cloudinary.com/ds3jhexob/image/upload/c_fill,g_center,h_650,q_75,w_1300/portfolio/{{ page.title | slugify }}.webp" type="image/webp">
         <img src="https://res.cloudinary.com/ds3jhexob/image/upload/c_fill,g_center,h_650,q_75,w_1300/portfolio/{{ page.title | slugify }}.jpg" class="image" alt="{{ page.title }}" width="1300" height="650">
@@ -25,7 +23,7 @@ layout: default
       <li><b>Technologies:</b> {{ page.technologies | join: ', ' }}</li>
     </ul>
 
-    <a href="javascript:history.back()" class="button -secondary -small">Return</a>
-    <a href="{{ page.link }}" class="button -primary -small" target="_blank" rel="noopener">Open project</a>
+    <a href="javascript:history.back()" class="button -secondary">Return</a>
+    <a href="{{ page.link }}" class="button -primary" target="_blank" rel="noopener">Open project</a>
   </aside>
 </main>

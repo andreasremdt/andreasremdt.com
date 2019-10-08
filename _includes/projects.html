@@ -1,0 +1,11 @@
+<figure class="gallery">
+  {% for project in site.projects limit:include.limit %}
+    <a class="item" href="{{ project.url }}">
+      <img class="image" loading="lazy" src="https://res.cloudinary.com/ds3jhexob/image/upload/c_fill,g_center,h_850,q_75,w_850/portfolio/{{ project.title | slugify }}.jpg" alt="Instituto del Ambiente">
+      <figcaption class="caption">
+        <h3 class="title">{{ project.title }}</h3>
+        <p class="description">{{ project.description }}</p>
+      </figcaption>
+    </a>
+  {% endfor %}
+</figure>

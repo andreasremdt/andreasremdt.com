@@ -4,7 +4,7 @@ title: Weather App
 description: As part of the freeCodeCamp curriculum, this app gets the users location and displays current weather information.
 link: https://codepen.io/andreasremdt/full/jZwMxj
 published_in: 2018
-published: false
+published: true
 technologies:
   - Flexbox
   - ES 2015

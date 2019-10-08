@@ -1,0 +1,29 @@
+.contact-form > .input:nth-child(3) {
+  height: 130px;
+}
+
+@media screen and (max-width: 450px) {
+  .contact-form > .input {
+    margin-bottom: var(--spacing-small);
+  }
+}
+
+@media screen and (min-width: 450px) {
+  .contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: start;
+    gap: var(--spacing-small);
+  }
+  
+  .contact-form > .input:nth-child(3) {
+    grid-column: span 2;
+  }
+}
+
+@media screen and (min-width: 730px) {
+  .contact-form {
+    max-width: 60%;
+    margin: auto;
+  }
+}

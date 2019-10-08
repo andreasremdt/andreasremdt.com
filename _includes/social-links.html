@@ -1,0 +1,11 @@
+<ul class="social-links">
+  {% for link in site.data.social_links %}
+    <li class="item">
+      <a class="link" href="{{ link.url }}" target="_blank" rel="noopener nofollow" aria-label="{{ link.title }}">
+        <svg role="img" width="30" height="30">
+          <use href="/symbol-defs.svg#{{ link.name | downcase }}"></use>
+        </svg>
+      </a>
+    </li>
+  {% endfor %}
+</ul>

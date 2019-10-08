@@ -1,0 +1,33 @@
+@media screen and (min-width: 700px) {
+  .single-project {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  
+  .single-project > .sidebar {
+    flex: 0 0 40%;
+    margin-right: var(--spacing-large);
+  }
+  
+  .single-project > .content {
+    flex: 0 1 60%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .single-project > .sidebar {
+    margin-top: var(--spacing-large);
+  }
+}
+
+.single-project > .sidebar > .figure {
+  margin: .5rem 0 var(--spacing-large);
+}
+
+.single-project > .content p:first-child {
+  margin-top: unset;
+}
+
+.single-project > .content p:last-child {
+  margin-bottom: unset;
+}

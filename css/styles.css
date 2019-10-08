@@ -1,0 +1,131 @@
+:root {
+  --dark-yellow: hsl(39, 93%, 61%);
+  --medium-yellow: hsl(36, 60%, 86%);
+  --light-yellow: hsl(45, 67%, 96%);
+  --dark-gray: hsl(209, 51%, 11%);
+  --medium-gray: hsl(232, 13%, 45%);
+  --light-gray: hsl(0, 0%, 67%);
+
+  --spacing-small: 1rem;
+  --spacing-medium: 1.5rem;
+  --spacing-large: 3rem;
+  --spacing-huge: 6rem;
+
+  --font-body: Poppins, -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', sans-serif;
+  --font-headings: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: unset;
+
+  color: var(--dark-gray);
+
+  font: 400 16px/1.6 var(--font-body);
+}
+
+p, ul, ol {
+  color: var(--medium-gray);
+}
+
+h1, h2, h3, h4 {
+  margin-top: unset;
+
+  font-weight: 700;
+  font-family: var(--font-headings);
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+  
+  vertical-align: middle;
+}
+
+figure {
+  margin: unset;
+}
+
+a {
+  color: inherit;
+
+  text-decoration: none;
+}
+
+p > a {
+  color: var(--dark-gray);
+
+  border-bottom: 2px solid var(--dark-yellow);
+
+  transition: background-color .15s linear, color .15s linear;
+}
+
+p > a:hover,
+p > a:focus {
+  color: white;
+
+  background-color: var(--dark-gray);
+}
+
+textarea {
+  resize: none;
+}
+
+input:invalid,
+textarea:invalid {
+  box-shadow: none;
+}
+
+.container {
+  max-width: 1170px;
+  width: 100%;
+  margin: auto;
+  padding-left: var(--spacing-medium);
+  padding-right: var(--spacing-medium);
+}
+
+.container.-small {
+  max-width: 700px;
+}
+
+._leftlined, ._centerlined {
+  position: relative;
+  max-width: max-content;
+}
+
+._leftlined::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 2px;
+  
+  background-color: var(--dark-yellow);
+}
+
+._centerlined::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 40%;
+  height: 2px;
+
+  transform: translateX(-50%);
+  
+  background-color: var(--dark-yellow);
+}

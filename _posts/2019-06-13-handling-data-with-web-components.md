@@ -1,0 +1,521 @@
+---
+layout: post
+title:  Handling data with Web Components
+date:   2019-06-13 19:32:15 +0200
+---
+
+If you haven’t lived under a rock for the last couple of years, you might have heard about the term Web Components, a collection of APIs to easily extend existing HTML and for building reusable components without the need of frameworks like React.
+
+Still, most developers tend to favor said frameworks, because they give them more tools and flexibility. Things like data binding and state management, which are undoubtedly important for building data-driven and interactive UIs.
+
+In the case of React, there’s another great concept: [props](https://reactjs.org/docs/components-and-props.html). Its API offers a nice and straight-forward way of passing data from a parent component into its children. This data can really be anything; strings, numbers, objects or even functions.
+
+{% highlight javascript %}
+<MyComponent
+  variant="primary"
+  onUpdate={functionCallback)}
+  items={[1, 2, 3]}
+/>
+{% endhighlight %}
+
+
+[Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components), or rather [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements), have a similar concept called attributes and properties. However, they are slightly different to use and not as comfortable as React props, unfortunately.
+
+Let’s have a look at 4 different ways on how we can achieve the same thing — passing complex data — into our custom elements, shall we?
+
+## #1 — Using attributes
+
+Attributes are the easiest way to pass data into a custom element:
+
+{% highlight html %}
+<custom-list filter="some filter"></custom-list>
+{% endhighlight %}
+
+Attributes for custom elements are not different from the attributes we already know and love: class, value, label and many more are part of what we use every day in HTML. There’s even a [list of all available standard attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes) as a reference. Let’s look at some code:
+
+{% highlight html %}
+<img src="image-1.jpg" alt="Some image">
+
+<script>
+  var img = document.getElementsByTagName("img")[0];
+
+  img.getAttribute("src"); // -> "image-1.jpg"
+  img.getAttribute("alt"); // -> "Some image"
+</script>
+{% endhighlight %}
+
+In the above example, we create a new image element and pass along some attributes, such as src and alt. All of these attributes can be accessed in JavaScript, using the getAttribute() function.
+
+If you have worked with the DOM, you might know that there’s a way to not only get attributes but also to set them:
+
+{% highlight javascript %}
+img.setAttribute("src", "new-image.jpg");
+{% endhighlight %}
+
+In this example, we have replaced the old image source with a different one, and if you had this image on your website, it would have gone ahead and downloaded from the new path.
+
+The very same concept applies to custom elements, but you can freely choose how to name each attribute. Since a custom element must always extend the HTMLElement, we get this behavior for free.
+
+Let’s have a look at the custom-list element implementation from above:
+
+{% highlight javascript %}
+class CustomList extends HTMLElement {
+  constructor() {
+    super();
+
+    console.log(this.getAttribute("filter"));
+  }
+}
+
+customElements.define("custom-list", CustomList);
+{% endhighlight %}
+
+* The first thing you’ll notice is the constructor, in which we call super(). You don’t always have to use the constructor and therefore are free to leave this piece of code out, but in some situations, a constructor is quite useful, for example when initializing properties, state, event listeners or other things related to your element. Just remember: once you use the constructor, you need to call super() for the custom element to work properly.
+
+* Below, we log this.getAttribute("filter"), which would print out whatever value we’ve assigned to filter in the HTML.
+
+* On the last line, we just register the custom element to make it globally available.
+
+In order to see the result, you can now use this custom element and assign a value to the filter attribute:
+
+{% highlight html %}
+<custom-list filter="Hello World"</custom-list>
+{% endhighlight %}
+
+In the browser’s console, this should print “Hello World”.
+
+But we can go even further, setting and getting any attribute programmatically in JavaScript:
+
+{% highlight javascript %}
+var list = document.querySelector("custom-list");
+
+list.getAttribute("filter"); // -> "Hello World"
+list.setAttribute("filter", "A new value");
+list.getAttribute("filter"); // -> "A new value"
+
+list.setAttribute("whatever", "Suprise");
+list.getAttribute("whatever"); // -> "Suprise"
+{% endhighlight %}
+
+You see that the showcased behavior is the same as with standard HTML elements, but you can freely decide which attributes to use and how to name them.
+
+### Accessing attributes inside the element
+
+So far I have shown you how to set and get attributes from outside of a custom element. But in many cases you might need to access these attributes inside the custom element, otherwise, they would be rather useless, right?
+
+In order to interact with attributes inside a custom element, we use the same methods getAttribute and setAttribute, like so:
+
+{% highlight javascript %}
+class CustomList extends HTMLElement {
+  render() {
+
+    this.innerHTML = `
+      <p>The filter is: ${this.getAttribute("filter")}
+    `;
+  }
+}
+{% endhighlight %}
+
+The difference this time is that you need to use the this keyword, which refers to the custom element itself. this in JavaScript can be a bit confusing, but thankfully [there are many explanations](https://medium.com/quick-code/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8) for the rescue.
+
+### Observing attributes
+
+Great, we have looked at how to set and get attributes from custom elements. But what if an attribute changes during the page lifetime, for instance after a user enters something into an input?
+
+{% highlight html %}
+<input type="text">
+
+<script>
+  var list = document.querySelector("custom-list");
+  var input = document.querySelector("input");
+
+  input.onchange = (evt) => {
+    list.setAttribute("filter", evt.target.value);
+  }
+</script>
+{% endhighlight %}
+
+The Web Components specification thankfully got your back:
+
+{% highlight javascript %}
+class CustomList extends HTMLElement {
+  static get observedAttributes() {
+    return ["filter"];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    // do something when an attribute has changed
+  }
+}
+{% endhighlight %}
+
+observedAttributes is a static getter method which always needs to return an array of all the attributes we want to observe. In this very example, it only observes the filter attribute (but there could be more, of course).
+
+This is just the first step. Below, you’ll see a method called attributeChangedCallback, which is part of the Web Components [lifecycle](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#Using_the_lifecycle_callbacks). This method will run each time any of our observed attributes change and executes whatever logic you define inside. It receives three parameters: the name of the changed attribute, its old and new value.
+
+To avoid unnecessary re-renders, it’s a best practice to check if the value has actually changed.
+
+{% highlight javascript %}
+attributeChangedCallback(name, oldValue, newValue) {
+  if (oldValue === newValue) {
+    return;
+  }
+    
+  console.log(`The attribute ${name} has changed`);
+}
+{% endhighlight %}
+
+First, we check whether the new value is different from the old one. If it’s not, we stop execution and nothing else will happen. If it’s indeed different, we then can run any code like calculations, re-renders or whatever you need.
+
+### But what about complex data, like objects?
+
+There is one caveat, though: passing attributes only works with strings. Even passed numbers like items="2" will be converted into a string. Passing objects, arrays or functions even less possible.
+
+One (rather ugly) way to pass an object is to convert it into a string, using JSON.stringify:
+
+{% highlight html %}
+<custom-list items="[{id:1},{id:2}]"></custom-list>
+
+<script>
+  var list = document.querySelector("custom-list");
+
+  list.setAttribute("items", JSON.stringify(...));
+</script>
+{% endhighlight %}
+
+Your custom element would need to parse this string back into an object, however:
+
+{% highlight html %}
+render() {
+  try {
+    JSON.parse(this.getAttribute("items"));
+  } catch (ex) {...}
+}
+{% endhighlight %}
+
+Using this method to pass complex data into Web Components is not advisable and should be avoided, if possible. Let’s look at a better way.
+
+## #2 — Using properties
+
+I don’t know about you, but the difference between attributes and properties confused me at first. It took me some time to wrap my head around it, so let me try to explain.
+
+Have a look at this simple img element. An attribute is what we set in our HTML, like so: <img src="image-1.jpg">. This element now has an attribute called src, many others could be set as well, such as alt or width.
+
+Attributes give meaning to your elements and are semantically important. They are mostly used by screen readers, search engines and others to understand your HTML structure.
+
+Once the browser parses your HTML, it will convert the img (along with every other element) into a [DOM element object](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement), in this case, an HTMLImageElement. For each HTML tag, there exists a DOM object which defines its behavior, looks and more. Curious to see how many there are? [Look here](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement). These objects have a ton of properties, we merely use more than a few at the time:
+
+{% highlight javascript %}
+var HTMLImageElement = {
+  src: "image-1.jpg",
+  alt: null,
+  accessKey: null,
+  ...
+};
+{% endhighlight %}
+
+A property is like a variable which is bound to an object.
+
+When the browser creates all those DOM element objects during render, its properties will reflect the HTML attributes. That’s why src is *image-1.jpg*, but the other properties are still set to null (we haven’t used them in the HTML). This means that the src property reflects the src attribute. The browser creates and syncs these two behind the scenes for us.
+
+In reality, there’s more to this than I explained just now. If you are interested in learning the details, there’s a nice [explanation in this thread](https://stackoverflow.com/questions/6003819/what-is-the-difference-between-properties-and-attributes-in-html) on StackOverflow.
+
+### Getters and setters
+
+Before we can use properties in our custom elements, we need to understand the concept of [getters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get) and [setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set).
+
+Getters and setters are used in classes or functions to set and get these properties. Look at this example:
+
+{% highlight javascript %}
+class User {
+  constructor() {
+    this._name = "John Doe";
+    this._age = 25;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  set name(name) {
+    this._name = name;
+  }
+
+  get age() {
+    return `This user is ${this._age} years old`;
+  }
+
+  set age(age) {
+    if (age < 18) {
+      throw new RangeError("User must at least be 18 years old!");
+    }
+
+    this._age = age;
+  }
+}
+{% endhighlight %}
+
+* We have a class called User which holds 2 properties: _name and _age. Note how both properties begin with an underscore; this is not mandatory but considered a best practice to achieve something like [private variables](https://stackoverflow.com/questions/44734399/what-is-the-underscore-in-javascript).
+
+* On line 7, you’ll see the first getter name, which just returns the value assigned to _name. This is the simplest form of a getter.
+
+* Below on line 11, you’ll encounter the first setter name, which is used to assign a new value to the property _name. Therefore, it needs to receive one parameter.
+
+* The next getter does basically the same, but in here I have wrapped some text around the user’s age. This should show you that you can return anything from a getter, not only the properties’ value. But don’t get too fancy with it.
+
+* Finally, the last setter for _age includes some basic validation — we don’t accept users below the age of 18, so we throw an exception if someone tries to set a younger age.
+
+If you’d to interact with this class, you’d do it this way:
+
+{% highlight javascript %}
+var user = new User();
+
+console.log(user.name); // -> "John Doe"
+console.log(user.age); // -> "This user is 25 years old"
+
+user.name = "Jane Doe";
+
+console.log(user.name); // -> "Jane Doe"
+
+user.age = 17; // Ka-bumm!
+{% endhighlight %}
+
+Although you could, it’s not a good practice to access the properties directly:
+
+{% highlight javascript %}
+var user = new User();
+
+console.log(user._name) // -> "John Doe"
+// (°_°)
+{% endhighlight %}
+
+### Properties in custom elements
+
+Are you still there? Great, you’ve made it through the dry theory. Let’s see how this knowledge helps us in implementing custom elements.
+
+{% highlight javascript %}
+class CustomList extends HTMLElement {
+  constructor() {
+    super();
+    
+    this._items = [];
+  }
+
+  set items(value) {
+    this._items = value;
+  }
+  
+  get items() {
+    return this._items;
+  }
+}
+{% endhighlight %}
+
+Again, we define our getter and setter methods, which are needed for each property we want to pass into the custom element.
+
+Now that we have declared items as a configurable property for our element, we can pass it in using JavaScript:
+
+{% highlight javascript %}
+var list = document.querySelector("custom-list");
+
+list.items = [1, 2, 3];
+
+console.log(list.items); // -> [1, 2, 3]
+{% endhighlight %}
+
+Noticed how we didn’t pass the property using HTML? That’s right, only attributes can be passed using HTML, everything else needs to be done in JavaScript.
+
+Again, you don’t necessarily need the getter and setter and could directly access the property, but I don’t encourage this.
+
+{% highlight javascript %}
+list._items = [1, 2, 3];
+
+console.log(list._items); // -> [1, 2, 3]
+// (°_°)
+{% endhighlight %}
+
+Thankfully, we are not limited to the use of arrays. Every data type can be passed, like this function:
+
+{% highlight javascript %}
+list.callback = () => console.log("Hello World");
+
+list.callback(); // -> "Hello World"
+{% endhighlight %}
+
+So, that’s how we handle complex data in custom elements. That wasn’t so bad, was it? But wait, there’s more.
+
+## #3 — Using events
+
+Using attributes and properties is fine and all, but what if you want to react based on certain events? Almost all HTML elements have events we can listen to, like an input:
+
+{% highlight javascript %}
+var input = document.querySelector("input");
+
+input.addEventListener("keydown", handleKeyDown);
+{% endhighlight %}
+
+The input element has logic baked in to emit the keydown event every time a user presses a key. Couldn’t we use something similar for our custom elements? Yes, we can!
+
+However, we can’t rely on events like keydown or click, these are part of the JavaScript specification for specific standard elements. Instead, we have to build our own events while making use of the [Custom Events API](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events).
+
+{% highlight javascript %}
+class ClickCounter extends HTMLElement {
+  constructor() {
+    super();
+    
+    this._timesClicked = 0;
+    
+    var button = document.createElement("button");
+    button.textContent = "Click me";
+    button.onclick = (evt) => {
+      this._timesClicked++;
+      
+      this.dispatchEvent(new CustomEvent("clicked", {
+        detail: this._timesClicked
+      }));
+    };
+    
+    this.append(button);
+  }
+};
+
+customElements.define("click-counter", ClickCounter);
+
+var counter = document.querySelector("click-counter");
+
+counter.addEventListener("clicked", (evt) => {
+  console.log(evt.detail);
+});
+{% endhighlight %}
+
+There’s a lot going on in the above code example. Take a deep breath, stretch your arms and let’s dive in.
+
+* On line 1, we create a new custom element class called ClickCounter.
+
+* We then define the constructor and call super() to inherit from the HTMLElement.
+
+* Now, on line 5, we define the property _timesClicked, which acts as the local state for our element. We want to increment by one each time the user clicks on a button.
+
+* Below that, on line 7 and 8, we create a new button and set some text content.
+
+* On line 9, we define a function for onclick that gets called each time the user clicks on the button. Inside this event callback, we first increment the counter by 1 and dispatch a custom event afterward.
+
+* The custom event is called clicked, but it can really be any name you like. As a second parameter, we pass an option to configure this custom event. The detail property is used to pass our own data along with the event. This can be an object, array, string or even a function. Later on, we will use the detail property to get the number of times a user has clicked the button.
+
+* Below, we append the button to our custom element’s DOM.
+
+* On line 23, we get a reference of the element using document.querySelector and save it into a variable. At last, we add an event listener which listens to the exact same event we defined earlier and add a callback function. This function receives the evt object as the only parameter, and part of this object is the property detail, in which we can access the number of times someone has clicked the button.
+
+This rather simple example should give you a basic understanding of how you can attach event listeners to custom elements. When and how the events are fired is up to you, as well as the data submitted with them.
+
+But there’s a catch: this technique doesn’t really work (nor scale) in an app with many different Web Components that need to communicate with each other. You don’t want to listen for many different events per component, making your code unreadable and complex. Let’s have a look at how to solve this situation.
+
+## #4 — Using an event bus
+
+This last technique also makes use of the Custom Events API, but instead of listening to local events on our components, we define an application-wide, global bus which transports our events and makes them accessible everywhere.
+
+Event buses can get rather complex, depending on your needs. In the following example, I want to keep it simple so you can fully understand the idea behind this concept.
+
+{% highlight javascript %}
+class EventBus {
+  constructor() {
+    this._bus = document.createElement('div');
+  }
+
+  register(event, callback) {
+    this._bus.addEventListener(event, callback);
+  } 
+    
+  remove(event, callback) {
+    this._bus.removeEventListener(event, callback);
+  }
+
+  fire(event, detail = {}) {
+    this._bus.dispatchEvent(new CustomEvent(event, { detail }));
+  }
+}
+
+var bus = new EventBus();
+
+export default bus;
+{% endhighlight %}
+
+The above code example is [inspired by this article](https://pineco.de/creating-a-javascript-event-bus/), which goes into a bit more detail.
+
+Basically, we create a new JavaScript class. Once this class is initialized, we create a new HTML element (which is never appended nor used in the DOM). This HTML element is required since custom events need to be bound to an actual HTML element.
+
+We then define 3 methods:
+
+* register allows us to add new event listeners to the bus. The event name, as well as the callback, are up to you.
+
+* remove deletes an existing event listener from the bus.
+
+* Finally, fire dispatches an event (again, you can choose the name), optionally we can attach additional data using the detail parameter.
+
+The last 3 lines make sure that we initialize the bus and export its reference.
+
+Throughout your app, you most likely work with many different files, so each file that needs to register or fire events can import it now:
+
+{% highlight javascript %}
+import EventBus from "./event-bus.js";
+
+EventBus.register("someevent", (evt) => {...});
+
+EventBus.fire("someevent");
+{% endhighlight %}
+
+Because we export and import only the instance (var bus = new EventBus()), we make sure that all of our events are handled by the same bus.
+
+Alternatively, if you don’t want to export/import the event bus, you can attach it to the global window object (which I wouldn’t advise):
+
+{% highlight javascript %}
+class EventBus {...}
+
+window.EventBus = new EventBus;
+{% endhighlight %}
+
+And that’s it! We can use this technique to allow communication between our custom elements.
+
+## Conclusion
+
+In this article, I had the pleasure to introduce you to 4 different ways of passing data into custom elements. Let’s recap:
+
+### Attributes
+
+* Can be set through the HTML and JavaScript, using getAttribute and setAttribute.
+
+* Only work with strings.
+
+* Can be observed.
+
+* Very easy and straight-forward to use.
+
+### Properties
+
+* Can be used in JavaScript only.
+
+* Can handle all data types.
+
+* Great for getting *complex data* in a custom element.
+
+* Custom elements should have getters and setters to handle them properly.
+
+### Events
+
+* Great for getting data out of custom elements.
+
+* Use the Custom Events API.
+
+* Can get messy when using many different elements with many events.
+
+### Event bus
+
+* Great for communication between components.
+
+* There can be more than 1 bus for different communication channels.
+
+* Some effort is required to build the bus.
+
+What method you choose to work with should depend on what you need to achieve. It’s not uncommon to combine a few or all of these techniques in one application.
+
+If you have any questions, please let me know in the comments. Happy coding!

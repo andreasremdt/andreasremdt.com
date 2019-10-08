@@ -1,0 +1,29 @@
+.post-preview {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+}
+
+.post-preview .date {
+  color: var(--medium-gray);
+}
+
+.post-preview .title {
+  margin-bottom: unset;
+
+  font-size: 18px;
+  font-family: var(--font-body);
+
+  transition: color .15s linear;
+}
+
+.post-preview .title:hover,
+.post-preview .title:focus {
+  color: var(--dark-yellow);
+}
+
+.post-preview .image {
+  margin-bottom: var(--spacing-small);
+
+  border-radius: .5rem;
+}

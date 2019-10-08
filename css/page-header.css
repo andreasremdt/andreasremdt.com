@@ -1,0 +1,25 @@
+.page-header {
+  max-width: 1720px;
+  margin: 0 auto var(--spacing-huge) auto;
+
+  background-color: var(--light-yellow);
+}
+
+.page-header > .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+}
+
+.page-header .title {
+  margin: unset;
+}
+
+.page-header .intro {
+  margin: unset;
+
+  font-size: 20px;
+  text-align: center;
+}
