@@ -11,7 +11,8 @@
   url: /photography
   file: /photography.html
 - name: Résumé
-  url: /cv.pdf
+  url: https://cv.andreasremdt.com
+  external: true
 - name: Contact
   url: /contact
   file: /contact.html

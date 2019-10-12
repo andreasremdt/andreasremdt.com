@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/main-navigation.css">
 <nav class="container main-navigation">
   {% for entry in site.data.menu_entries %}
-    <a class="link{% if page.url == entry.file %} -active{% endif %}" href="{{ entry.url }}">{{ entry.name }}</a>
+    <a class="link{% if page.url == entry.file %} -active{% endif %}" href="{{ entry.url }}" {% if entry.external == true %}target="_blank" rel="noopener nofollow"{% endif %}>{{ entry.name }}</a>
   {% endfor %}
 </nav>
