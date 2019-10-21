@@ -7,3 +7,6 @@ collections:
   projects:
     output: true
     permalink: /:collection/:name/
+
+include:
+  - _headers
