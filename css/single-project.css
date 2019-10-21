@@ -1,27 +1,35 @@
+.single-project {
+  display: flex;
+}
+
 @media screen and (min-width: 700px) {
   .single-project {
-    display: flex;
     flex-direction: row-reverse;
   }
   
   .single-project > .sidebar {
     flex: 0 0 40%;
     margin-right: var(--spacing-large);
+    margin-top: var(--spacing-large);
   }
   
   .single-project > .content {
     flex: 0 1 60%;
   }
-}
 
-@media screen and (max-width: 700px) {
-  .single-project > .sidebar {
-    margin-top: var(--spacing-large);
+  .single-project > .sidebar > .figure {
+    margin: .5rem 0 var(--spacing-large);
   }
 }
 
-.single-project > .sidebar > .figure {
-  margin: .5rem 0 var(--spacing-large);
+@media screen and (max-width: 700px) {
+  .single-project {
+    flex-direction: column-reverse;
+  }
+
+  .single-project > .sidebar {
+    margin-bottom: var(--spacing-large);
+  }
 }
 
 .single-project > .content p:first-child {

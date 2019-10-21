@@ -156,3 +156,28 @@ textarea:invalid {
   
   background-color: var(--dark-yellow);
 }
+
+@media screen and (max-width: 800px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+  
+  h2 {
+    font-size: 28px;
+  }
+
+  .container {
+    padding-left: var(--spacing-small);
+    padding-right: var(--spacing-small);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  h1 {
+    font-size: 30px;
+  }
+}
