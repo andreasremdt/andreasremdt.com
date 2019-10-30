@@ -74,6 +74,12 @@ h2 {
   font-size: 34px;
 }
 
+blockquote h1 {
+  line-height: 1.1;
+  font-size: 30px;
+  font-style: italic;
+}
+
 img, svg {
   max-width: 100%;
   height: auto;

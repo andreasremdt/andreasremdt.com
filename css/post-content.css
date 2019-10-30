@@ -4,6 +4,7 @@
 
 .post-content .image {
   margin-bottom: var(--spacing-large);
-  
+  width: 100%;
+
   border-radius: .5rem;
 }
