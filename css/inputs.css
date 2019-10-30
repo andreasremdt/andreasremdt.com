@@ -1,5 +1,4 @@
-.input {
-  height: 44px;
+.input, .textarea {
   padding: .5rem var(--spacing-small);
   width: 100%;
   
@@ -22,4 +21,16 @@
 
 .input:focus {
   border-color: var(--dark-gray);
+}
+
+.input {
+  height: 44px;
+}
+
+.textarea {
+  height: 100%;
+}
+
+.has-error {
+  border-color: var(--medium-red);
 }

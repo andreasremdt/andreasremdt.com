@@ -32,6 +32,7 @@
   --dark-gray: hsl(209, 51%, 11%);
   --medium-gray: hsl(232, 13%, 45%);
   --light-gray: hsl(0, 0%, 67%);
+  --medium-red: hsl(9, 100%, 64%);
 
   --spacing-small: 1rem;
   --spacing-medium: 1.5rem;

@@ -17,12 +17,19 @@
   transition: border-color .15s linear, color .15s linear, background-color .15s linear;
 }
 
+
 .button.-primary {
   background-color: var(--dark-yellow);
 }
 
-.button.-primary:hover,
-.button.-primary:focus {
+.button[disabled].-primary {
+  cursor: not-allowed;
+
+  background-color: var(--medium-yellow);
+}
+
+.button:not([disabled]).-primary:hover,
+.button:not([disabled]).-primary:focus {
   background-color: var(--dark-gray);
   color: white;
   border-color: var(--dark-gray);
@@ -32,7 +39,7 @@
   background-color: transparent;
 }
 
-.button.-secondary:hover,
-.button.-secondary:focus {
+.button:not([disabled]).-secondary:hover,
+.button:not([disabled]).-secondary:focus {
   border-color: var(--dark-gray);
 }

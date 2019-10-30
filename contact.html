@@ -8,9 +8,18 @@ description: Fill out the form below and I'll get back to you as soon as possibl
 <link rel="stylesheet" href="/css/inputs.css">
 <main class="container">
   <form action="/send_form" method="POST" class="contact-form">
-    <input type="text" id="name" class="input" name="name" required autofocus placeholder="Your name">
-    <input type="email" id="email" class="input" name="email" required placeholder="Your email address">
-    <textarea name="message" id="message" class="input" required placeholder="Your message"></textarea>
+    <div>
+      <input type="text" id="name" class="input" name="name" required autofocus placeholder="Your name">
+    </div>
+    <div>
+      <input type="email" id="email" class="input" name="email" required placeholder="Your email address">
+    </div>
+    <div>
+      <textarea name="message" id="message" class="textarea" required placeholder="Your message"></textarea>
+    </div>
+    <input type="checkbox" name="contact-by-fax-only" class="honeypot">
     <button type="submit" class="button -primary">Send message</button>
   </form>
 </main>
+
+<script src="/js/form.js" defer></script>
