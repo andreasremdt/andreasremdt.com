@@ -21,6 +21,7 @@
 
 .page-header .intro {
   margin: unset;
+  max-width: 70%;
 
   font-size: 20px;
   text-align: center;

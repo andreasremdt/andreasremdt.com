@@ -11,16 +11,15 @@ description: Technical articles I published to Medium, covering web development 
     <article class="post-preview">
       <header>
         <time class="date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
-        <h2 class="title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        <h2 class="title">
+          <a class="link" href="{{ post.url }}">{{ post.title }}</a>
+        </h2>
       </header>
-      <figure>
-        <a href="{{ post.url }}">
-          <picture>
-            <source type="image/webp" srcset="https://res.cloudinary.com/ds3jhexob/image/upload/c_scale,q_75,w_600/blog/{{ post.title | slugify }}.webp">
-            <img class="image" loading="lazy" src="https://res.cloudinary.com/ds3jhexob/image/upload/c_scale,q_75,w_600/blog/{{ post.title | slugify }}.jpg" alt="{{ post.title }}">
-          </picture>
-        </a>
-      </figure>
+      <picture class="picture">
+        <source type="image/webp" srcset="https://res.cloudinary.com/ds3jhexob/image/upload/c_scale,q_75,w_600/blog/{{ post.title | slugify }}.webp">
+        <img class="image" loading="lazy" src="https://res.cloudinary.com/ds3jhexob/image/upload/c_scale,q_75,w_600/blog/{{ post.title | slugify }}.jpg" alt="{{ post.title }}">
+      </picture>
+      <p>{{ post.excerpt | strip_html }}</p>
     </article>
   {% endfor %}
 </main>

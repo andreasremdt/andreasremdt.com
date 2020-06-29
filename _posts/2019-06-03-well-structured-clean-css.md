@@ -2,6 +2,7 @@
 layout: post
 title:  Well-structured, clean CSS without dependencies
 date:   2019-06-03 19:32:15 +0200
+excerpt: Beauty is considered to be a subjective thing — everybody defines and sees it in a different way. Every time I code something, I don’t just strive to make my applications look beautiful on the outside, but also the code that powers them.
 ---
 
 ***Disclaimer:** The following article reflects my personal opinion and experiences and is in no way meant to badmouth certain libraries, tools or developing styles.*

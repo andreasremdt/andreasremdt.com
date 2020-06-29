@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/css/main-footer.css">
 <footer class="main-footer">
   <div class="container">
-    <p class="copyright">&copy; {{ page.date | date: "%Y"}} by Andreas Remdt.</p>
+    <p class="copyright">&copy; {{ site.time | date: '%Y' }} by Andreas Remdt.</p>
 
     <nav class="navigation">
       {% for entry in site.data.menu_entries %}
