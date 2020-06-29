@@ -8,17 +8,23 @@
 
 .main-navigation > .link {
   margin-left: var(--spacing-medium);
-
-  border-top: 2px solid transparent;
-  
-  transition: border-color .15s linear;
+  position: relative;
 }
 
-.main-navigation > .link.-active {
-  color: var(--dark-yellow);
+.main-navigation > .link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  right: 0;
+  height: 8px;
+  z-index: -1;
+  background-color: var(--dark-yellow);
+  opacity: 0;
+  transition: opacity .1s linear;
 }
 
-.main-navigation > .link:hover,
-.main-navigation > .link:focus {
-  border-top-color: var(--dark-yellow);
+.main-navigation > .link:hover::after,
+.main-navigation > .link.-active::after {
+  opacity: 1;
 }
