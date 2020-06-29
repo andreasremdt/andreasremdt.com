@@ -26,10 +26,13 @@
     justify-items: start;
     gap: var(--spacing-small);
   }
+
+  .contact-form > .input-group {
+    width: 100%;
+  }
   
   .contact-form > div:nth-child(3) {
     grid-column: span 2;
-    width: 100%;
     height: 130px;
   }
 

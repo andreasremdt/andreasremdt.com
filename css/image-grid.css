@@ -2,13 +2,13 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: 125px;
-  gap: var(--spacing-medium);
+  gap: 3px;
 }
 
 .image-grid .item {
   background-color: var(--dark-yellow);
   
-  border-radius: .5rem;
+  border-radius: .3rem;
   
   overflow: hidden;
 }
