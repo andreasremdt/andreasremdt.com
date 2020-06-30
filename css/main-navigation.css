@@ -25,6 +25,7 @@
 }
 
 .main-navigation > .link:hover::after,
+.main-navigation > .link:focus::after,
 .main-navigation > .link.-active::after {
   opacity: 1;
 }

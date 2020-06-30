@@ -78,6 +78,14 @@ img, svg {
   vertical-align: middle;
 }
 
+::-moz-focus-inner {
+  border: 0;
+}
+
+:focus {
+  outline: none;
+}
+
 figure {
   margin: unset;
 }
