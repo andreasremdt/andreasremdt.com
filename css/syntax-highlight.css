@@ -46,7 +46,7 @@ pre[class*="language-"] {
 	padding: var(--spacing-small);
 	margin: var(--spacing-large) 0;
 	overflow: auto;
-	border-radius: 6px;
+	border-radius: .3rem;
 }
 
 :not(pre) > code[class*="highlighter-"],

@@ -1,6 +1,9 @@
 <link rel="stylesheet" href="/css/main-navigation.css">
 <nav class="container main-navigation">
-  {% for entry in site.data.menu_entries %}
-    <a class="link{% if page.url == entry.file %} -active{% endif %}" href="{{ entry.url }}" {% if entry.external == true %}target="_blank" rel="noopener nofollow"{% endif %}>{{ entry.name }}</a>
-  {% endfor %}
+  <a class="link{% if page.url == '/' %} -active{% endif %}" href="/">Home</a>
+  <a class="link{% if page.url contains '/projects/' %} -active{% endif %}" href="/projects/">Work</a>
+  <a class="link{% if page.url contains '/blog/' %} -active{% endif %}" href="/blog/">Blog</a>
+  <a class="link{% if page.url == '/photography/' %} -active{% endif %}" href="/photography/">Photography</a>
+  <a class="link" href="https://cv.andreasremdt.com" target="_blank" rel="noopener nofollow">Résumé</a>
+  <a class="link{% if page.url == '/contact/' %} -active{% endif %}" href="/contact/">Contact</a>
 </nav>

@@ -2,16 +2,11 @@
 layout: default
 ---
 
+{% include header.html %}
+
 <link rel="stylesheet" href="/css/post-content.css">
 <link rel="stylesheet" href="/css/syntax-highlight.css">
 <main class="container -small post-content">
-  <picture>
-    <source type="image/webp" srcset="https://res.cloudinary.com/ds3jhexob/image/upload/c_scale,q_75,w_600/blog/{{ page.title | slugify }}.webp">
-    <img class="image" loading="lazy" src="https://res.cloudinary.com/ds3jhexob/image/upload/c_scale,q_75,w_600/blog/{{ page.title | slugify }}.jpg" alt="{{ page.title }}">
-  </picture>
-
-  <h1 class="title">{{ page.title }}</h1>
-  
   {{ content }}
 
   <a href="/blog" class="button -primary -small">Back</a>
