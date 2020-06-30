@@ -10,7 +10,6 @@
   .single-project > .sidebar {
     flex: 0 0 40%;
     margin-right: var(--spacing-large);
-    margin-top: var(--spacing-large);
   }
   
   .single-project > .content {
