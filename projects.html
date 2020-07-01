@@ -4,13 +4,6 @@ title: Projects
 description: Check out my most recent work as a Web Developer.
 ---
 
-<link rel="stylesheet" href="/css/project-previews.css">
-<main class="project-previews container">
-  {% for project in site.projects limit:include.limit %}
-    <article class="project-preview" style="--background: url(//res.cloudinary.com/ds3jhexob/image/upload/c_fill,g_center,h_850,q_75,w_850/portfolio/{{ project.title | slugify }}.jpg)">
-      <h2 class="title">{{ project.title }}</h2>
-      <p class="description">{{ project.description }}</p>
-      <a class="link" href="{{ project.url }}">Open</a>
-    </article>
-  {% endfor %}
+<main class="container">
+  {% include projects.html %}
 </main>

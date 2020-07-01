@@ -140,6 +140,10 @@ textarea:invalid {
   max-width: 800px;
 }
 
+._center {
+  text-align: center;
+}
+
 ._leftlined, ._centerlined {
   position: relative;
   max-width: max-content;

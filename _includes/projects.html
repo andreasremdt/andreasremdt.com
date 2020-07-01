@@ -1,11 +1,10 @@
-<figure class="gallery">
+<link rel="stylesheet" href="/css/project-previews.css">
+<div class="project-previews">
   {% for project in site.projects limit:include.limit %}
-    <a class="item" href="{{ project.url }}">
-      <img class="image" loading="lazy" src="https://res.cloudinary.com/ds3jhexob/image/upload/c_fill,g_center,h_850,q_75,w_850/portfolio/{{ project.title | slugify }}.jpg" alt="Instituto del Ambiente">
-      <figcaption class="caption">
-        <h3 class="title">{{ project.title }}</h3>
-        <p class="description">{{ project.description }}</p>
-      </figcaption>
-    </a>
+    <article class="project-preview" style="--background: url(//res.cloudinary.com/ds3jhexob/image/upload/c_fill,g_center,h_850,q_75,w_850/portfolio/{{ project.title | slugify }}.jpg)">
+      <h2 class="title">{{ project.title }}</h2>
+      <p class="description">{{ project.description }}</p>
+      <a class="link" href="{{ project.url }}">Open</a>
+    </article>
   {% endfor %}
-</figure>
+  </div>

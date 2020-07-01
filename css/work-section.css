@@ -1,0 +1,9 @@
+.work-section .title {
+  margin: auto;
+}
+
+.work-section .intro {
+  max-width: 600px;
+  margin: 0 auto var(--spacing-large) auto;
+  text-align: center;
+}
