@@ -1,7 +1,7 @@
 - name: Frontend
   entries:
-    - HTML5
-    - CSS3
+    - HTML
+    - CSS
     - JavaScript
     - React
     - Vue.js
@@ -9,9 +9,7 @@
 - name: Backend
   entries:
     - Node.js
-    - PHP
-    - Laravel
-    - MySQL
+    - SQL
     - MongoDB
 - name: Tools
   entries:
@@ -20,10 +18,9 @@
     - Webpack
     - Babel
     - Sass
-    - LESS
 - name: Others
   entries:
     - WordPress
     - Jekyll
+    - Gatsby
     - Netlify
-    - Contao CMS
