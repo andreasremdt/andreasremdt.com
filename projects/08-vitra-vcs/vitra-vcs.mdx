@@ -1,0 +1,25 @@
+---
+title: Vitra VCS
+slug: vitra-vcs
+image: ./images/vitra-vcs.png
+template: project
+date: 2016-01-17 19:32:15 +0200
+url: http://vcs.vitra.com
+excerpt: The Vitra Configuration System is a collection of software to plan 3D spaces using furniture from Vitra.
+technologies:
+  - Node.js
+  - Express.js
+  - Nunjucks
+  - i18n
+tags:
+  - Main work
+  - Open source
+---
+
+This was my first ever project using Node.js. I had almost no prior experience with this framework and had to learn a lot about its architecture, best practices, etc.
+
+The frontend is responsive (with a design based on the company’s CI) and offers various resources to visitors, such as tutorials, downloads, and a contact form. On the backend, I used [Express](https://expressjs.com/). The website is available in two languages through [i18n](https://github.com/mashpie/i18n-node) and highly performant in terms of response time. The view templates are assembled with the [Nunjucks](https://mozilla.github.io/nunjucks/) templating engine and distinguish between internal and external IP addresses, displaying appropriate content depending if the visitor is a client or company employee.
+
+Instead of using a database, I decided the store the texts in separate JSON files, which are loaded dynamically in the templating engine based on what language is selected.
+
+The website features many video tutorials I produced and other content that helps people understand and learn the presented software product, called VCS. In case of problems, visitors can send a ticket directly to the companies’ ticket system using the embedded form.
