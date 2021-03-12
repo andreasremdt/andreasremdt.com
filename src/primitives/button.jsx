@@ -1,46 +1,11 @@
 import React from "react";
-import { css } from "@emotion/core";
 import { Link } from "gatsby";
+import { main } from "./button.module.css";
 
-const styles = css`
-  display: inline-flex;
-  align-items: center;
-  height: 46px;
-  padding: 0 1.5rem;
-  color: var(--dark-gray);
-  font-size: 14px;
-  border: none;
-  font-family: inherit;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  background-image: linear-gradient(var(--dark-yellow), var(--dark-yellow)),
-    linear-gradient(var(--dark-gray), var(--dark-gray));
-  background-size: 100% 100%, 0 100%;
-  background-position: 100% 100%, 0 100%;
-  background-repeat: no-repeat;
-  transition: color 0.2s linear, background-size 0.2s ease-in-out;
-
-  &:disabled {
-    opacity: 0.7;
-    background: var(--light-gray);
-    cursor: not-allowed;
-  }
-
-  &:not(:disabled):hover,
-  &:not(:disabled):focus {
-    color: white;
-    background-size: 0 100%, 100% 100%;
-  }
-
-  svg {
-    margin-left: 0.4rem;
-  }
-`;
-
-const Button = ({ type, href, children, ...props }) => {
+const Button = ({ type, href, children, className, ...props }) => {
   if (type === "button" || type === "submit") {
     return (
-      <button css={styles} type={type} {...props}>
+      <button className={[main, className].join(" ")} type={type} {...props}>
         {children}
       </button>
     );
@@ -48,7 +13,7 @@ const Button = ({ type, href, children, ...props }) => {
     return (
       <a
         href={href}
-        css={styles}
+        className={[main, className].join(" ")}
         target="_blank"
         rel="noreferrer noopener nofollow"
         {...props}
@@ -59,7 +24,7 @@ const Button = ({ type, href, children, ...props }) => {
   }
 
   return (
-    <Link css={styles} {...props}>
+    <Link className={[main, className].join(" ")} {...props}>
       {children}
     </Link>
   );

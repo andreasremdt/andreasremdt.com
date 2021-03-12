@@ -1,56 +1,34 @@
 import React from "react";
-import { css } from "@emotion/core";
 import { Container, Link } from "../primitives";
+import { main, logo, link, active } from "./header.module.css";
 
 const Header = () => (
   <Container>
-    <header
-      css={css`
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 100px;
-      `}
-    >
-      <Link
-        to="/"
-        css={css`
-          font-weight: bold;
-        `}
-      >
+    <header className={main}>
+      <Link to="/" className={logo}>
         Andreas Remdt
       </Link>
       <nav>
-        <Link activeClassName="current-page" to="/">
+        <Link activeClassName={active} to="/">
           Home
         </Link>
         <Link
-          css={css`
-            margin-left: 1.5rem;
-          `}
-          activeClassName="current-page"
+          className={link}
+          activeClassName={active}
           partiallyActive
           to="/projects/"
         >
           Projects
         </Link>
         <Link
-          css={css`
-            margin-left: 1.5rem;
-          `}
-          activeClassName="current-page"
+          className={link}
+          activeClassName={active}
           partiallyActive
           to="/blog/"
         >
           Blog
         </Link>
-        <Link
-          css={css`
-            margin-left: 1.5rem;
-          `}
-          activeClassName="current-page"
-          to="/contact/"
-        >
+        <Link className={link} activeClassName={active} to="/contact/">
           Contact
         </Link>
       </nav>

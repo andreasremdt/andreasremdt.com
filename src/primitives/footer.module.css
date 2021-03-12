@@ -1,0 +1,11 @@
+.main {
+  background-color: var(--medium-light-yellow);
+  padding: 2rem 0;
+  margin-top: 6rem;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

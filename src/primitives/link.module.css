@@ -1,0 +1,18 @@
+.main {
+  background-image: linear-gradient(#fff, #fff),
+    linear-gradient(var(--dark-yellow), var(--dark-yellow));
+  background-size: 100% 3px, 0 3px;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.2s ease-in-out;
+}
+
+.main > svg {
+  margin-left: 0.4rem;
+  vertical-align: sub;
+}
+
+.main:hover,
+.main:focus {
+  background-size: 0 3px, 100% 3px;
+}

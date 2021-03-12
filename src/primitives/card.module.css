@@ -1,0 +1,26 @@
+.wrapper {
+  position: sticky;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 3px 25px rgba(0, 0, 0, 0.05);
+  margin-top: 3rem;
+  height: 500px;
+  padding: 3rem 2.5rem;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.image {
+  position: absolute;
+  right: -2.5rem;
+  bottom: -3rem;
+  width: 55%;
+}
+
+.text {
+  margin: 1rem 0 2rem 0;
+  max-width: 40%;
+}

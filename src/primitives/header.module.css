@@ -1,0 +1,18 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.link {
+  margin-left: 1.5rem;
+}
+
+.active {
+  background-size: 0 3px, 100% 3px !important;
+}

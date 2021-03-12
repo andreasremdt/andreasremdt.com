@@ -1,0 +1,33 @@
+.main {
+  font-weight: 900;
+  position: relative;
+}
+
+.h1 {
+  font-size: 50px;
+  margin: 0 0 0.5rem 0;
+}
+
+.h2 {
+  font-size: 34px;
+  margin: 0 0 2rem 0;
+}
+
+.h3 {
+  font-size: 26px;
+  margin: 0 0 0.5rem 0;
+}
+
+.overline {
+  max-width: max-content;
+}
+
+.overline::before {
+  content: "";
+  position: absolute;
+  top: -13px;
+  left: 0;
+  width: 3rem;
+  height: 3px;
+  background-color: var(--dark-yellow);
+}

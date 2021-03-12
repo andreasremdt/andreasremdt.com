@@ -1,41 +1,21 @@
 import React from "react";
-import { css } from "@emotion/core";
+import { main, h1, h2, h3, overline } from "./heading.module.css";
 
-const sizes = {
-  h1: "50px",
-  h2: "34px",
-  h3: "26px"
-};
+const mapping = { h1, h2, h3 };
 
-const spacings = {
-  h1: "0 0 0.5rem 0",
-  h2: "0 0 2rem 0",
-  h3: "0 0 .5rem 0"
-};
-
-const Heading = ({ Level = "h1", disableOverline = false, ...props }) => (
+const Heading = ({
+  Level = "h1",
+  disableOverline = false,
+  className,
+  ...props
+}) => (
   <Level
-    css={css`
-      font-weight: 900;
-      font-size: ${sizes[Level]};
-      position: relative;
-      margin: ${spacings[Level]};
-
-      ${!disableOverline &&
-      `
-        max-width: max-content;
-
-        &::before {
-          content: "";
-          position: absolute;
-          top: -13px;
-          left: 0;
-          width: 40%;
-          height: 3px;
-          background-color: var(--dark-yellow);
-        }
-      `}
-    `}
+    className={[
+      main,
+      mapping[Level],
+      disableOverline ? "" : overline,
+      className
+    ].join(" ")}
     {...props}
   />
 );

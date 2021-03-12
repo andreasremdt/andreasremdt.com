@@ -1,16 +1,8 @@
 import React from "react";
-import { css } from "@emotion/core";
+import { main } from "./container.module.css";
 
-const Container = (props) => (
-  <div
-    css={css`
-      max-width: 1170px;
-      width: 100%;
-      margin: auto;
-      padding: 0 1rem;
-    `}
-    {...props}
-  />
+const Container = ({ className, ...props }) => (
+  <div className={[main, className].join(" ")} {...props} />
 );
 
 export default Container;

@@ -1,33 +1,13 @@
 import React from "react";
-import { css } from "@emotion/core";
 import { Link as GatsbyLink } from "gatsby";
+import { main } from "./link.module.css";
 
-const styles = css`
-  background-image: linear-gradient(#fff, #fff),
-    linear-gradient(var(--dark-yellow), var(--dark-yellow));
-  background-size: 100% 3px, 0 3px;
-  background-position: 100% 100%, 0 100%;
-  background-repeat: no-repeat;
-  transition: background-size 0.2s ease-in-out;
-
-  svg {
-    margin-left: 0.4rem;
-    vertical-align: sub;
-  }
-
-  &:hover,
-  &:focus,
-  &.current-page {
-    background-size: 0 3px, 100% 3px;
-  }
-`;
-
-const Link = ({ href, children, ...props }) => {
+const Link = ({ href, children, className, ...props }) => {
   if (href) {
     return (
       <a
         href={href}
-        css={styles}
+        className={[main, className].join(" ")}
         target="_blank"
         rel="noreferrer noopener nofollow"
         {...props}
@@ -38,7 +18,7 @@ const Link = ({ href, children, ...props }) => {
   }
 
   return (
-    <GatsbyLink css={styles} {...props}>
+    <GatsbyLink className={[main, className].join(" ")} {...props}>
       {children}
     </GatsbyLink>
   );
