@@ -1,17 +1,13 @@
 {
-  "name": "portfolio",
-  "private": true,
-  "description": "Portfolio of Andreas Remdt, Software Engineer.",
-  "version": "3.0.0",
+  "name": "andreasremdt.com",
   "license": "MIT",
+  "version": "3.1.0",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
   },
   "dependencies": {
     "@emotion/core": "^10.0.35",
@@ -42,9 +38,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/andreasremdt/andreasremdt.com/"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/andreasremdt/andreasremdt.com/issues/"
   }
 }
