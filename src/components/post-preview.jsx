@@ -1,44 +1,19 @@
 import React from "react";
-import { css } from "@emotion/core";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Link, Button, Heading, Tag } from "../primitives";
 import getLabelFromUrl from "../utils/get-label-from-url";
+import { main, body, title, image } from "./post-preview.module.css";
 
 const PostPreview = ({ post }) => (
-  <article
-    css={css`
-      display: flex;
-
-      &:not(:last-of-type) {
-        margin-bottom: 3rem;
-      }
-    `}
-  >
+  <article className={main}>
     <GatsbyImage
       image={post.image?.sharp?.gatsbyImageData}
-      css={css`
-        border-radius: 0.5rem;
-        width: 400px;
-        height: 250px;
-        flex-shrink: 0;
-      `}
+      className={image}
       alt={post.title}
     />
-    <div
-      css={css`
-        flex-grow: 1;
-        margin-left: 2rem;
-      `}
-    >
-      {console.log(post.slug)}
+    <div className={body}>
       {post.date && <Tag>{post.date}</Tag>}
-      <Heading
-        Level="h2"
-        disableOverline
-        css={css`
-          margin-top: 0.5rem;
-        `}
-      >
+      <Heading Level="h2" disableOverline className={title}>
         <Link to={post.slug} href={post.external_url}>
           {post.title}
         </Link>

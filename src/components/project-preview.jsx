@@ -1,44 +1,20 @@
 import React from "react";
-import { css } from "@emotion/core";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Link, Button, Heading, Tag } from "../primitives";
+import { main, body, image, title, button } from "./project-preview.module.css";
 
 const ProjectPreview = ({ project }) => (
-  <article
-    css={css`
-      display: flex;
-
-      &:not(:last-of-type) {
-        margin-bottom: 3rem;
-      }
-    `}
-  >
+  <article className={main}>
     <GatsbyImage
       image={project.image?.sharp?.gatsbyImageData}
-      css={css`
-        border-radius: 0.5rem;
-        width: 330px;
-        height: 250px;
-        flex-shrink: 0;
-      `}
+      className={image}
       alt={project.title}
     />
-    <div
-      css={css`
-        flex-grow: 1;
-        margin-left: 2rem;
-      `}
-    >
+    <div className={body}>
       {project.tags.map((tag) => (
         <Tag key={tag}>{tag}</Tag>
       ))}
-      <Heading
-        Level="h2"
-        disableOverline
-        css={css`
-          margin-top: 0.5rem;
-        `}
-      >
+      <Heading Level="h2" disableOverline className={title}>
         <Link to={project.slug} href={project.external_url}>
           {project.title}
         </Link>
@@ -46,12 +22,7 @@ const ProjectPreview = ({ project }) => (
 
       <p>{project.excerpt}</p>
 
-      <Button
-        to={project.slug}
-        css={css`
-          margin-right: 1rem;
-        `}
-      >
+      <Button to={project.slug} className={button}>
         View details
       </Button>
       <Link href={project.url}>

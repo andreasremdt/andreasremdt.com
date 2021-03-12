@@ -1,9 +1,9 @@
 import React from "react";
-import { css } from "@emotion/core";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Container, Heading, Button } from "../primitives";
 import { SocialIcons } from "../components";
+import { main, container, text, button, portrait } from "./hero.module.css";
 
 const Hero = () => {
   const { image } = useStaticQuery(graphql`
@@ -17,60 +17,22 @@ const Hero = () => {
   `);
 
   return (
-    <section
-      css={css`
-        max-width: 1720px;
-        margin: 0 auto;
-        background-color: var(--light-yellow);
-        border-radius: 1rem;
-      `}
-    >
-      <Container
-        css={css`
-          position: relative;
-          display: flex;
-          flex-flow: column wrap;
-          align-items: flex-start;
-          justify-content: center;
-          height: 500px;
-        `}
-      >
+    <section className={main}>
+      <Container className={container}>
         <Heading>Hey, I'm Andreas.</Heading>
-        <p
-          css={css`
-            max-width: 50%;
-            font-size: 18px;
-          `}
-        >
+        <p className={text}>
           I am a Web Developer based in Germany that loves to build fast,
           accessible, and good-looking web applications using cutting-edge
           technologies.
         </p>
-        <Button
-          css={css`
-            margin-bottom: 3rem;
-          `}
-          to="/contact/"
-        >
+        <Button className={button} to="/contact/">
           Get in touch
         </Button>
         <SocialIcons />
         <GatsbyImage
           image={image.sharp.gatsbyImageData}
           alt="Portrait of Andreas Remdt"
-          css={css`
-            &::after {
-              position: absolute;
-              width: 70%;
-              height: 100%;
-              right: -20px;
-              top: 20px;
-              border-radius: 0.5rem;
-              border: 3px solid var(--dark-yellow);
-              content: "";
-              z-index: -1;
-            }
-          `}
+          className={portrait}
           imgStyle={{
             borderRadius: "0.5rem"
           }}

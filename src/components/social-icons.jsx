@@ -1,5 +1,5 @@
 import React from "react";
-import { css } from "@emotion/core";
+import { list, item, anchor } from "./social-icons.module.css";
 
 const links = [
   {
@@ -30,33 +30,15 @@ const links = [
 ];
 
 const SocialIcons = () => (
-  <ul
-    css={css`
-      list-style-type: none;
-      padding: unset;
-    `}
-  >
+  <ul className={list}>
     {links.map((link) => (
-      <li
-        key={link.url}
-        css={css`
-          display: inline-block;
-          margin-right: 1.5rem;
-        `}
-      >
+      <li key={link.url} className={item}>
         <a
           href={link.url}
           aria-label={link.ariaLabel}
           target="_blank"
           rel="noopener nofollow noreferrer"
-          css={css`
-            transition: color 0.1s linear;
-
-            &:hover,
-            &:focus {
-              color: var(--dark-yellow);
-            }
-          `}
+          className={anchor}
         >
           <svg width="28" height="28">
             <use xlinkHref={`/symbol-defs.svg#${link.icon}`}></use>

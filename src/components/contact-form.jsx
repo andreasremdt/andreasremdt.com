@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { css } from "@emotion/core";
 import { Input, Button } from "../primitives";
+import { main, center, disabled, row } from "./contact-form.module.css";
 
 const ERROR_MESSAGES = {
   name: "Enter a valid name",
@@ -86,23 +86,14 @@ const ContactForm = ({ centered = false }) => {
     <form
       noValidate
       onSubmit={handleSubmit}
-      css={css`
-        max-width: 800px;
-        ${centered ? "margin: auto;" : ""}
-        ${state === "success" ? "pointer-events: none;" : ""}
-      `}
+      className={[
+        main,
+        centered ? center : "",
+        state === "success" ? disabled : ""
+      ].join(" ")}
     >
-      <div
-        css={css`
-          display: flex;
-        `}
-      >
-        <div
-          css={css`
-            flex: 1;
-            margin-right: 1rem;
-          `}
-        >
+      <div className={row}>
+        <div>
           <Input
             id="name"
             type="text"
@@ -114,11 +105,7 @@ const ContactForm = ({ centered = false }) => {
             error={errors.name}
           />
         </div>
-        <div
-          css={css`
-            flex: 1;
-          `}
-        >
+        <div>
           <Input
             id="email"
             type="email"

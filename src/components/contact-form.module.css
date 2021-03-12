@@ -1,0 +1,23 @@
+.main {
+  max-width: 80%;
+}
+
+.center {
+  margin: auto;
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+.row {
+  display: flex;
+}
+
+.row > div {
+  flex: 1;
+}
+
+.row > div:not(:last-child) {
+  margin-right: 1rem;
+}

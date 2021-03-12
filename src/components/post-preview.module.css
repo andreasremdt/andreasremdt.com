@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+}
+
+.main:not(:last-of-type) {
+  margin-bottom: 3rem;
+}
+
+.image {
+  border-radius: 0.5rem;
+  width: 400px;
+  height: 250px;
+  flex-shrink: 0;
+}
+
+.body {
+  flex-grow: 1;
+  margin-left: 2rem;
+}
+
+.title {
+  margin-top: 0.5rem;
+}

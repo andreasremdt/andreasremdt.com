@@ -1,0 +1,36 @@
+.main {
+  max-width: 1720px;
+  margin: 0 auto;
+  background-color: var(--light-yellow);
+  border-radius: 1rem;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  justify-content: center;
+  height: 500px;
+}
+
+.text {
+  max-width: 50%;
+  font-size: 18px;
+}
+
+.button {
+  margin-bottom: 3rem;
+}
+
+.portrait::after {
+  position: absolute;
+  width: 70%;
+  height: 100%;
+  right: -20px;
+  top: 20px;
+  border-radius: 0.5rem;
+  border: 3px solid var(--dark-yellow);
+  content: "";
+  z-index: -1;
+}
