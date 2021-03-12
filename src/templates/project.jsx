@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { css } from "@emotion/core";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Layout } from "../components";
 import { PageHeader, Container, Button, Link, MDXWrapper } from "../primitives";
+import { main, sidebar, button, content, image } from "./project.module.css";
 
 export const query = graphql`
   query($slug: String!) {
@@ -31,22 +31,12 @@ const PostTemplate = ({ data: { mdx: project } }) => (
       title={project.frontmatter.title}
       subtitle={project.frontmatter.excerpt}
     />
-    <Container
-      css={css`
-        display: flex;
-      `}
-    >
-      <aside
-        css={css`
-          flex-grow: 1;
-        `}
-      >
+    <Container className={main}>
+      <aside className={sidebar}>
         <GatsbyImage
           image={project.frontmatter.image?.sharp?.gatsbyImageData}
-          css={css`
-            border-radius: 0.5rem;
-          `}
-          alt={project.title}
+          className={image}
+          alt={project.frontmatter.title}
         />
         <ul>
           <li>
@@ -57,12 +47,7 @@ const PostTemplate = ({ data: { mdx: project } }) => (
             {project.frontmatter.technologies.join(", ")}
           </li>
         </ul>
-        <Button
-          to="/projects/"
-          css={css`
-            margin-right: 1rem;
-          `}
-        >
+        <Button to="/projects/" className={button}>
           Back to projects
         </Button>
         <Link href={project.frontmatter.url}>
@@ -72,12 +57,7 @@ const PostTemplate = ({ data: { mdx: project } }) => (
           </svg>
         </Link>
       </aside>
-      <div
-        css={css`
-          flex: 0 0 55%;
-          margin-left: 2rem;
-        `}
-      >
+      <div className={content}>
         <MDXWrapper>{project.body}</MDXWrapper>
       </div>
     </Container>

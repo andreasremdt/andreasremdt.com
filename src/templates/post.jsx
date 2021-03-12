@@ -1,8 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { css } from "@emotion/core";
 import { Layout } from "../components";
 import { Button, Container, PageHeader, MDXWrapper } from "../primitives";
+import { main } from "./post.module.css";
 
 export const query = graphql`
   query($slug: String!) {
@@ -22,12 +22,7 @@ const PostTemplate = ({ data: { mdx: post } }) => (
       title={post.frontmatter.title}
       subtitle={`Posted on ${post.frontmatter.date}`}
     />
-    <Container
-      css={css`
-        max-width: 750px;
-        margin: auto;
-      `}
-    >
+    <Container className={main}>
       <MDXWrapper>{post.body}</MDXWrapper>
 
       <Button to="/blog/">Back to blog</Button>

@@ -1,0 +1,20 @@
+.main {
+  display: flex;
+}
+
+.sidebar {
+  flex-grow: 1;
+}
+
+.image {
+  border-radius: 0.5rem;
+}
+
+.button {
+  margin-right: 1rem;
+}
+
+.content {
+  flex: 0 0 55%;
+  margin-left: 2rem;
+}

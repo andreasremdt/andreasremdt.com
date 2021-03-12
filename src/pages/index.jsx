@@ -1,9 +1,16 @@
 import React from "react";
-import { css } from "@emotion/core";
 import { useStaticQuery, graphql } from "gatsby";
 import { Layout, Hero, ContactForm } from "../components";
 import { Container, Heading, Link, Card } from "../primitives";
 import useProjects from "../hooks/use-projects";
+import {
+  main,
+  columns,
+  text,
+  work,
+  contact,
+  contacttext
+} from "./index.module.css";
 
 const HomePage = () => {
   const projects = useProjects(4);
@@ -21,23 +28,10 @@ const HomePage = () => {
       <Layout>
         <Hero />
 
-        <Container
-          css={css`
-            margin-top: 8rem;
-            margin-bottom: 8rem;
-          `}
-        >
+        <Container className={main}>
           <Heading Level="h2">About Me</Heading>
-          <div
-            css={css`
-              column-count: 2;
-            `}
-          >
-            <p
-              css={css`
-                margin-top: unset;
-              `}
-            >
+          <div className={columns}>
+            <p className={text}>
               Starting my career as a Web Developer 5 years ago, I currently
               work as a Software Engineer at{" "}
               <Link href="https://camunda.com">Camunda</Link>, where I try my
@@ -68,12 +62,7 @@ const HomePage = () => {
           </div>
         </Container>
 
-        <section
-          css={css`
-            background-color: var(--light-yellow);
-            padding: 8rem 0;
-          `}
-        >
+        <section className={work}>
           <Container>
             <Heading Level="h2">Selected Work</Heading>
             {projects.map((project, index) => (
@@ -83,21 +72,12 @@ const HomePage = () => {
         </section>
 
         <section
-          css={css`
-            padding: 8rem 0;
-            background-image: url(${image.publicURL});
-            background-repeat: no-repeat;
-            background-position: center left calc(100vw / 2 + 70px);
-            background-size: 500px;
-          `}
+          className={contact}
+          style={{ backgroundImage: `url(${image.publicURL})` }}
         >
           <Container>
             <Heading Level="h2">Contact Me</Heading>
-            <p
-              css={css`
-                margin: -25px 0 4rem;
-              `}
-            >
+            <p className={contacttext}>
               Want to get in touch with me? Sweet! Just fill out the form and
               I'll get right back to you.
             </p>
