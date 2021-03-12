@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { css } from "@emotion/core";
-import Image from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Layout } from "../components";
 import { PageHeader, Container, Button, Link, MDXWrapper } from "../primitives";
 
@@ -16,9 +16,7 @@ export const query = graphql`
         date(formatString: "YYYY")
         image {
           sharp: childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }
@@ -43,8 +41,8 @@ const PostTemplate = ({ data: { mdx: project } }) => (
           flex-grow: 1;
         `}
       >
-        <Image
-          fluid={project.frontmatter.image?.sharp?.fluid}
+        <GatsbyImage
+          image={project.frontmatter.image?.sharp?.gatsbyImageData}
           css={css`
             border-radius: 0.5rem;
           `}

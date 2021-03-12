@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from "@emotion/core";
-import Image from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Link, Button, Heading, Tag } from "../primitives";
 
 const ProjectPreview = ({ project }) => (
@@ -13,8 +13,8 @@ const ProjectPreview = ({ project }) => (
       }
     `}
   >
-    <Image
-      fluid={project.image?.sharp?.fluid}
+    <GatsbyImage
+      image={project.image?.sharp?.gatsbyImageData}
       css={css`
         border-radius: 0.5rem;
         width: 330px;

@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from "@emotion/core";
-import BackgroundImage from "gatsby-background-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Heading, Button, Tag } from "../primitives";
 
 const Card = ({ order, project }) => (
@@ -13,57 +13,54 @@ const Card = ({ order, project }) => (
       box-shadow: 0 3px 25px rgba(0, 0, 0, 0.05);
       margin-top: 3rem;
       height: 500px;
+      padding: 3rem 2.5rem;
+      overflow: hidden;
     `}
   >
-    {project.image && (
-      <BackgroundImage
-        Tag="div"
-        fluid={project.image.sharp.fluid}
-        fadeIn
+    <GatsbyImage
+      image={project.image?.sharp?.gatsbyImageData}
+      css={css`
+        position: absolute;
+        right: -2.5rem;
+        bottom: -3rem;
+        width: 55%;
+      `}
+      alt={project.title}
+    />
+    <div
+      css={css`
+        max-width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100%;
+      `}
+    >
+      <Heading Level="h3">{project.title}</Heading>
+      <span>
+        {project.tags.map((tag) => (
+          <Tag key={tag}>{tag}</Tag>
+        ))}
+      </span>
+      <p
         css={css`
-          padding: 3rem 2.5rem;
-          height: 100%;
-          background-size: 60%;
-          background-position: bottom -80px right -30px;
-          background-repeat: no-repeat;
+          margin: 1rem 0 2rem 0;
         `}
       >
-        <div
-          css={css`
-            max-width: 40%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            height: 100%;
-          `}
-        >
-          <Heading Level="h3">{project.title}</Heading>
-          <span>
-            {project.tags.map((tag) => (
-              <Tag key={tag}>{tag}</Tag>
-            ))}
-          </span>
-          <p
-            css={css`
-              margin: 1rem 0 2rem 0;
-            `}
-          >
-            {project.excerpt}
-          </p>
+        {project.excerpt}
+      </p>
 
-          <Button
-            href={project.url}
-            aria-label={`Visit ${project.title} (external link)`}
-          >
-            Website
-            <svg width="20" height="20">
-              <use xlinkHref="/symbol-defs.svg#external-link"></use>
-            </svg>
-          </Button>
-        </div>
-      </BackgroundImage>
-    )}
+      <Button
+        href={project.url}
+        aria-label={`Visit ${project.title} (external link)`}
+      >
+        Website
+        <svg width="20" height="20">
+          <use xlinkHref="/symbol-defs.svg#external-link"></use>
+        </svg>
+      </Button>
+    </div>
   </article>
 );
 

@@ -1,18 +1,16 @@
 import React from "react";
 import { css } from "@emotion/core";
 import { graphql, useStaticQuery } from "gatsby";
-import Image from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Container, Heading, Button } from "../primitives";
 import { SocialIcons } from "../components";
 
 const Hero = () => {
   const { image } = useStaticQuery(graphql`
-    query {
+    {
       image: file(relativePath: { eq: "portrait-andreas-remdt.jpg" }) {
         sharp: childImageSharp {
-          fixed(width: 350) {
-            ...GatsbyImageSharpFixed_withWebp
-          }
+          gatsbyImageData(width: 350, layout: FIXED)
         }
       }
     }
@@ -57,8 +55,8 @@ const Hero = () => {
           Get in touch
         </Button>
         <SocialIcons />
-        <Image
-          fixed={image.sharp.fixed}
+        <GatsbyImage
+          image={image.sharp.gatsbyImageData}
           alt="Portrait of Andreas Remdt"
           css={css`
             &::after {

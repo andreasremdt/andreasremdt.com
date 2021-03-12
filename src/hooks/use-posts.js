@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from "gatsby";
 
 const usePosts = () => {
   const data = useStaticQuery(graphql`
-    query {
+    {
       allMdx(
         sort: { fields: frontmatter___date, order: DESC }
         filter: { frontmatter: { template: { eq: "post" } } }
@@ -15,9 +15,7 @@ const usePosts = () => {
             external_url
             image {
               sharp: childImageSharp {
-                fluid(maxWidth: 400, maxHeight: 250) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
+                gatsbyImageData(width: 400, height: 250, layout: CONSTRAINED)
               }
             }
           }

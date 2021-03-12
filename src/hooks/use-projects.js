@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from "gatsby";
 
 const useProjects = (limit = 20) => {
   const data = useStaticQuery(graphql`
-    query {
+    {
       allFile(
         sort: { fields: childMdx___frontmatter___date, order: DESC }
         filter: {
@@ -19,9 +19,7 @@ const useProjects = (limit = 20) => {
               url
               image {
                 sharp: childImageSharp {
-                  fluid(quality: 70) {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
+                  gatsbyImageData(quality: 70, layout: FULL_WIDTH)
                 }
               }
             }

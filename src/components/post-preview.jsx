@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from "@emotion/core";
-import Image from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Link, Button, Heading, Tag } from "../primitives";
 import getLabelFromUrl from "../utils/get-label-from-url";
 
@@ -14,8 +14,8 @@ const PostPreview = ({ post }) => (
       }
     `}
   >
-    <Image
-      fluid={post.image?.sharp?.fluid}
+    <GatsbyImage
+      image={post.image?.sharp?.gatsbyImageData}
       css={css`
         border-radius: 0.5rem;
         width: 400px;
