@@ -10,15 +10,12 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
   },
   "dependencies": {
-    "@emotion/core": "^10.0.35",
-    "@emotion/react": "^11.1.5",
     "@fontsource/merriweather": "^4.2.2",
     "@fontsource/poppins": "^4.2.2",
     "@fontsource/source-code-pro": "^4.2.2",
     "@mdx-js/mdx": "^1.6.18",
     "@mdx-js/react": "^1.6.18",
     "gatsby": "^3.0.4",
-    "gatsby-plugin-emotion": "^6.0.0",
     "gatsby-plugin-image": "^1.0.1",
     "gatsby-plugin-mdx": "^2.0.1",
     "gatsby-plugin-react-helmet": "^4.0.0",

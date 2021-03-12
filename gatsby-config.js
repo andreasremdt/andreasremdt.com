@@ -5,7 +5,6 @@ module.exports = {
       "Fast, secure and good looking websites? Yes please! That's what I do. This is the personal website of Andreas Remdt, Web Developer."
   },
   plugins: [
-    "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
