@@ -18,8 +18,8 @@ const useProjects = (limit = 20) => {
               slug
               url
               image {
-                sharp: childImageSharp {
-                  gatsbyImageData(quality: 70, layout: FULL_WIDTH)
+                childImageSharp {
+                  gatsbyImageData(quality: 70)
                 }
               }
             }

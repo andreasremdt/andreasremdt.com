@@ -6,7 +6,7 @@ import { main, body, image, title, button } from "./project-preview.module.css";
 const ProjectPreview = ({ project }) => (
   <article className={main}>
     <GatsbyImage
-      image={project.image?.sharp?.gatsbyImageData}
+      image={project.image?.childImageSharp?.gatsbyImageData}
       className={image}
       alt={project.title}
     />

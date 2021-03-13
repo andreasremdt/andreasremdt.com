@@ -7,7 +7,7 @@ import { main, body, title, image } from "./post-preview.module.css";
 const PostPreview = ({ post }) => (
   <article className={main}>
     <GatsbyImage
-      image={post.image?.sharp?.gatsbyImageData}
+      image={post.image?.childImageSharp?.gatsbyImageData}
       className={image}
       alt={post.title}
     />

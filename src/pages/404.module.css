@@ -5,3 +5,10 @@
   background-position: center top;
   background-size: 500px;
 }
+
+@media (max-width: 800px) {
+  .main {
+    background-size: 60%;
+    padding-top: 34vw;
+  }
+}

@@ -14,8 +14,8 @@ const usePosts = () => {
             date(formatString: "MMMM Do, YYYY")
             external_url
             image {
-              sharp: childImageSharp {
-                gatsbyImageData(width: 400, height: 250, layout: CONSTRAINED)
+              childImageSharp {
+                gatsbyImageData(height: 350, quality: 70)
               }
             }
           }

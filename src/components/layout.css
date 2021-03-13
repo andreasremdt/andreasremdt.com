@@ -85,6 +85,10 @@ pre[class*="language-"] {
   font-size: 15px;
 }
 
+code[class*="language-"] {
+  white-space: pre-wrap;
+}
+
 @media (max-width: 600px) {
   body {
     font-size: 14px;
