@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import cx from "classnames";
 import { Input, Button } from "../primitives";
-import { main, center, disabled, row } from "./contact-form.module.css";
+import * as styles from "./contact-form.module.css";
 
 const ERROR_MESSAGES = {
   name: "Enter a valid name",
@@ -8,7 +9,7 @@ const ERROR_MESSAGES = {
   message: "Write at least 10 characters"
 };
 
-const ContactForm = ({ centered = false }) => {
+const ContactForm = ({ className, ...props }) => {
   const [errors, setErrors] = useState({
     name: null,
     email: null,
@@ -86,37 +87,30 @@ const ContactForm = ({ centered = false }) => {
     <form
       noValidate
       onSubmit={handleSubmit}
-      className={[
-        main,
-        centered ? center : "",
-        state === "success" ? disabled : ""
-      ].join(" ")}
+      className={cx(styles.main, className, {
+        [styles.disabled]: state === "success"
+      })}
+      {...props}
     >
-      <div className={row}>
-        <div>
-          <Input
-            id="name"
-            type="text"
-            label="Your name"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            required
-            minLength="3"
-            error={errors.name}
-          />
-        </div>
-        <div>
-          <Input
-            id="email"
-            type="email"
-            label="Your email address"
-            required
-            onBlur={handleBlur}
-            onChange={handleChange}
-            error={errors.email}
-          />
-        </div>
-      </div>
+      <Input
+        id="name"
+        type="text"
+        label="Your name"
+        onBlur={handleBlur}
+        onChange={handleChange}
+        required
+        minLength="3"
+        error={errors.name}
+      />
+      <Input
+        id="email"
+        type="email"
+        label="Your email address"
+        required
+        onBlur={handleBlur}
+        onChange={handleChange}
+        error={errors.email}
+      />
       <Input
         id="message"
         multiline

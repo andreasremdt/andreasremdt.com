@@ -1,23 +1,26 @@
-.main {
-  max-width: 80%;
-}
-
-.center {
-  margin: auto;
-}
-
 .disabled {
   pointer-events: none;
 }
 
-.row {
-  display: flex;
+@media (min-width: 900px) {
+  .main {
+    max-width: 70%;
+    margin: auto;
+  }
 }
 
-.row > div {
-  flex: 1;
-}
+@media (min-width: 600px) {
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1rem;
+  }
 
-.row > div:not(:last-child) {
-  margin-right: 1rem;
+  .main > div:nth-child(3) {
+    grid-column: 1 / 3;
+  }
+
+  .main > button {
+    justify-self: start;
+  }
 }
