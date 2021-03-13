@@ -4,8 +4,23 @@
   margin-top: 6rem;
 }
 
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+@media (min-width: 500px) {
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 700px) {
+  .main {
+    padding: 1rem 0;
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    text-align: center;
+  }
 }

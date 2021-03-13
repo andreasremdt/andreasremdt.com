@@ -84,3 +84,9 @@ pre[class*="language-"] {
   font-family: "Source Code Pro";
   font-size: 15px;
 }
+
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+}
