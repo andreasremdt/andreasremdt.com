@@ -14,7 +14,7 @@
 }
 
 .image {
-  position: absolute;
+  position: absolute !important;
   right: -2.5rem;
   bottom: -3rem;
   width: 55%;

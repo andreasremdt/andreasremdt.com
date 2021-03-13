@@ -14,5 +14,6 @@
 
 .main:hover,
 .main:focus {
+  outline: none;
   background-size: 0 3px, 100% 3px;
 }
