@@ -22,5 +22,35 @@
 
 .text {
   margin: 1rem 0 2rem 0;
-  max-width: 40%;
+}
+
+@media (max-width: 800px) {
+  .wrapper {
+    height: 400px;
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (min-width: 700px) {
+  .text {
+    max-width: 40%;
+  }
+}
+
+@media (max-width: 700px) {
+  .wrapper {
+    height: 320px;
+    padding: 1rem;
+  }
+
+  .text {
+    background-color: white;
+    border-radius: 5px;
+  }
+
+  .image {
+    width: 65%;
+    bottom: -5rem;
+    z-index: -1;
+  }
 }

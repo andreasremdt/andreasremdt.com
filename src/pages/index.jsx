@@ -3,14 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { Layout, Hero, ContactForm } from "../components";
 import { Container, Heading, Link, Card } from "../primitives";
 import useProjects from "../hooks/use-projects";
-import {
-  main,
-  columns,
-  text,
-  work,
-  contact,
-  contacttext
-} from "./index.module.css";
+import * as styles from "./index.module.css";
 
 const HomePage = () => {
   const projects = useProjects(4);
@@ -28,10 +21,10 @@ const HomePage = () => {
       <Layout>
         <Hero />
 
-        <Container className={main}>
+        <Container className={styles.main}>
           <Heading Level="h2">About Me</Heading>
-          <div className={columns}>
-            <p className={text}>
+          <div className={styles.columns}>
+            <p className={styles.text}>
               Starting my career as a Web Developer 5 years ago, I currently
               work as a Software Engineer at{" "}
               <Link href="https://camunda.com">Camunda</Link>, where I try my
@@ -62,7 +55,7 @@ const HomePage = () => {
           </div>
         </Container>
 
-        <section className={work}>
+        <section className={styles.work}>
           <Container>
             <Heading Level="h2">Selected Work</Heading>
             {projects.map((project, index) => (
@@ -72,17 +65,17 @@ const HomePage = () => {
         </section>
 
         <section
-          className={contact}
+          className={styles.contact}
           style={{ backgroundImage: `url(${image.publicURL})` }}
         >
           <Container>
             <Heading Level="h2">Contact Me</Heading>
-            <p className={contacttext}>
+            <p className={styles.contacttext}>
               Want to get in touch with me? Sweet! Just fill out the form and
               I'll get right back to you.
             </p>
 
-            <ContactForm />
+            <ContactForm className={styles.form} />
           </Container>
         </section>
       </Layout>

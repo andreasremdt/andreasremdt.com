@@ -1,28 +1,56 @@
-.main {
-  margin-top: 8rem;
-  margin-bottom: 8rem;
-}
-
-.columns {
-  column-count: 2;
-}
-
 .text {
   margin-top: unset;
 }
 
 .work {
   background-color: var(--light-yellow);
-  padding: 8rem 0;
 }
 
 .contact {
-  padding: 8rem 0;
   background-repeat: no-repeat;
   background-position: center left calc(100vw / 2 + 70px);
   background-size: 500px;
 }
 
 .contacttext {
-  margin: -25px 0 4rem;
+  margin: -15px 0 4rem;
+}
+
+.form {
+  margin: unset;
+}
+
+@media (min-width: 700px) {
+  .main {
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+  }
+
+  .work {
+    padding: 8rem 0;
+  }
+
+  .contact {
+    padding: 8rem 0 2rem 0;
+  }
+
+  .columns {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 700px) {
+  .main {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .work {
+    padding: 4rem 0;
+  }
+
+  .contact {
+    padding: 4rem 0 0 0;
+    background-size: 300px;
+  }
 }
