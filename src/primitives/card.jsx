@@ -6,7 +6,7 @@ import { wrapper, image, text } from "./card.module.css";
 const Card = ({ order, project }) => (
   <article style={{ top: order * 30 }} className={wrapper}>
     <GatsbyImage
-      image={project.image?.sharp?.gatsbyImageData}
+      image={project.image?.childImageSharp?.gatsbyImageData}
       className={image}
       alt={project.title}
     />

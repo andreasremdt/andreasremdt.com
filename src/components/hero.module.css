@@ -10,11 +10,11 @@
 }
 
 .portrait {
-  position: absolute;
+  position: absolute !important;
   top: 3rem;
   right: 1.5rem;
   z-index: 1;
-  overflow: visible;
+  overflow: visible !important;
   width: 30%;
 }
 

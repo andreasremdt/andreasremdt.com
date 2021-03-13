@@ -8,7 +8,7 @@
 
 .contact {
   background-repeat: no-repeat;
-  background-position: center left calc(100vw / 2 + 70px);
+  background-position: bottom right 20%;
   background-size: 500px;
 }
 
