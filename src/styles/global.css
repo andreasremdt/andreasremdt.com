@@ -10,7 +10,7 @@
 
 @layer components {
   .btn {
-    @apply px-6 py-3 inline-flex shadow-sm items-center font-semibold rounded transition-colors focus:outline-none text-sm;
+    @apply px-6 py-3 inline-flex shadow-sm items-center font-semibold rounded transition-colors focus:outline-none text-sm disabled:opacity-70 disabled:cursor-not-allowed;
   }
 
   .btn-primary {
@@ -23,6 +23,11 @@
 
   .input {
     @apply text-sm border border-gray-200 rounded shadow-sm px-4 py-3 w-full hover:border-gray-400 focus:border-emerald-500 focus:outline-none focus:shadow-emerald-100 transition-colors;
+  }
+
+  .input:valid {
+    background: transparent url(/check.svg) no-repeat calc(100% - 10px) 10px;
+    background-size: 24px;
   }
 
   .link {
