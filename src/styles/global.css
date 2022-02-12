@@ -10,7 +10,7 @@
 
 @layer components {
   .btn {
-    @apply px-6 py-3 inline-flex items-center font-semibold rounded transition-colors focus:outline-none text-sm;
+    @apply px-6 py-3 inline-flex shadow-sm items-center font-semibold rounded transition-colors focus:outline-none text-sm;
   }
 
   .btn-primary {
@@ -18,7 +18,7 @@
   }
 
   .btn-secondary {
-    @apply bg-white border border-gray-200 shadow-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-800 focus:text-white focus:border-gray-800;
+    @apply bg-white border border-gray-200 text-gray-800 hover:bg-gray-100 focus:bg-gray-800 focus:text-white focus:border-gray-800;
   }
 
   .input {

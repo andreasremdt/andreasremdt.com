@@ -48,7 +48,7 @@
   <div class="max-w-6xl mx-auto px-4 py-24">
     {#each projects as project}
       <article class="flex items-center gap-x-8 mt-16 first-of-type:mt-0">
-        <img src={project.image.url} alt={project.title} class="w-2/5 flex-shrink-0" />
+        <img src={project.image.url} alt={project.title} class="w-2/5 flex-shrink-0 shadow-lg" />
         <div>
           <h2 class="font-serif text-2xl font-bold text-gray-800 mb-1">{project.title}</h2>
           <div class="flex gap-x-1">

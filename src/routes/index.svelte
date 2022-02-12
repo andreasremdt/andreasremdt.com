@@ -9,7 +9,7 @@
       }
     );
 
-    const { projects } = await graphcms.request(`
+    const { projects, posts } = await graphcms.request(`
       {
         projects(where: {featured: true}) {
           excerpt
@@ -21,12 +21,22 @@
           slug
           tags
         }
+        posts(first: 3, orderBy: published_DESC) {
+          title
+          slug
+          excerpt
+          image {
+            url
+          }
+          published
+        }
       }
     `);
 
     return {
       props: {
         projects,
+        posts,
       },
     };
   }
@@ -35,9 +45,10 @@
 <script lang="ts">
   import WorkCard from "$lib/work-card.svelte";
   import ContactForm from "$lib/contact-form.svelte";
-  import type { Project } from "$lib/types";
+  import type { Post, Project } from "$lib/types";
 
   export let projects: Project[];
+  export let posts: Post[];
 </script>
 
 <svelte:head>
@@ -99,7 +110,10 @@
 
 <section class="py-24 bg-gray-50 relative">
   <div class="max-w-6xl mx-auto px-4">
-    <h2 class="font-serif text-4xl font-bold text-gray-800 mb-12 text-center">Featured Work</h2>
+    <h2 class="font-serif text-4xl font-bold text-gray-800 mb-2 text-center">Featured Work</h2>
+    <div class="text-center mb-12">
+      <a href="/projects" class="btn btn-primary">View all projects</a>
+    </div>
 
     {#each projects as project}
       <WorkCard
@@ -111,6 +125,33 @@
       >
         {project.excerpt}
       </WorkCard>
+    {/each}
+  </div>
+</section>
+
+<section class="max-w-6xl mx-auto px-4 py-24">
+  <h2 class="font-serif text-4xl font-bold text-gray-800 mb-2 text-center">Latest Blog Posts</h2>
+  <div class="text-center mb-12">
+    <a href="/blog" class="btn btn-primary">View all blog posts</a>
+  </div>
+
+  <div class="flex gap-x-8">
+    {#each posts as post}
+      <article class="flex flex-col w-1/3 items-start">
+        <img
+          src={post.image.url}
+          alt={post.title}
+          class="rounded-md shadow-lg mb-4 h-56 w-full object-cover"
+        />
+        <h3 class="font-serif text-2xl font-bold text-gray-800 mb-1">{post.title}</h3>
+        <time
+          datetime={post.published}
+          class="border border-gray-200 rounded text-xs tracking-wider px-2 py-1 bg-white uppercase font-semibold text-gray-500"
+          >{post.published}</time
+        >
+        <p class="my-6 flex-1">{post.excerpt}</p>
+        <a href={`/blog/${post.slug}`} class="btn btn-secondary">Read more</a>
+      </article>
     {/each}
   </div>
 </section>
