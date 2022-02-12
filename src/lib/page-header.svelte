@@ -1,0 +1,15 @@
+<script lang="ts">
+  export let title: string = "";
+  export let description: string = "";
+</script>
+
+<svelte:head>
+  <title>{title}</title>
+</svelte:head>
+
+<header class="text-center bg-gray-50 py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <h1 class="font-serif text-4xl font-bold text-gray-800 mb-2">{title}</h1>
+    <p class="text-lg">{description}</p>
+  </div>
+</header>

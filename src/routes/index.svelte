@@ -1,6 +1,43 @@
+<script context="module" lang="ts">
+  import { GraphQLClient } from "graphql-request";
+
+  export async function load() {
+    const graphcms = new GraphQLClient(
+      "https://api-eu-central-1.graphcms.com/v2/ckzekldqw3bp001z1fxyv2ohm/master",
+      {
+        headers: {},
+      }
+    );
+
+    const { projects } = await graphcms.request(`
+      {
+        projects(where: {featured: true}) {
+          excerpt
+          title
+          image {
+            url
+          }
+          publicUrl
+          slug
+          tags
+        }
+      }
+    `);
+
+    return {
+      props: {
+        projects,
+      },
+    };
+  }
+</script>
+
 <script lang="ts">
   import WorkCard from "$lib/work-card.svelte";
   import ContactForm from "$lib/contact-form.svelte";
+  import type { Project } from "$lib/types";
+
+  export let projects: Project[];
 </script>
 
 <svelte:head>
@@ -64,29 +101,17 @@
   <div class="max-w-6xl mx-auto px-4">
     <h2 class="font-serif text-4xl font-bold text-gray-800 mb-12 text-center">Featured Work</h2>
 
-    <WorkCard
-      title="Cawemo"
-      tags={["React", "Main work"]}
-      excerpt="An easy-to-use BPMN process modeling platform in the cloud, which helps businesses transform
-        their processes for the digital era."
-      url="https://cawemo.com"
-    />
-
-    <WorkCard
-      title="Cawemo"
-      tags={["React", "Main work"]}
-      excerpt="An easy-to-use BPMN process modeling platform in the cloud, which helps businesses transform
-        their processes for the digital era."
-      url="https://cawemo.com"
-    />
-
-    <WorkCard
-      title="Cawemo"
-      tags={["React", "Main work"]}
-      excerpt="An easy-to-use BPMN process modeling platform in the cloud, which helps businesses transform
-        their processes for the digital era."
-      url="https://cawemo.com"
-    />
+    {#each projects as project}
+      <WorkCard
+        title={project.title}
+        tags={project.tags}
+        publicUrl={project.publicUrl}
+        slug={project.slug}
+        imageUrl={project.image.url}
+      >
+        {project.excerpt}
+      </WorkCard>
+    {/each}
   </div>
 </section>
 

@@ -8,7 +8,7 @@
       title: "Home",
     },
     {
-      href: "/work",
+      href: "/projects",
       title: "Work",
     },
     {

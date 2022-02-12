@@ -1,8 +1,9 @@
 <script lang="ts">
-  export let title = "";
-  export let tags = [];
-  export let excerpt = "";
-  export let url = "";
+  export let title: string = "";
+  export let tags: string[] = [];
+  export let publicUrl: string = "";
+  export let slug: string = "";
+  export let imageUrl: string = "";
 </script>
 
 <article
@@ -19,17 +20,37 @@
   </div>
 
   <p class="max-w-lg my-6">
-    {excerpt}
+    <slot />
   </p>
 
   <div>
-    <a href={url} class="btn btn-primary">Visit website</a>
-    <a href={url} class="btn btn-secondary">Details</a>
+    <a href={`/projects/${slug}`} class="btn btn-primary">Details</a>
+    {#if publicUrl}
+      <a
+        href={publicUrl}
+        class="btn btn-secondary"
+        target="_blank"
+        rel="noopener nofollow noreferrer"
+        >Visit website <svg
+          aria-hidden="true"
+          viewBox="0 0 32 32"
+          width="16"
+          height="16"
+          class="ml-2"
+        >
+          <path
+            fill="currentColor"
+            d="M6 2v24h24v-24h-24zM28 24h-20v-20h20v20zM4 28v-21l-2-2v25h25l-2-2h-21z"
+          />
+          <path fill="currentColor" d="M11 8l5 5-6 6 3 3 6-6 5 5v-13z" />
+        </svg></a
+      >
+    {/if}
   </div>
 
   <img
-    src="/images/work/leo-club-weilamrhein.png"
+    src={imageUrl}
     alt="Home page of the Leo Club Weil am Rhein"
-    class="absolute w-3/5 -right-28 -bottom-20 shadow-xl"
+    class="absolute w-3/6 -right-4 -bottom-4 shadow-xl"
   />
 </article>
