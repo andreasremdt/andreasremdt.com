@@ -37,7 +37,7 @@
 </script>
 
 <script lang="ts">
-  import PageHeader from "$lib/page-header.svelte";
+  import PageHeader from "$lib/components/page-header.svelte";
   import type { Post } from "$lib/types";
 
   export let post: Post;

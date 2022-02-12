@@ -43,8 +43,8 @@
 </script>
 
 <script lang="ts">
-  import WorkCard from "$lib/work-card.svelte";
-  import ContactForm from "$lib/contact-form.svelte";
+  import WorkCard from "$lib/components/work-card.svelte";
+  import ContactForm from "$lib/components/contact-form.svelte";
   import type { Post, Project } from "$lib/types";
 
   export let projects: Project[];

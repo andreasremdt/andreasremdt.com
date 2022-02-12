@@ -33,7 +33,7 @@
 </script>
 
 <script lang="ts">
-  import PageHeader from "$lib/page-header.svelte";
+  import PageHeader from "$lib/components/page-header.svelte";
   import type { Project } from "$lib/types";
 
   export let projects: Project[];

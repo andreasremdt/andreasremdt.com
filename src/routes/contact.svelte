@@ -1,6 +1,6 @@
 <script lang="ts">
-  import PageHeader from "$lib/page-header.svelte";
-  import ContactForm from "$lib/contact-form.svelte";
+  import PageHeader from "$lib/components/page-header.svelte";
+  import ContactForm from "$lib/components/contact-form.svelte";
 </script>
 
 <main>

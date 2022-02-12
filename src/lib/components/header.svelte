@@ -38,6 +38,7 @@
       {#each links as link}
         <a
           href={link.href}
+          sveltekit:prefetch
           class={`hover:text-emerald-400 transition-colors ${
             $page.url.pathname === link.href ? activeClassNames : ""
           }`}>{link.title}</a
