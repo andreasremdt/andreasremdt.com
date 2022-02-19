@@ -7,7 +7,7 @@
 </script>
 
 <article
-  class="bg-white rounded-lg shadow-xl shadow-gray-200 mt-16 p-8 h-[450px] flex flex-col justify-center items-start sticky top-9 overflow-hidden"
+  class="bg-white rounded-lg shadow-xl shadow-gray-200 mt-16 p-8 h-[450px] flex flex-col justify-center top-[108px] items-start sticky overflow-hidden"
 >
   <h3 class="font-serif text-2xl font-bold text-gray-800 mb-1">{title}</h3>
   <div class="flex gap-x-1">
