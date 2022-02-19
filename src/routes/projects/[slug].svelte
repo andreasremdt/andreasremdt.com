@@ -19,7 +19,7 @@
           publishedIn
           title
           image {
-            url
+            url(transformation: {image: {resize: {width: 1200}}})
           }
           publicUrl
           githubUrl
@@ -51,7 +51,13 @@
 
   <div class="max-w-6xl mx-auto px-4 pt-12 pb-24">
     <figure>
-      <img src={project.image.url} alt={project.title} class="shadow-lg mb-12" />
+      <img
+        src={project.image.url}
+        alt={project.title}
+        class="shadow-lg mb-12 h-[695px] object-cover"
+        width="1120"
+        height="695"
+      />
     </figure>
 
     <section class="border-t border-b border-gray-200 flex justify-between py-4 mb-12 items-center">

@@ -16,7 +16,7 @@
           slug
           excerpt
           image {
-            url
+            url(transformation: {image: {resize: {width: 500}}})
           }
           published
         }
@@ -50,7 +50,9 @@
         <img
           src={post.image.url}
           alt={post.title}
-          class="w-2/5 flex-shrink-0 rounded-md shadow-lg h-64 object-cover"
+          class="w-2/5 flex-shrink-0 rounded-md shadow-lg h-[275px] object-cover"
+          width="450"
+          height="275"
         />
         <div>
           <h2 class="font-serif text-2xl font-bold text-gray-800 mb-1">{post.title}</h2>

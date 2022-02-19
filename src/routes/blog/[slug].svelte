@@ -20,7 +20,7 @@
           title
           externalUrl
           image {
-            url
+            url(transformation: {image: {resize: {width: 1120}}})
           }
         }
       }
@@ -48,7 +48,13 @@
 
   <div class="max-w-6xl mx-auto px-4 pt-12 pb-24">
     <figure>
-      <img src={post.image.url} alt={post.title} class="shadow-lg mb-12 rounded-md" />
+      <img
+        src={post.image.url}
+        alt={post.title}
+        class="shadow-lg mb-12 rounded-md h-[695px] object-cover"
+        width="1120"
+        height="695"
+      />
     </figure>
 
     <div
