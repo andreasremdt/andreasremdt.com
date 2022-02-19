@@ -49,6 +49,39 @@
 
   export let projects: Project[];
   export let posts: Post[];
+
+  const socialLinks = [
+    {
+      name: "github",
+      title: "View my code on GitHub",
+      href: "https://github.com/andreasremdt",
+    },
+    {
+      name: "linkedin",
+      title: "View my resúmé on LinkedIn",
+      href: "https://linkedin.com/in/andreasremdt",
+    },
+    {
+      name: "toptal",
+      title: "Hire me on Toptal",
+      href: "https://www.toptal.com/resume/andreas-remdt",
+    },
+    {
+      name: "medium",
+      title: "Read my publications on Medium",
+      href: "https://medium.com/@andreas.remdt",
+    },
+    {
+      name: "500px",
+      title: "View my photos on 500px",
+      href: "https://500px.com/andreasremdt",
+    },
+    {
+      name: "codepen",
+      title: "View my experiments on Codepen",
+      href: "https://codepen.io/andreasremdt",
+    },
+  ];
 </script>
 
 <svelte:head>
@@ -65,7 +98,30 @@
       Software Engineer based in Germany who loves to build fast, accessible, and good-looking web
       applications using cutting-edge technologies.
     </p>
-    <a href="/contact" class="btn btn-primary">Get in touch</a>
+
+    <a
+      href="https://www.toptal.com/resume/andreas-remdt"
+      class="btn btn-primary"
+      target="_blank"
+      rel="nofollow noreferrer noopener">Hire me</a
+    >
+    <a href="/contact" class="btn btn-secondary">Get in touch</a>
+
+    <ul class="flex gap-x-3 mt-16">
+      {#each socialLinks as socialLink}
+        <li>
+          <a
+            href={socialLink.href}
+            class="text-gray-800 hover:text-emerald-400 focus:text-emerald-400 focus:outline-none transition-colors"
+            target="_blank"
+            rel="nofollow noreferrer noopener"
+            aria-label={socialLink.title}
+            ><svg width="24" height="24" aria-hidden="true"
+              ><use href={`/symbol-defs.svg#${socialLink.name}`} /></svg
+            ></a
+          >
+        </li>{/each}
+    </ul>
   </div>
 </section>
 
