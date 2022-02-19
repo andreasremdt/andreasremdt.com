@@ -24,6 +24,14 @@
       title: "Contact",
     },
   ];
+
+  function isLinkActive(pathname: string, href: string) {
+    if (pathname === "/" && href === "/") {
+      return true;
+    } else if (href !== "/") {
+      return pathname.includes(href);
+    }
+  }
 </script>
 
 <header class="sticky top-0 bg-white z-10">
@@ -40,7 +48,7 @@
           href={link.href}
           sveltekit:prefetch
           class={`hover:text-emerald-400 transition-colors ${
-            $page.url.pathname === link.href ? activeClassNames : ""
+            isLinkActive($page.url.pathname, link.href) ? activeClassNames : ""
           }`}>{link.title}</a
         >
       {/each}
