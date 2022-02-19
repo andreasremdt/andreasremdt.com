@@ -16,10 +16,6 @@
       title: "Blog",
     },
     {
-      href: "/photography",
-      title: "Photograpy",
-    },
-    {
       href: "/contact",
       title: "Contact",
     },
