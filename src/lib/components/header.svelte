@@ -30,7 +30,7 @@
   }
 </script>
 
-<header class="sticky top-0 bg-white z-10">
+<header class="sticky top-0 bg-white/95 z-10">
   <div class="h-24 flex items-center justify-between max-w-6xl mx-auto px-4">
     <span class="font-serif font-bold text-xl text-gray-800">Andreas Remdt</span>
 

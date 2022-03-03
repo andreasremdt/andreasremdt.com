@@ -24,7 +24,7 @@
   </p>
 
   <div>
-    <a href={`/projects/${slug}`} class="btn btn-primary">Details</a>
+    <a href={`/projects/${slug}`} class="btn btn-primary" sveltekit:prefetch>Details</a>
     {#if publicUrl}
       <a
         href={publicUrl}

@@ -105,7 +105,7 @@
       target="_blank"
       rel="nofollow noreferrer noopener">Hire me</a
     >
-    <a href="/contact" class="btn btn-secondary">Get in touch</a>
+    <a href="/contact" class="btn btn-secondary" sveltekit:prefetch>Get in touch</a>
 
     <ul class="flex gap-x-3 mt-16">
       {#each socialLinks as socialLink}
@@ -168,7 +168,7 @@
   <div class="max-w-6xl mx-auto px-4">
     <h2 class="font-serif text-4xl font-bold text-gray-800 mb-2 text-center">Featured Work</h2>
     <div class="text-center mb-12">
-      <a href="/projects" class="btn btn-primary">View all projects</a>
+      <a href="/projects" class="btn btn-primary" sveltekit:prefetch>View all projects</a>
     </div>
 
     {#each projects as project}
@@ -188,7 +188,7 @@
 <section class="max-w-6xl mx-auto px-4 py-24">
   <h2 class="font-serif text-4xl font-bold text-gray-800 mb-2 text-center">Latest Blog Posts</h2>
   <div class="text-center mb-12">
-    <a href="/blog" class="btn btn-primary">View all blog posts</a>
+    <a href="/blog" class="btn btn-primary" sveltekit:prefetch>View all blog posts</a>
   </div>
 
   <div class="flex gap-x-8">
@@ -206,7 +206,7 @@
           >{post.published}</time
         >
         <p class="my-6 flex-1">{post.excerpt}</p>
-        <a href={`/blog/${post.slug}`} class="btn btn-secondary">Read more</a>
+        <a href={`/blog/${post.slug}`} class="btn btn-secondary" sveltekit:prefetch>Read more</a>
       </article>
     {/each}
   </div>

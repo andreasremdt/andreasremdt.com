@@ -63,7 +63,7 @@
           >
           <p class="my-6">{post.excerpt}</p>
           <div>
-            <a href={`/blog/${post.slug}`} class="btn btn-primary">Read more</a>
+            <a href={`/blog/${post.slug}`} class="btn btn-primary" sveltekit:prefetch>Read more</a>
           </div>
         </div>
       </article>
