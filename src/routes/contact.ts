@@ -8,7 +8,15 @@ const {
 } = import.meta.env;
 
 export async function post({ request }: RequestEvent) {
-  const { name, email, message } = await request.json();
+  const { name, email, message, honeypot } = await request.json();
+
+  // If we think that a spam bot filled out the form, we pretend that the email
+  // was sent.
+  if (honeypot) {
+    return {
+      status: 200,
+    };
+  }
 
   if (!name || !email || !message) {
     return {

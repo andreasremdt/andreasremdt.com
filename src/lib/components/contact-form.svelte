@@ -9,6 +9,7 @@
   let name: string = "";
   let email: string = "";
   let message: string = "";
+  let honeypot: string = "";
   let buttonText: string = ButtonText.Default;
   let error: boolean = false;
 
@@ -17,7 +18,7 @@
 
     const response = await fetch("/contact", {
       method: "POST",
-      body: JSON.stringify({ name, email, message }),
+      body: JSON.stringify({ name, email, message, honeypot }),
     });
 
     if (!response.ok) {
@@ -44,6 +45,14 @@
       >Your name <span class="text-emerald-500 ml-1" aria-label="Required input">*</span></label
     >
     <input type="text" id="name" class="input" required bind:value={name} />
+    <input
+      type="text"
+      id="lastname"
+      class="hidden"
+      tabindex="-1"
+      autocomplete="off"
+      bind:value={honeypot}
+    />
   </div>
 
   <div>
