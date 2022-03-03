@@ -17,9 +17,7 @@
           image {
             url(transformation: {image: {resize: {width: 500}}})
           }
-          publicUrl
           slug
-          tags
         }
       }
     `);
@@ -45,52 +43,32 @@
     description="Libraries, apps, and websites I have built so far or participated in."
   />
 
-  <div class="max-w-6xl mx-auto px-4 py-24">
+  <div class="max-w-6xl mx-auto px-4 py-24 grid grid-cols-3 gap-8">
     {#each projects as project}
-      <article class="flex items-center gap-x-8 mt-16 first-of-type:mt-0">
-        <img
-          src={project.image.url}
-          alt={project.title}
-          class="w-2/5 flex-shrink-0 shadow-lg h-[275px] object-cover"
-          width="450"
-          height="275"
-        />
-        <div>
-          <h2 class="font-serif text-2xl font-bold text-gray-800 mb-1">{project.title}</h2>
-          <div class="flex gap-x-1">
-            {#each project.tags as tag}
-              <span
-                class="border border-gray-200 rounded text-xs tracking-wider px-2 py-1 bg-white uppercase font-semibold text-gray-500"
-                >{tag}</span
-              >
-            {/each}
-          </div>
-          <p class="my-6">{project.excerpt}</p>
-          <div>
-            <a href={`/projects/${project.slug}`} class="btn btn-primary">Details</a>
-            {#if project.publicUrl}
-              <a
-                href={project.publicUrl}
-                class="btn btn-secondary"
-                target="_blank"
-                rel="noopener nofollow noreferrer"
-                >Visit website <svg
-                  aria-hidden="true"
-                  viewBox="0 0 32 32"
-                  width="16"
-                  height="16"
-                  class="ml-2"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M6 2v24h24v-24h-24zM28 24h-20v-20h20v20zM4 28v-21l-2-2v25h25l-2-2h-21z"
-                  />
-                  <path fill="currentColor" d="M11 8l5 5-6 6 3 3 6-6 5 5v-13z" />
-                </svg></a
-              >
-            {/if}
-          </div>
-        </div>
+      <article>
+        <a
+          href={`/projects/${project.slug}`}
+          sveltekit:prefetch
+          class="group block hover:scale-[1.03] focus:scale-[1.03] transition-transform duration-500"
+        >
+          <figure class="relative rounded-md shadow-lg overflow-hidden peer">
+            <img
+              src={project.image.url}
+              alt={project.title}
+              class="w-full"
+              width="450"
+              height="275"
+            />
+            <figcaption
+              class="absolute inset-0 flex flex-col justify-center text-center bg-white/95 rounded-sm px-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500"
+            >
+              <h2 class="font-serif text-2xl font-bold text-gray-800 mb-3 leading-6">
+                {project.title}
+              </h2>
+              <p class="text-sm">{project.excerpt}</p>
+            </figcaption>
+          </figure>
+        </a>
       </article>
     {/each}
   </div>
