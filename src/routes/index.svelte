@@ -112,10 +112,10 @@
         <li>
           <a
             href={socialLink.href}
-            class="text-gray-800 hover:text-emerald-400 focus:text-emerald-400 focus:outline-none transition-colors"
+            class="text-gray-800 hover:text-emerald-400 focus-visible:text-emerald-400 focus-visible:outline-none transition-colors"
             target="_blank"
             rel="nofollow noreferrer noopener"
-            aria-label={socialLink.title}
+            title={socialLink.title}
             ><svg width="24" height="24" aria-hidden="true"
               ><use href={`/symbol-defs.svg#${socialLink.name}`} /></svg
             ></a

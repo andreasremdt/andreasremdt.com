@@ -32,18 +32,14 @@
 
 <header class="sticky top-0 bg-white z-10">
   <div class="h-24 flex items-center justify-between max-w-6xl mx-auto px-4">
-    <a
-      href="/"
-      class="font-serif font-bold text-xl text-gray-800 hover:text-emerald-400 transition-colors"
-      >Andreas Remdt</a
-    >
+    <span class="font-serif font-bold text-xl text-gray-800">Andreas Remdt</span>
 
     <nav class="flex gap-x-8">
       {#each links as link}
         <a
           href={link.href}
           sveltekit:prefetch
-          class={`hover:text-emerald-400 transition-colors ${
+          class={`hover:text-emerald-400 focus-visible:text-emerald-400 transition-colors focus-visible:outline-none ${
             isLinkActive($page.url.pathname, link.href) ? activeClassNames : ""
           }`}>{link.title}</a
         >
