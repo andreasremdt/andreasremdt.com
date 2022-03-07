@@ -7,10 +7,10 @@
 </script>
 
 <article
-  class="bg-white rounded-lg shadow-xl shadow-gray-200 mt-16 p-8 h-[450px] flex flex-col justify-center top-[108px] items-start sticky overflow-hidden"
+  class="bg-white rounded-lg shadow-xl shadow-gray-200 mt-16 p-4 md:p-8 md:h-[450px] flex flex-col justify-center top-[108px] items-start sticky overflow-hidden"
 >
-  <h3 class="font-serif text-2xl font-bold text-gray-800 mb-1">{title}</h3>
-  <div class="flex gap-x-1">
+  <h3 class="font-serif text-xl md:text-2xl font-bold text-gray-800 mb-1">{title}</h3>
+  <div class="flex gap-1 flex-wrap">
     {#each tags as tag}
       <span
         class="border border-gray-200 rounded text-xs tracking-wider px-2 py-1 bg-white uppercase font-semibold text-gray-500"
@@ -51,6 +51,6 @@
   <img
     src={imageUrl}
     alt="Home page of the Leo Club Weil am Rhein"
-    class="absolute w-3/6 -right-4 -bottom-4 shadow-xl"
+    class="mb-4 -order-1 md:order-1 md:absolute md:w-2/5 lg:w-3/6 md:-right-4 md:-bottom-4 shadow-xl"
   />
 </article>

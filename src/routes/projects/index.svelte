@@ -43,7 +43,9 @@
     description="Libraries, apps, and websites I have built so far or participated in."
   />
 
-  <div class="max-w-6xl mx-auto px-4 py-24 grid grid-cols-3 gap-8">
+  <div
+    class="max-w-6xl mx-auto px-4 py-16 sm:py-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+  >
     {#each projects as project}
       <article>
         <a
@@ -62,7 +64,7 @@
             <figcaption
               class="absolute inset-0 flex flex-col justify-center text-center bg-white/95 rounded-sm px-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500"
             >
-              <h2 class="font-serif text-2xl font-bold text-gray-800 mb-3 leading-6">
+              <h2 class="font-serif text-2xl font-bold text-gray-800 mb-3 leading-7">
                 {project.title}
               </h2>
               <p class="text-sm">{project.excerpt}</p>

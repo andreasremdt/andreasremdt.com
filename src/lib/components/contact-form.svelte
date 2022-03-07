@@ -39,7 +39,10 @@
   </div>
 {/if}
 
-<form class="grid gap-6 grid-cols-2 max-w-4xl mx-auto" on:submit|preventDefault={handleSubmit}>
+<form
+  class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 max-w-4xl mx-auto"
+  on:submit|preventDefault={handleSubmit}
+>
   <div>
     <label for="name" class="block font-bold mb-1"
       >Your name <span class="text-emerald-500 ml-1" aria-label="Required input">*</span></label
@@ -62,7 +65,7 @@
     <input type="email" id="email" class="input" required bind:value={email} />
   </div>
 
-  <div class="col-span-2">
+  <div class="sm:col-span-2">
     <label for="message" class="block font-bold mb-1"
       >What's up? <span class="text-emerald-500 ml-1" aria-label="Required input">*</span></label
     >
@@ -76,7 +79,7 @@
   </div>
 
   <button
-    class="btn btn-primary col-span-2 justify-self-center"
+    class="btn btn-primary sm:col-span-2 sm:justify-self-center"
     type="submit"
     disabled={buttonText !== ButtonText.Default}>{buttonText}</button
   >

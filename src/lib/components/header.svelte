@@ -32,9 +32,9 @@
 
 <header class="sticky top-0 bg-white/95 z-10">
   <div class="h-24 flex items-center justify-between max-w-6xl mx-auto px-4">
-    <span class="font-serif font-bold text-xl text-gray-800">Andreas Remdt</span>
+    <span class="hidden sm:block font-serif font-bold text-xl text-gray-800">Andreas Remdt</span>
 
-    <nav class="flex gap-x-8">
+    <nav class="flex sm:gap-x-8 justify-evenly sm:justify-start w-full sm:w-max">
       {#each links as link}
         <a
           href={link.href}

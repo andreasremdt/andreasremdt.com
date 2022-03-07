@@ -54,20 +54,22 @@
       <img
         src={project.image.url}
         alt={project.title}
-        class="shadow-lg mb-12 h-[695px] object-cover"
+        class="shadow-lg mb-12"
         width="1120"
         height="695"
       />
     </figure>
 
-    <section class="border-t border-b border-gray-200 flex justify-between py-4 mb-12 items-center">
+    <section
+      class="border-t border-b border-gray-200 flex flex-col gap-4 lg:flex-row lg:justify-between py-4 mb-12 items-center text-center lg:text-left"
+    >
       <div>
         <h2 class="font-serif text-xl font-bold">Published</h2>
         <p>{project.publishedIn}</p>
       </div>
       <div>
         <h2 class="font-serif text-xl font-bold">Technologies</h2>
-        <div class="flex gap-x-1">
+        <div class="flex gap-1 flex-wrap justify-center">
           {#each project.tags as tag}
             <span
               class="border border-gray-200 rounded text-xs tracking-wider px-2 py-1 bg-white uppercase font-semibold text-gray-500"
@@ -76,7 +78,7 @@
           {/each}
         </div>
       </div>
-      <div>
+      <div class="flex gap-2 flex-wrap justify-center">
         {#if project.publicUrl}
           <a
             href={project.publicUrl}

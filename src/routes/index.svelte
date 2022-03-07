@@ -88,13 +88,20 @@
   <title>Welcome to the home of Andreas Remdt</title>
 </svelte:head>
 
-<section class="py-24 flex items-center gap-x-16 max-w-6xl mx-auto px-4">
-  <figure>
-    <img src="/images/profile-image.jpg" alt="" width="350" class="rounded-lg shadow-lg" />
+<section class="py-16 sm:py-24 sm:flex sm:gap-x-8 lg:gap-x-16 max-w-6xl mx-auto px-4">
+  <figure class="sm:w-1/3">
+    <img
+      src="/images/profile-image.jpg"
+      alt=""
+      width="350"
+      class="rounded-lg shadow-lg w-1/3 sm:w-full aspect-square mb-8 sm:mb-0"
+    />
   </figure>
   <div>
-    <h1 class="font-serif text-6xl font-bold text-gray-800 mb-4">Hey, I'm Andreas.</h1>
-    <p class="text-xl mb-4 max-w-4xl">
+    <h1 class="font-serif text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-800 mb-4">
+      Hey, I'm Andreas.
+    </h1>
+    <p class="md:text-xl mb-4 max-w-4xl">
       Software Engineer based in Germany who loves to build fast, accessible, and good-looking web
       applications using cutting-edge technologies.
     </p>
@@ -107,7 +114,7 @@
     >
     <a href="/contact" class="btn btn-secondary" sveltekit:prefetch>Get in touch</a>
 
-    <ul class="flex gap-x-3 mt-16">
+    <ul class="flex gap-x-3 mt-8 sm:mt-16">
       {#each socialLinks as socialLink}
         <li>
           <a
@@ -125,10 +132,12 @@
   </div>
 </section>
 
-<main class="py-24 max-w-6xl mx-auto px-4">
-  <h2 class="font-serif text-4xl font-bold text-gray-800 mb-12 text-center">Biography</h2>
+<main class="py-16 sm:py-24 max-w-6xl mx-auto px-4">
+  <h2 class="font-serif text-2xl sm:text-4xl font-bold text-gray-800 mb-12 text-center">
+    Biography
+  </h2>
 
-  <div class="columns-3">
+  <div class="sm:columns-2 md:columns-3">
     <p class="mb-3">
       Andreas is a Freelance Software Engineer at <a
         href="https://www.toptal.com/resume/andreas-remdt"
@@ -164,9 +173,11 @@
   </div>
 </main>
 
-<section class="py-24 bg-gray-50 relative">
+<section class="py-16 sm:py-24 bg-gray-50 relative">
   <div class="max-w-6xl mx-auto px-4">
-    <h2 class="font-serif text-4xl font-bold text-gray-800 mb-2 text-center">Featured Work</h2>
+    <h2 class="font-serif text-2xl sm:text-4xl font-bold text-gray-800 mb-2 text-center">
+      Featured Work
+    </h2>
     <div class="text-center mb-12">
       <a href="/projects" class="btn btn-primary" sveltekit:prefetch>View all projects</a>
     </div>
@@ -185,21 +196,23 @@
   </div>
 </section>
 
-<section class="max-w-6xl mx-auto px-4 py-24">
-  <h2 class="font-serif text-4xl font-bold text-gray-800 mb-2 text-center">Latest Blog Posts</h2>
+<section class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
+  <h2 class="font-serif text-2xl sm:text-4xl font-bold text-gray-800 mb-2 text-center">
+    Latest Blog Posts
+  </h2>
   <div class="text-center mb-12">
     <a href="/blog" class="btn btn-primary" sveltekit:prefetch>View all blog posts</a>
   </div>
 
-  <div class="flex gap-x-8">
+  <div class="flex flex-col md:flex-row gap-8">
     {#each posts as post}
-      <article class="flex flex-col w-1/3 items-start">
+      <article class="flex flex-col md:w-1/3 items-start">
         <img
           src={post.image.url}
           alt={post.title}
           class="rounded-md shadow-lg mb-4 h-56 w-full object-cover"
         />
-        <h3 class="font-serif text-2xl font-bold text-gray-800 mb-1">{post.title}</h3>
+        <h3 class="font-serif text-xl md:text-2xl font-bold text-gray-800 mb-1">{post.title}</h3>
         <time
           datetime={post.published}
           class="border border-gray-200 rounded text-xs tracking-wider px-2 py-1 bg-white uppercase font-semibold text-gray-500"
@@ -212,8 +225,10 @@
   </div>
 </section>
 
-<section class="max-w-6xl mx-auto px-4 py-24">
-  <h2 class="font-serif text-4xl font-bold text-gray-800 mb-2 text-center">Get in Touch</h2>
+<section class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
+  <h2 class="font-serif text-2xl sm:text-4xl font-bold text-gray-800 mb-2 text-center">
+    Get in Touch
+  </h2>
   <p class="text-center mb-12">
     Want to get in touch with me? Sweet! Just fill out the form and I'll get back to you as soon as
     possible.

@@ -10,7 +10,7 @@
     possible."
   />
 
-  <div class="max-w-6xl mx-auto px-4 py-24">
+  <div class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
     <ContactForm />
   </div>
 </main>

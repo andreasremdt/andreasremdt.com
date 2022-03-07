@@ -1,4 +1,4 @@
-<footer class="max-w-6xl mx-auto px-4 py-6 text-center">
+<footer class="max-w-6xl mx-auto px-4 py-6 text-center text-sm sm:text-base">
   <p>&copy; {new Date().getFullYear()} Andreas Remdt. All Rights Reserved. Licensed under MIT.</p>
   <p>
     Powered by <a

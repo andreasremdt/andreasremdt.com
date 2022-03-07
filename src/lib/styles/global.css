@@ -6,11 +6,15 @@
   body {
     @apply text-gray-700 selection:bg-emerald-200 selection:text-gray-800;
   }
+
+  iframe {
+    @apply w-full h-auto aspect-[16/10] rounded-lg shadow-lg;
+  }
 }
 
 @layer components {
   .btn {
-    @apply px-6 py-3 inline-flex shadow-sm items-center font-semibold rounded transition-colors focus-visible:outline-none text-sm disabled:opacity-70 disabled:cursor-not-allowed;
+    @apply px-6 py-3 inline-flex shadow-sm items-center justify-center font-semibold rounded transition-colors focus-visible:outline-none text-sm disabled:opacity-70 disabled:cursor-not-allowed;
   }
 
   .btn-primary {

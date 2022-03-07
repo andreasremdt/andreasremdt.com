@@ -44,18 +44,18 @@
     description="Technical articles I published, covering web development topics."
   />
 
-  <div class="max-w-6xl mx-auto px-4 py-24">
+  <div class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
     {#each posts as post}
-      <article class="flex items-center gap-x-8 mt-16 first-of-type:mt-0">
+      <article class="flex flex-col sm:flex-row gap-x-8 mt-16 first-of-type:mt-0">
         <img
           src={post.image.url}
           alt={post.title}
-          class="w-2/5 flex-shrink-0 rounded-md shadow-lg h-[275px] object-cover"
+          class="w-full mb-4 sm:mb-0 sm:w-2/5 sm:flex-shrink-0 rounded-md shadow-lg h-64 object-cover"
           width="450"
           height="275"
         />
         <div>
-          <h2 class="font-serif text-2xl font-bold text-gray-800 mb-1">{post.title}</h2>
+          <h2 class="font-serif text-2xl font-bold text-gray-800 mb-1 leading-7">{post.title}</h2>
           <time
             datetime={post.published}
             class="border border-gray-200 rounded text-xs tracking-wider px-2 py-1 bg-white uppercase font-semibold text-gray-500"
