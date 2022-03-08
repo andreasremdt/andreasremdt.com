@@ -39,7 +39,7 @@
         <a
           href={link.href}
           sveltekit:prefetch
-          class={`hover:text-emerald-400 focus-visible:text-emerald-400 transition-colors focus-visible:outline-none ${
+          class={`hover:text-emerald-500 font-medium focus-visible:text-emerald-500 transition-colors focus-visible:outline-none ${
             isLinkActive($page.url.pathname, link.href) ? activeClassNames : ""
           }`}>{link.title}</a
         >
