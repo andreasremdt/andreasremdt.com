@@ -27,3 +27,7 @@ export interface Post {
   };
   externalUrl: string;
 }
+
+export interface Technology {
+  name: string;
+}

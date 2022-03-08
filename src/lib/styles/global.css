@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply text-gray-700 selection:bg-emerald-200 selection:text-gray-800;
+    @apply text-sm sm:text-base text-gray-700 selection:bg-emerald-200 selection:text-gray-800;
   }
 
   iframe {

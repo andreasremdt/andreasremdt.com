@@ -9,7 +9,7 @@
       }
     );
 
-    const { projects, posts } = await graphcms.request(`
+    const { projects, posts, technologies } = await graphcms.request(`
       {
         projects(where: {featured: true}) {
           excerpt
@@ -30,6 +30,9 @@
           }
           published
         }
+        technologies {
+          name
+        }
       }
     `);
 
@@ -37,6 +40,7 @@
       props: {
         projects,
         posts,
+        technologies,
       },
     };
   }
@@ -45,10 +49,12 @@
 <script lang="ts">
   import WorkCard from "$lib/components/work-card.svelte";
   import ContactForm from "$lib/components/contact-form.svelte";
-  import type { Post, Project } from "$lib/types";
+  import type { Post, Project, Technology } from "$lib/types";
+  import { slugify } from "$lib/utils";
 
   export let projects: Project[];
   export let posts: Post[];
+  export let technologies: Technology[];
 
   const socialLinks = [
     {
@@ -172,6 +178,29 @@
     </p>
   </div>
 </main>
+
+<section class="py-16 sm:py-24 max-w-6xl mx-auto px-4">
+  <h2 class="font-serif text-2xl sm:text-4xl font-bold text-gray-800 mb-12 text-center">
+    Technologies & Tools
+  </h2>
+
+  <ul class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 rounded-lg">
+    {#each technologies as technology}
+      <li
+        class="bg-white border border-gray-200 rounded-md shadow-sm h-32 flex items-center justify-center flex-col text-center leading-4"
+      >
+        <img
+          aria-hidden="true"
+          src={`/logos/${slugify(technology.name)}.svg`}
+          alt={technology.name}
+          height="40"
+          class="h-8 mb-2 max-w-[40%]"
+        />
+        {technology.name}
+      </li>
+    {/each}
+  </ul>
+</section>
 
 <section class="py-16 sm:py-24 bg-gray-50 relative">
   <div class="max-w-6xl mx-auto px-4">
