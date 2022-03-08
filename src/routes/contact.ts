@@ -54,9 +54,3 @@ export async function post({ request }: RequestEvent) {
     status: response.status,
   };
 }
-
-export async function get() {
-  return {
-    body: {},
-  };
-}

@@ -32,3 +32,14 @@ export interface Image {
   jpg: string;
   webp: string;
 }
+
+export interface SocialLink {
+  name: string;
+  title: string;
+  url: string;
+}
+
+export interface PageMeta {
+  title: string;
+  description: string;
+}

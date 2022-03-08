@@ -1,15 +1,8 @@
 <script context="module" lang="ts">
-  import { GraphQLClient } from "graphql-request";
+  import { getGraphCMS } from "$lib/utils";
 
   export async function load() {
-    const graphcms = new GraphQLClient(
-      "https://api-eu-central-1.graphcms.com/v2/ckzekldqw3bp001z1fxyv2ohm/master",
-      {
-        headers: {},
-      }
-    );
-
-    const { projects } = await graphcms.request(`
+    const data = await getGraphCMS().request(`
       {
         projects(orderBy: publishedIn_DESC) {
           excerpt
@@ -24,13 +17,15 @@
           }
           slug
         }
+        meta: page(where: {slug: "projects"}) {
+          title
+          description
+        }
       }
     `);
 
     return {
-      props: {
-        projects,
-      },
+      props: data,
     };
   }
 </script>
@@ -38,16 +33,14 @@
 <script lang="ts">
   import LazyImage from "$lib/components/lazy-image.svelte";
   import PageHeader from "$lib/components/page-header.svelte";
-  import type { Project } from "$lib/types";
+  import type { Project, PageMeta } from "$lib/types";
 
   export let projects: Project[];
+  export let meta: PageMeta;
 </script>
 
 <main>
-  <PageHeader
-    title="Work & Projects"
-    description="Libraries, apps, and websites I have built so far or participated in."
-  />
+  <PageHeader title={meta.title} description={meta.description} />
 
   <div
     class="max-w-6xl mx-auto px-4 py-16 sm:py-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"

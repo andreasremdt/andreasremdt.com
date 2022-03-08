@@ -1,15 +1,8 @@
 <script context="module" lang="ts">
-  import { GraphQLClient } from "graphql-request";
+  import { getGraphCMS } from "$lib/utils";
 
   export async function load() {
-    const graphcms = new GraphQLClient(
-      "https://api-eu-central-1.graphcms.com/v2/ckzekldqw3bp001z1fxyv2ohm/master",
-      {
-        headers: {},
-      }
-    );
-
-    const { posts } = await graphcms.request(`
+    const data = await getGraphCMS().request(`
       {
         posts(orderBy: published_DESC) {
           title
@@ -25,30 +18,30 @@
           }
           published
         }
+        meta: page(where: {slug: "blog"}) {
+          title
+          description
+        }
       }
     `);
 
     return {
-      props: {
-        posts,
-      },
+      props: data,
     };
   }
 </script>
 
 <script lang="ts">
   import PageHeader from "$lib/components/page-header.svelte";
-  import type { Post } from "$lib/types";
+  import type { Post, PageMeta } from "$lib/types";
   import LazyImage from "$lib/components/lazy-image.svelte";
 
   export let posts: Post[];
+  export let meta: PageMeta;
 </script>
 
 <main>
-  <PageHeader
-    title="Blog"
-    description="Technical articles I published, covering web development topics."
-  />
+  <PageHeader title={meta.title} description={meta.description} />
 
   <div class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
     {#each posts as post}

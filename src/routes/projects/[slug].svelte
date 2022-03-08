@@ -1,15 +1,8 @@
 <script context="module" lang="ts">
-  import { GraphQLClient } from "graphql-request";
+  import { getGraphCMS } from "$lib/utils";
 
   export async function load({ params }) {
-    const graphcms = new GraphQLClient(
-      "https://api-eu-central-1.graphcms.com/v2/ckzekldqw3bp001z1fxyv2ohm/master",
-      {
-        headers: {},
-      }
-    );
-
-    const { project } = await graphcms.request(
+    const data = await getGraphCMS().request(
       `
       query GetProjectsBySlug($slug:String!) {
         project(where: {slug: $slug}) {
@@ -37,9 +30,7 @@
     );
 
     return {
-      props: {
-        project,
-      },
+      props: data,
     };
   }
 </script>

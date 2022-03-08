@@ -1,15 +1,8 @@
 <script context="module" lang="ts">
-  import { GraphQLClient } from "graphql-request";
+  import { getGraphCMS } from "$lib/utils";
 
   export async function load() {
-    const graphcms = new GraphQLClient(
-      "https://api-eu-central-1.graphcms.com/v2/ckzekldqw3bp001z1fxyv2ohm/master",
-      {
-        headers: {},
-      }
-    );
-
-    const { projects, posts, technologies, portrait } = await graphcms.request(`
+    const data = await getGraphCMS().request(`
       {
         projects(where: {featured: true}) {
           excerpt
@@ -51,16 +44,20 @@
             transformation: {image: {resize: {width: 350, height: 350, fit: clip}}}
           )
         }
+        socialLinks {
+          name
+          title
+          url
+        }
+        meta: page(where: {slug: "index"}) {
+          title
+          description
+        }
       }
     `);
 
     return {
-      props: {
-        projects,
-        posts,
-        technologies,
-        portrait,
-      },
+      props: data,
     };
   }
 </script>
@@ -69,50 +66,20 @@
   import WorkCard from "$lib/components/work-card.svelte";
   import ContactForm from "$lib/components/contact-form.svelte";
   import LazyImage from "$lib/components/lazy-image.svelte";
-  import type { Post, Project, Technology, Image } from "$lib/types";
+  import type { Post, Project, Technology, Image, SocialLink, PageMeta } from "$lib/types";
   import { slugify } from "$lib/utils";
 
   export let projects: Project[];
   export let posts: Post[];
   export let technologies: Technology[];
   export let portrait: Image;
-
-  const socialLinks = [
-    {
-      name: "github",
-      title: "View my code on GitHub",
-      href: "https://github.com/andreasremdt",
-    },
-    {
-      name: "linkedin",
-      title: "View my resúmé on LinkedIn",
-      href: "https://linkedin.com/in/andreasremdt",
-    },
-    {
-      name: "toptal",
-      title: "Hire me on Toptal",
-      href: "https://www.toptal.com/resume/andreas-remdt",
-    },
-    {
-      name: "medium",
-      title: "Read my publications on Medium",
-      href: "https://medium.com/@andreas.remdt",
-    },
-    {
-      name: "500px",
-      title: "View my photos on 500px",
-      href: "https://500px.com/andreasremdt",
-    },
-    {
-      name: "codepen",
-      title: "View my experiments on Codepen",
-      href: "https://codepen.io/andreasremdt",
-    },
-  ];
+  export let socialLinks: SocialLink[];
+  export let meta: PageMeta;
 </script>
 
 <svelte:head>
-  <title>Welcome to the home of Andreas Remdt</title>
+  <title>{meta.title} | Andreas Remdt</title>
+  <meta name="description" content={meta.description} />
 </svelte:head>
 
 <section class="py-16 sm:py-24 sm:flex sm:gap-x-8 lg:gap-x-16 max-w-6xl mx-auto px-4">
@@ -130,8 +97,7 @@
       Hey, I'm Andreas.
     </h1>
     <p class="md:text-xl mb-4 max-w-4xl">
-      Software Engineer based in Germany who loves to build fast, accessible, and good-looking web
-      applications using cutting-edge technologies.
+      {meta.description}
     </p>
 
     <a
@@ -146,13 +112,13 @@
       {#each socialLinks as socialLink}
         <li>
           <a
-            href={socialLink.href}
+            href={socialLink.url}
             class="text-gray-800 hover:text-emerald-400 focus-visible:text-emerald-400 focus-visible:outline-none transition-colors"
             target="_blank"
             rel="nofollow noreferrer noopener"
             title={socialLink.title}
             ><svg width="24" height="24" aria-hidden="true"
-              ><use href={`/symbol-defs.svg#${socialLink.name}`} /></svg
+              ><use href={`/symbol-defs.svg#${slugify(socialLink.name)}`} /></svg
             ></a
           >
         </li>{/each}

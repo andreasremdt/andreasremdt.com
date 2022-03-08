@@ -4,7 +4,8 @@
 </script>
 
 <svelte:head>
-  <title>{title}</title>
+  <title>{title} - Andreas Remdt</title>
+  <meta name="description" content={description} />
 </svelte:head>
 
 <header class="text-center bg-gray-50 py-16">
