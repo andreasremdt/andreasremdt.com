@@ -3,12 +3,10 @@ export interface Project {
   description: {
     html: string;
   };
-  publishedIn: number;
-  image: {
-    url: string;
-  };
-  publicUrl: string;
-  githubUrl: string;
+  publishedIn?: number;
+  image: Image;
+  publicUrl?: string;
+  githubUrl?: string;
   tags: string[];
   excerpt: string;
   slug: string;
@@ -19,9 +17,7 @@ export interface Post {
   excerpt: string;
   slug: string;
   published: string;
-  image: {
-    url: string;
-  };
+  image: Image;
   content: {
     html: string;
   };
@@ -30,4 +26,9 @@ export interface Post {
 
 export interface Technology {
   name: string;
+}
+
+export interface Image {
+  jpg: string;
+  webp: string;
 }

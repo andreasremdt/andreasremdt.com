@@ -16,7 +16,12 @@
           slug
           excerpt
           image {
-            url(transformation: {image: {resize: {width: 500}}})
+            webp: url(
+              transformation: {image: {resize: {width: 700, height: 400, fit: crop}}, document: {output: {format: webp}}}
+            )
+            jpg: url(
+              transformation: {image: {resize: {width: 700, height: 400, fit: crop}}}
+            )
           }
           published
         }
@@ -34,6 +39,7 @@
 <script lang="ts">
   import PageHeader from "$lib/components/page-header.svelte";
   import type { Post } from "$lib/types";
+  import LazyImage from "$lib/components/lazy-image.svelte";
 
   export let posts: Post[];
 </script>
@@ -47,12 +53,13 @@
   <div class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
     {#each posts as post}
       <article class="flex flex-col sm:flex-row gap-x-8 mt-16 first-of-type:mt-0">
-        <img
-          src={post.image.url}
+        <LazyImage
+          image={post.image}
           alt={post.title}
-          class="w-full mb-4 sm:mb-0 sm:w-2/5 sm:flex-shrink-0 rounded-md shadow-lg h-64 object-cover"
-          width="450"
-          height="275"
+          width={450}
+          height={275}
+          outerClassName="mb-4 sm:mb-0 sm:w-2/5 sm:flex-shrink-0"
+          innerClassName="w-full object-cover rounded-md shadow-lg h-64"
         />
         <div>
           <h2 class="font-serif text-2xl font-bold text-gray-800 mb-1 leading-7">{post.title}</h2>

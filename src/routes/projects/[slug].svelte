@@ -19,7 +19,12 @@
           publishedIn
           title
           image {
-            url(transformation: {image: {resize: {width: 1200}}})
+            webp: url(
+              transformation: {image: {resize: {width: 1120, fit: max}}, document: {output: {format: webp}}}
+            )
+            jpg: url(
+              transformation: {image: {resize: {width: 1120, fit: max}}}
+            )
           }
           publicUrl
           githubUrl
@@ -41,6 +46,7 @@
 
 <script lang="ts">
   import PageHeader from "$lib/components/page-header.svelte";
+  import LazyImage from "$lib/components/lazy-image.svelte";
   import type { Project } from "$lib/types";
 
   export let project: Project;
@@ -50,15 +56,13 @@
   <PageHeader title={project.title} description={project.excerpt} />
 
   <div class="max-w-6xl mx-auto px-4 pt-12 pb-24">
-    <figure>
-      <img
-        src={project.image.url}
-        alt={project.title}
-        class="shadow-lg mb-12"
-        width="1120"
-        height="695"
-      />
-    </figure>
+    <LazyImage
+      image={project.image}
+      alt={project.title}
+      width={1120}
+      height={695}
+      innerClassName="shadow-lg mb-12 rounded-md h-[695px] object-cover"
+    />
 
     <section
       class="border-t border-b border-gray-200 flex flex-col gap-4 lg:flex-row lg:justify-between py-4 mb-12 items-center text-center lg:text-left"

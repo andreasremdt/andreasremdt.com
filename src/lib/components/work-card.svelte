@@ -1,17 +1,16 @@
 <script lang="ts">
-  export let title: string = "";
-  export let tags: string[] = [];
-  export let publicUrl: string = "";
-  export let slug: string = "";
-  export let imageUrl: string = "";
+  import type { Image, Project } from "$lib/types";
+  import LazyImage from "./lazy-image.svelte";
+
+  export let project: Project;
 </script>
 
 <article
   class="bg-white rounded-lg shadow-xl shadow-gray-200 mt-16 p-4 md:p-8 md:h-[450px] flex flex-col justify-center top-[108px] items-start sticky overflow-hidden"
 >
-  <h3 class="font-serif text-xl md:text-2xl font-bold text-gray-800 mb-1">{title}</h3>
+  <h3 class="font-serif text-xl md:text-2xl font-bold text-gray-800 mb-1">{project.title}</h3>
   <div class="flex gap-1 flex-wrap">
-    {#each tags as tag}
+    {#each project.tags as tag}
       <span
         class="border border-gray-200 rounded text-xs tracking-wider px-2 py-1 bg-white uppercase font-semibold text-gray-500"
         >{tag}</span
@@ -20,14 +19,14 @@
   </div>
 
   <p class="max-w-lg my-6">
-    <slot />
+    {project.excerpt}
   </p>
 
   <div>
-    <a href={`/projects/${slug}`} class="btn btn-primary" sveltekit:prefetch>Details</a>
-    {#if publicUrl}
+    <a href={`/projects/${project.slug}`} class="btn btn-primary" sveltekit:prefetch>Details</a>
+    {#if project.publicUrl}
       <a
-        href={publicUrl}
+        href={project.publicUrl}
         class="btn btn-secondary"
         target="_blank"
         rel="noopener nofollow noreferrer"
@@ -48,9 +47,11 @@
     {/if}
   </div>
 
-  <img
-    src={imageUrl}
-    alt="Home page of the Leo Club Weil am Rhein"
-    class="mb-4 -order-1 md:order-1 md:absolute md:w-2/5 lg:w-3/6 md:-right-4 md:-bottom-4 shadow-xl"
+  <LazyImage
+    image={project.image}
+    width={700}
+    height={700}
+    alt={project.title}
+    outerClassName="mb-4 -order-1 md:order-1 md:absolute md:w-2/5 lg:w-3/6 md:-right-4 md:-bottom-4 shadow-xl"
   />
 </article>

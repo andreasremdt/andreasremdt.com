@@ -9,13 +9,18 @@
       }
     );
 
-    const { projects, posts, technologies } = await graphcms.request(`
+    const { projects, posts, technologies, portrait } = await graphcms.request(`
       {
         projects(where: {featured: true}) {
           excerpt
           title
           image {
-            url
+            webp: url(
+              transformation: {image: {resize: {width: 700, fit: max}}, document: {output: {format: webp}}}
+            )
+            jpg: url(
+              transformation: {image: {resize: {width: 700, fit: max}}}
+            )
           }
           publicUrl
           slug
@@ -26,12 +31,25 @@
           slug
           excerpt
           image {
-            url
+            webp: url(
+              transformation: {image: {resize: {width: 750, fit: max}}, document: {output: {format: webp}}}
+            )
+            jpg: url(
+              transformation: {image: {resize: {width: 750, fit: max}}}
+            )
           }
           published
         }
         technologies {
           name
+        }
+        portrait: asset(where: {id: "cl0i713joxpv60ez8x71adamx"}) {
+          webp: url(
+            transformation: {image: {resize: {width: 350, height: 350, fit: clip}}, document: {output: {format: webp}}}
+          )
+          jpg: url(
+            transformation: {image: {resize: {width: 350, height: 350, fit: clip}}}
+          )
         }
       }
     `);
@@ -41,6 +59,7 @@
         projects,
         posts,
         technologies,
+        portrait,
       },
     };
   }
@@ -49,12 +68,14 @@
 <script lang="ts">
   import WorkCard from "$lib/components/work-card.svelte";
   import ContactForm from "$lib/components/contact-form.svelte";
-  import type { Post, Project, Technology } from "$lib/types";
+  import LazyImage from "$lib/components/lazy-image.svelte";
+  import type { Post, Project, Technology, Image } from "$lib/types";
   import { slugify } from "$lib/utils";
 
   export let projects: Project[];
   export let posts: Post[];
   export let technologies: Technology[];
+  export let portrait: Image;
 
   const socialLinks = [
     {
@@ -96,11 +117,11 @@
 
 <section class="py-16 sm:py-24 sm:flex sm:gap-x-8 lg:gap-x-16 max-w-6xl mx-auto px-4">
   <figure class="sm:w-1/3">
-    <img
-      src="/images/profile-image.jpg"
-      alt=""
-      width="350"
-      class="rounded-lg shadow-lg w-1/3 sm:w-full aspect-square mb-8 sm:mb-0"
+    <LazyImage
+      image={portrait}
+      width={350}
+      height={350}
+      innerClassName="rounded-lg shadow-lg w-1/3 sm:w-full aspect-square mb-8 sm:mb-0"
     />
   </figure>
   <div>
@@ -212,15 +233,7 @@
     </div>
 
     {#each projects as project}
-      <WorkCard
-        title={project.title}
-        tags={project.tags}
-        publicUrl={project.publicUrl}
-        slug={project.slug}
-        imageUrl={project.image.url}
-      >
-        {project.excerpt}
-      </WorkCard>
+      <WorkCard {project} />
     {/each}
   </div>
 </section>
@@ -236,10 +249,13 @@
   <div class="flex flex-col md:flex-row gap-8">
     {#each posts as post}
       <article class="flex flex-col md:w-1/3 items-start">
-        <img
-          src={post.image.url}
+        <LazyImage
+          image={post.image}
           alt={post.title}
-          class="rounded-md shadow-lg mb-4 h-56 w-full object-cover"
+          width={750}
+          height={750}
+          outerClassName="mb-4 w-full"
+          innerClassName="rounded-md shadow-lg h-56 w-full object-cover"
         />
         <h3 class="font-serif text-xl md:text-2xl font-bold text-gray-800 mb-1">{post.title}</h3>
         <time
