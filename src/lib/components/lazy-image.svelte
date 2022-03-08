@@ -2,9 +2,9 @@
   import type { Image } from "$lib/types";
 
   export let image: Image;
-  export let alt: string = "";
-  export let outerClassName: string = "";
-  export let innerClassName: string = "";
+  export let alt = "";
+  export let outerClassName = "";
+  export let innerClassName = "";
   export let width: number;
   export let height: number;
   export let lazy = true;

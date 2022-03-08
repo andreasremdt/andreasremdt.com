@@ -15,7 +15,12 @@
           excerpt
           title
           image {
-            url(transformation: {image: {resize: {width: 500}}})
+            webp: url(
+              transformation: {image: {resize: {width: 500, fit: max}}, document: {output: {format: webp}}}
+            )
+            jpg: url(
+              transformation: {image: {resize: {width: 500, fit: max}}}
+            )
           }
           slug
         }
@@ -31,6 +36,7 @@
 </script>
 
 <script lang="ts">
+  import LazyImage from "$lib/components/lazy-image.svelte";
   import PageHeader from "$lib/components/page-header.svelte";
   import type { Project } from "$lib/types";
 
@@ -54,12 +60,12 @@
           class="group block hover:scale-[1.03] focus:scale-[1.03] transition-transform duration-500"
         >
           <figure class="relative rounded-md shadow-lg overflow-hidden peer">
-            <img
-              src={project.image.url}
+            <LazyImage
+              image={project.image}
               alt={project.title}
-              class="w-full"
-              width="450"
-              height="275"
+              width={500}
+              height={300}
+              innerClassName="w-full"
             />
             <figcaption
               class="absolute inset-0 flex flex-col justify-center text-center bg-white/95 rounded-sm px-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500"

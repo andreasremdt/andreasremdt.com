@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Image, Project } from "$lib/types";
+  import type { Project } from "$lib/types";
   import LazyImage from "./lazy-image.svelte";
 
   export let project: Project;

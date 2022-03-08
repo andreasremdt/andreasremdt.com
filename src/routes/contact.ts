@@ -1,4 +1,4 @@
-import type { RequestEvent } from "@sveltejs/kit";
+import type { RequestEvent } from "@sveltejs/kit/types/internal";
 
 const {
   VITE_EMAIL_JS_SERVICE_ID,

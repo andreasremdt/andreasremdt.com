@@ -6,12 +6,12 @@
     Success = "Message successfully sent!",
   }
 
-  let name: string = "";
-  let email: string = "";
-  let message: string = "";
-  let honeypot: string = "";
+  let name = "";
+  let email = "";
+  let message = "";
+  let honeypot = "";
   let buttonText: string = ButtonText.Default;
-  let error: boolean = false;
+  let error = false;
 
   async function handleSubmit() {
     buttonText = ButtonText.Sending;
