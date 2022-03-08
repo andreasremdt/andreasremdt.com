@@ -7,9 +7,17 @@
   export let innerClassName: string = "";
   export let width: number;
   export let height: number;
+  export let lazy = true;
 </script>
 
 <picture class={outerClassName}>
   <source srcset={image.webp} type="image/webp" />
-  <img src={image.jpg} {alt} {width} {height} class={innerClassName} loading="lazy" />
+  <img
+    src={image.jpg}
+    {alt}
+    {width}
+    {height}
+    class={innerClassName}
+    loading={lazy ? "lazy" : "eager"}
+  />
 </picture>

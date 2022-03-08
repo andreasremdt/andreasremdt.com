@@ -122,6 +122,7 @@
       width={350}
       height={350}
       innerClassName="rounded-lg shadow-lg w-1/3 sm:w-full aspect-square mb-8 sm:mb-0"
+      lazy={false}
     />
   </figure>
   <div>
@@ -214,8 +215,9 @@
           aria-hidden="true"
           src={`/logos/${slugify(technology.name)}.svg`}
           alt={technology.name}
+          width="40"
           height="40"
-          class="h-8 mb-2 max-w-[40%]"
+          class="h-8 mb-2"
         />
         {technology.name}
       </li>
