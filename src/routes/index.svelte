@@ -136,8 +136,8 @@
       Andreas is a Freelance Software Engineer at <a
         href="https://www.toptal.com/resume/andreas-remdt"
         class="link">Toptal</a
-      >, where he works for various clients in different industries to deliver outstanding web
-      applications.
+      >, where he works for various clients in different industries like
+      <a href="https://databricks.com" class="link">Databricks</a> to deliver outstanding web applications.
     </p>
 
     <p class="mb-3">
@@ -182,7 +182,7 @@
           alt={technology.name}
           width="40"
           height="40"
-          class="h-8 mb-2"
+          class="h-8 mb-3"
         />
         {technology.name}
       </li>

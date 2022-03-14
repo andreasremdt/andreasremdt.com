@@ -34,7 +34,7 @@
   }
 
   body {
-    @apply text-sm sm:text-base text-gray-700 selection:bg-emerald-200 selection:text-gray-800;
+    @apply text-sm sm:text-base leading-6 text-gray-700 selection:bg-emerald-200 selection:text-gray-800;
   }
 
   iframe {
@@ -44,7 +44,7 @@
 
 @layer components {
   .btn {
-    @apply px-6 py-3 inline-flex shadow-sm items-center justify-center font-semibold rounded transition-colors focus-visible:outline-none text-sm disabled:opacity-70 disabled:cursor-not-allowed;
+    @apply px-4 py-2 sm:px-6 sm:py-3 inline-flex shadow-sm items-center justify-center font-semibold rounded transition-colors focus-visible:outline-none text-sm disabled:opacity-70 disabled:cursor-not-allowed;
   }
 
   .btn-primary {

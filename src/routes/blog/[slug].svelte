@@ -53,7 +53,7 @@
     />
 
     <div
-      class="prose prose-headings:font-serif prose-headings:font-bold mx-auto prose-a:no-underline focus:prose-a:outline-none focus:prose-a:text-emerald-500 prose-a:text-gray-900 prose-a:border-b-2 prose-a:border-emerald-400 hover:prose-a:text-emerald-500 prose-a:transition-colors"
+      class="prose-sm sm:prose-base prose-headings:font-serif prose-headings:font-bold mx-auto prose-a:no-underline focus:prose-a:outline-none focus:prose-a:text-emerald-500 prose-a:text-gray-900 prose-a:border-b-2 prose-a:border-emerald-400 hover:prose-a:text-emerald-500 prose-a:transition-colors"
     >
       {@html post.content.html}
     </div>
