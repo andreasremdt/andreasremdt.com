@@ -12,7 +12,7 @@ export async function post({ request }: RequestEvent) {
 
   // If we think that a spam bot filled out the form, we pretend that the email
   // was sent.
-  if (honeypot) {
+  if (honeypot || message.length < 30) {
     return {
       status: 200,
     };

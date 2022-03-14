@@ -74,7 +74,7 @@
       class="input resize-y h-32"
       required
       bind:value={message}
-      minlength="10"
+      minlength="30"
     />
   </div>
 
