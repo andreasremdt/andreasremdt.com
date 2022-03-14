@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
+  import SkipToContent from "$lib/components/skip-to-content.svelte";
 
   const activeClassNames = "text-gray-900 border-b-2 border-emerald-400";
   const links = [
@@ -31,7 +32,9 @@
 </script>
 
 <header class="sticky top-0 bg-white/95 z-10">
-  <div class="h-24 flex items-center justify-between max-w-6xl mx-auto px-4">
+  <div class="h-24 flex items-center justify-between max-w-6xl mx-auto px-4 relative">
+    <SkipToContent />
+
     <span class="hidden sm:block font-serif font-bold text-xl text-gray-800">Andreas Remdt</span>
 
     <nav class="flex sm:gap-x-8 justify-evenly sm:justify-start w-full sm:w-max">

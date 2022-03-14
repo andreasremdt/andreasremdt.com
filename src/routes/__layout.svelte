@@ -5,5 +5,9 @@
 </script>
 
 <Header />
-<slot />
+
+<div id="content">
+  <slot />
+</div>
+
 <Footer />
