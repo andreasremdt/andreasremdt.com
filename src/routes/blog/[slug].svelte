@@ -49,7 +49,7 @@
       alt={post.title}
       width={1120}
       height={695}
-      innerClassName="shadow-lg mb-12 rounded-md h-[695px] object-cover"
+      innerClassName="shadow-lg mb-12 rounded-md"
     />
 
     <div
