@@ -33,6 +33,26 @@
       U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
 
+  @font-face {
+    font-family: "JetBrains Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/jetbrains-mono-regular.woff2) format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+      U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: "JetBrains Mono";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(/fonts/jetbrains-mono-semibold.woff2) format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+      U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
   body {
     @apply text-sm sm:text-base leading-6 text-gray-700 selection:bg-emerald-200 selection:text-gray-800;
   }
@@ -67,4 +87,85 @@
   .link {
     @apply text-gray-900 font-medium border-b-2 border-emerald-400 hover:text-emerald-500 transition-colors focus:outline-none focus:text-emerald-500;
   }
+}
+
+.hljs {
+  @apply text-gray-800;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  @apply text-red-600;
+}
+
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  @apply text-purple-500;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  @apply text-blue-600;
+}
+
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  @apply text-gray-800;
+}
+
+.hljs-built_in,
+.hljs-symbol {
+  @apply text-orange-600;
+}
+
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  @apply text-gray-500;
+}
+
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  @apply text-orange-600;
+}
+
+.hljs-subst {
+  @apply text-gray-800;
+}
+
+.hljs-section {
+  @apply text-blue-600;
+  font-weight: bold;
+}
+
+.hljs-bullet {
+  @apply text-yellow-900;
+}
+
+.hljs-emphasis {
+  @apply text-gray-800;
+  font-style: italic;
+}
+
+.hljs-strong {
+  @apply text-gray-800;
+  font-weight: bold;
 }
