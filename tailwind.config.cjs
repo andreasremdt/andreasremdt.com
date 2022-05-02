@@ -13,13 +13,12 @@ module.exports = {
             pre: {
               backgroundColor: theme("colors.gray.50"),
               fontFamily: theme("fontFamily.mono"),
+              color: theme("colors.gray.800"),
             },
             code: {
-              backgroundColor: theme("colors.gray.100"),
-              paddingInline: 7,
-              fontWeight: 600,
-              color: theme("colors.gray.800"),
-              fontFamily: theme("fontFamily.mono"),
+              backgroundColor: theme("colors.gray.50"),
+              padding: "0 .5rem",
+              borderRadius: 4,
             },
             "code::before": {
               content: "",

@@ -18,9 +18,7 @@ export interface Post {
   slug: string;
   published: string;
   image: Image;
-  content: {
-    html: string;
-  };
+  content: string;
   externalUrl: string;
 }
 

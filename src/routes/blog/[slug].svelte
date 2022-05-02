@@ -1,16 +1,15 @@
 <script context="module" lang="ts">
+  import { marked } from "marked";
   import { getGraphCMS } from "$lib/utils";
 
   export async function load({ params }) {
-    const data = await getGraphCMS().request(
+    const { post } = await getGraphCMS().request(
       `
       query GetPostBySlug($slug: String!) {
         post(where: {slug: $slug}) {
-          content {
-            html
-          }
           published
           title
+          content_markdown
           externalUrl
           image {
             webp: url(
@@ -27,22 +26,28 @@
     );
 
     return {
-      props: data,
+      props: {
+        post: {
+          ...post,
+          content: marked.parse(post.content_markdown),
+        },
+      },
     };
   }
 </script>
 
 <script lang="ts">
   import { onMount } from "svelte";
-  import hljs from "highlight.js";
+  import * as Prism from "prismjs";
   import LazyImage from "$lib/components/lazy-image.svelte";
   import PageHeader from "$lib/components/page-header.svelte";
   import type { Post } from "$lib/types";
+  import "$lib/styles/prism.css";
 
   export let post: Post;
 
   onMount(() => {
-    hljs.highlightAll();
+    Prism.highlightAll();
   });
 </script>
 
@@ -59,7 +64,7 @@
     />
 
     <div class="prose prose-sm sm:prose-base mx-auto">
-      {@html post.content.html}
+      {@html post.content}
     </div>
 
     {#if post.externalUrl}
