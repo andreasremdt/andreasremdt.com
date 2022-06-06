@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "graphql": "^16.5.0",
-    "graphql-request": "^4.2.0",
+    "graphql-request": "^4.3.0",
     "marked": "^4.0.16",
     "prismjs": "^1.28.0"
   }
