@@ -57,8 +57,8 @@ export default async function handler(req, res) {
       throw new Error("something went wrong, please try again");
     }
 
-    res.send(200).json({ message: "OK" });
+    res.status(200).json({ message: "OK" });
   } catch (ex) {
-    res.send(500).json({ message: ex.message });
+    res.status(500).json({ message: ex.message });
   }
 }
