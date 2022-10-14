@@ -1,0 +1,7 @@
+---
+export type Props = astroHTML.JSX.AnchorHTMLAttributes;
+
+const props = Astro.props;
+---
+
+<a {...props} target="_blank" rel="nofollow noreferrer"><slot /></a>

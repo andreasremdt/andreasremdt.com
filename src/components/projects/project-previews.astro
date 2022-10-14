@@ -1,4 +1,5 @@
 ---
+import ExternalLink from "components/external-link.astro";
 import Image from "components/image.astro";
 import { getAllProjects } from "lib/hygraph";
 
@@ -33,12 +34,7 @@ const projects = await getAllProjects();
         <a href={`/projects/${project.slug}/`} class="btn btn-primary">
           Details
         </a>
-        <a
-          href={project.publicUrl}
-          target="_blank"
-          class="btn btn-secondary"
-          rel="noopener nofollow noreferrer"
-        >
+        <ExternalLink href={project.publicUrl} class="btn btn-secondary">
           Visit website
           <svg
             aria-hidden="true"
@@ -53,7 +49,7 @@ const projects = await getAllProjects();
             />
             <path fill="currentColor" d="M11 8l5 5-6 6 3 3 6-6 5 5v-13z" />
           </svg>
-        </a>
+        </ExternalLink>
       </div>
     </article>
   ))

@@ -23,7 +23,7 @@ const posts = await getAllPosts();
         <h2 class="font-serif text-xl font-bold text-slate-900 md:text-2xl">
           {post.title}
         </h2>
-        <time datetime={post.published} class="tag">
+        <time datetime={post.published} class="meta">
           Published on {formatDate(post.published)}
         </time>
         <p class="my-6">{post.excerpt}</p>

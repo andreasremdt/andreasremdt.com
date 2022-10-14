@@ -1,8 +1,42 @@
 ---
 import Image from "components/image.astro";
+import ExternalLink from "components/external-link.astro";
 import { getPortrait } from "lib/hygraph";
 
 const portrait = await getPortrait();
+
+const links = [
+  {
+    title: "GitHub",
+    icon: "github",
+    href: "https://github.com/andreasremdt",
+  },
+  {
+    title: "LinkedIn",
+    icon: "linkedin",
+    href: "https://linkedin.com/in/andreasremdt",
+  },
+  {
+    title: "Toptal",
+    icon: "toptal",
+    href: "https://www.toptal.com/resume/andreas-remdt",
+  },
+  {
+    title: "Medium",
+    icon: "medium",
+    href: "https://medium.com/@andreas.remdt",
+  },
+  {
+    title: "500px",
+    icon: "500px",
+    href: "https://500px.com/andreasremdt",
+  },
+  {
+    title: "Frontend Mentor",
+    icon: "frontendmentor",
+    href: "https://www.frontendmentor.io/profile/andreasremdt",
+  },
+];
 ---
 
 <section class="section flex flex-col sm:flex-row gap-8 lg:gap-16">
@@ -29,94 +63,29 @@ const portrait = await getPortrait();
     </p>
 
     <div>
-      <a
+      <ExternalLink
         href="https://www.toptal.com/resume/andreas-remdt"
-        target="_blank"
-        class="btn btn-primary"
-        rel="noopener nofollow noreferrer">Hire me</a
+        class="btn btn-primary">Hire me</ExternalLink
       >
       <a href="/projects/" class="btn btn-secondary">View my work</a>
     </div>
 
     <ul class="flex gap-x-3 text-slate-900 mt-8 lg:mt-16">
-      <li>
-        <a
-          href="https://github.com/andreasremdt"
-          target="_blank"
-          class="hover:text-emerald-400 focus:text-emerald-400 outline-none transition-colors"
-          rel="noopener nofollow noreferrer"
-          title="GitHub"
-        >
-          <svg width="24" height="24" aria-hidden="true">
-            <use href="/icons/profile-icons.svg#github"></use>
-          </svg>
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://linkedin.com/in/andreasremdt"
-          target="_blank"
-          class="hover:text-emerald-400 focus:text-emerald-400 outline-none transition-colors"
-          rel="noopener nofollow noreferrer"
-          title="LinkedIn"
-        >
-          <svg width="24" height="24" aria-hidden="true">
-            <use href="/icons/profile-icons.svg#linkedin"></use>
-          </svg>
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.toptal.com/resume/andreas-remdt"
-          target="_blank"
-          class="hover:text-emerald-400 focus:text-emerald-400 outline-none transition-colors"
-          rel="noopener nofollow noreferrer"
-          title="Toptal"
-        >
-          <svg width="24" height="24" aria-hidden="true">
-            <use href="/icons/profile-icons.svg#toptal"></use>
-          </svg>
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://medium.com/@andreas.remdt"
-          target="_blank"
-          class="hover:text-emerald-400 focus:text-emerald-400 outline-none transition-colors"
-          rel="noopener nofollow noreferrer"
-          title="Medium"
-        >
-          <svg width="24" height="24" aria-hidden="true">
-            <use href="/icons/profile-icons.svg#medium"></use>
-          </svg>
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://500px.com/andreasremdt"
-          target="_blank"
-          class="hover:text-emerald-400 focus:text-emerald-400 outline-none transition-colors"
-          rel="noopener nofollow noreferrer"
-          title="500px"
-        >
-          <svg width="24" height="24" aria-hidden="true">
-            <use href="/icons/profile-icons.svg#500px"></use>
-          </svg>
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.frontendmentor.io/profile/andreasremdt"
-          target="_blank"
-          class="hover:text-emerald-400 focus:text-emerald-400 outline-none transition-colors"
-          rel="noopener nofollow noreferrer"
-          title="Frontend Mentor"
-        >
-          <svg width="24" height="24" aria-hidden="true">
-            <use href="/icons/profile-icons.svg#frontendmentor"></use>
-          </svg>
-        </a>
-      </li>
+      {
+        links.map((link) => (
+          <li>
+            <ExternalLink
+              href={link.href}
+              class="outline-none transition-colors hover:text-emerald-400 focus:text-emerald-400"
+              title={link.title}
+            >
+              <svg width="24" height="24" aria-hidden="true">
+                <use href={`/icons/profile-icons.svg#${link.icon}`} />
+              </svg>
+            </ExternalLink>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </section>
