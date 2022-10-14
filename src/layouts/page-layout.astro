@@ -1,0 +1,17 @@
+---
+import type { Meta } from "types/index";
+import PageTitle from "components/page-title.astro";
+import Layout from "layouts/layout.astro";
+
+export type Props = Meta & { class?: string };
+
+const { title, description, class: className } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <PageTitle title={title} description={description} />
+
+  <div class:list={["section", className]}>
+    <slot />
+  </div>
+</Layout>

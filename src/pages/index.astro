@@ -1,0 +1,21 @@
+---
+import Layout from "layouts/layout.astro";
+import Hero from "components/home/hero.astro";
+import Biography from "components/home/biography.astro";
+import Technologies from "components/home/technologies.astro";
+import FeaturedProjects from "components/home/featured-projects.astro";
+import BlogPosts from "components/home/blog-posts.astro";
+import Contact from "components/home/contact.astro";
+import { getPageMeta } from "lib/hygraph";
+
+const meta = await getPageMeta("index");
+---
+
+<Layout title={meta.title} description={meta.description}>
+  <Hero />
+  <Biography />
+  <Technologies />
+  <FeaturedProjects />
+  <BlogPosts />
+  <Contact />
+</Layout>

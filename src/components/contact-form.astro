@@ -1,0 +1,143 @@
+<form class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto" data-form>
+  <div>
+    <label for="name" class="label">Your name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      class="input"
+      required
+      minlength="5"
+      data-error="Please enter your first and last name."
+      data-validate
+    />
+  </div>
+  <div>
+    <label for="email" class="label">Your email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      class="input"
+      required
+      data-error="Please enter a valid email address."
+      data-validate
+    />
+  </div>
+  <div class="md:col-span-2">
+    <input
+      type="text"
+      name="honeypot"
+      id="honeypot"
+      autocomplete="off"
+      aria-hidden="true"
+      tabindex="-1"
+      hidden
+    />
+
+    <label for="message" class="label">What's up?</label>
+    <textarea
+      id="message"
+      name="message"
+      class="input h-32"
+      required
+      minlength="10"
+      data-error="Please enter at least 10 characters."
+      data-validate></textarea>
+  </div>
+  <button class="btn btn-primary md:col-span-2 justify-self-center" data-submit
+    >Send message</button
+  >
+</form>
+
+<script>
+  const form = document.querySelector("[data-form]") as HTMLFormElement;
+  const inputs = document.querySelectorAll(
+    "[data-validate]"
+  ) as NodeListOf<HTMLInputElement>;
+  const button = document.querySelector("[data-submit]") as HTMLButtonElement;
+
+  function validate(input: HTMLInputElement) {
+    if (!input.checkValidity() && !input.hasAttribute("aria-invalid")) {
+      const error = document.createElement("p");
+
+      error.className = "text-red-400 text-sm font-semibold";
+      error.id = `${input.name}-error`;
+      error.setAttribute("aria-live", "assertive");
+      error.textContent = input.getAttribute("data-error");
+
+      input.setAttribute("aria-invalid", "true");
+      input.setAttribute("aria-describedby", `${input.name}-error`);
+      input.insertAdjacentElement("afterend", error);
+    } else if (input.checkValidity() && input.hasAttribute("aria-invalid")) {
+      input.nextElementSibling?.remove();
+      input.removeAttribute("aria-invalid");
+      input.removeAttribute("aria-describedby");
+    }
+  }
+
+  function sendEmail(data: FormData) {
+    button.textContent = "Sending...";
+    button.disabled = true;
+
+    fetch("/api/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(Object.fromEntries(data)),
+    })
+      .then((response) => response.json())
+      .then(() => {
+        button.textContent = "Your message has been sent!";
+
+        for (const input of inputs) {
+          input.disabled = true;
+        }
+      })
+      .catch(() => {
+        button.textContent = "Something went wrong, please try again later.";
+        button.disabled = false;
+      });
+  }
+
+  function handleSubmit(event: SubmitEvent) {
+    event.preventDefault();
+
+    for (const input of inputs) {
+      validate(input);
+    }
+
+    const firstInvalidInput = document.querySelector(
+      '[aria-invalid="true"]'
+    ) as HTMLInputElement;
+
+    if (firstInvalidInput) {
+      firstInvalidInput.focus();
+    } else {
+      sendEmail(new FormData(event.target as HTMLFormElement));
+    }
+  }
+
+  function handleBlur(event: FocusEvent) {
+    const input = event.target as HTMLInputElement;
+
+    validate(input);
+  }
+
+  function handleInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+
+    if (input.hasAttribute("aria-invalid")) {
+      validate(input);
+    }
+  }
+
+  form.setAttribute("novalidate", "true");
+  form.addEventListener("submit", handleSubmit);
+
+  for (const input of inputs) {
+    input.addEventListener("blur", handleBlur);
+    input.addEventListener("input", handleInput);
+  }
+</script>

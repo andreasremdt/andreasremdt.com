@@ -1,0 +1,115 @@
+@font-face {
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(/fonts/merriweather-black.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/inter-semibold.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/inter-regular.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/jetbrains-mono-regular.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/jetbrains-mono-semibold.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  p + p {
+    @apply mt-3;
+  }
+
+  p a {
+    @apply font-semibold text-slate-900 underline transition-colors hover:text-emerald-400 focus:text-emerald-400 focus:outline-none;
+  }
+}
+
+@layer components {
+  .section {
+    @apply mx-auto max-w-6xl px-4 py-16 sm:py-24;
+  }
+
+  .h2 {
+    @apply mb-8 text-center font-serif text-2xl font-bold text-slate-900 md:text-4xl;
+  }
+
+  .meta {
+    @apply text-xs font-semibold uppercase tracking-wider text-slate-500;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded px-4 py-2 text-sm font-semibold shadow-sm transition-colors focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-60 sm:px-6 sm:py-3;
+  }
+
+  .btn-primary {
+    @apply border border-emerald-400 bg-emerald-400 text-slate-900 hover:border-slate-800 hover:bg-slate-800 hover:text-white focus:border-slate-800 focus:bg-slate-800 focus:text-white disabled:hover:border-emerald-400 disabled:hover:bg-emerald-400 disabled:hover:text-slate-900 disabled:focus:border-emerald-400 disabled:focus:bg-emerald-400 disabled:focus:text-slate-900;
+  }
+
+  .btn-secondary {
+    @apply border border-slate-300 bg-white text-slate-800 hover:bg-slate-100 focus-visible:border-gray-800 focus-visible:bg-gray-800 focus-visible:text-white;
+  }
+
+  .label {
+    @apply mb-1 block text-sm font-semibold text-slate-900 md:text-base;
+  }
+
+  .input {
+    @apply w-full rounded border border-slate-300 px-4 py-3 text-sm shadow-sm transition-colors hover:border-slate-600 focus:border-slate-600 focus:outline-none;
+  }
+
+  .input[aria-invalid="true"] {
+    @apply border-red-300 hover:border-red-500 focus:border-red-500;
+    background: transparent url(/icons/error.svg) no-repeat calc(100% - 12px)
+      12px;
+    background-size: 20px;
+  }
+
+  .input:valid {
+    background: transparent url(/icons/check.svg) no-repeat calc(100% - 12px)
+      12px;
+    background-size: 20px;
+  }
+}

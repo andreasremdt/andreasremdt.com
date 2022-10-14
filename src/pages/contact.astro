@@ -1,0 +1,11 @@
+---
+import PageLayout from "layouts/page-layout.astro";
+import ContactForm from "components/contact-form.astro";
+import { getPageMeta } from "lib/hygraph";
+
+const meta = await getPageMeta("contact");
+---
+
+<PageLayout title={meta.title} description={meta.description}>
+  <ContactForm />
+</PageLayout>

@@ -1,0 +1,9 @@
+---
+export type Props = {
+  content: string;
+};
+
+const { content } = Astro.props;
+---
+
+<div set:html={content} class="prose prose-sm sm:prose-base mx-auto"></div>

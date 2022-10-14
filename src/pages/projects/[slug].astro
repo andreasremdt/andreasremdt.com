@@ -1,0 +1,31 @@
+---
+import Image from "components/image.astro";
+import Content from "components/projects/content.astro";
+import Meta from "components/projects/meta.astro";
+import PageLayout from "layouts/page-layout.astro";
+import { getAllProjects, getProjectBySlug } from "lib/hygraph";
+
+const project = await getProjectBySlug(Astro.params.slug as string);
+
+export async function getStaticPaths() {
+  const projects = await getAllProjects();
+
+  return projects.map((project) => ({
+    params: {
+      slug: project.slug,
+    },
+  }));
+}
+---
+
+<PageLayout title={project.title} description={project.excerpt}>
+  <Image
+    image={project.image}
+    alt={project.title}
+    width="1120"
+    height="695"
+    class="shadow-lg mb-12 rounded-md"
+  />
+  <Meta project={project} />
+  <Content content={project.description.html} />
+</PageLayout>

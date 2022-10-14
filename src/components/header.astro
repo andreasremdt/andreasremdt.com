@@ -1,0 +1,68 @@
+---
+import { isLinkActive } from "lib/helpers";
+
+const items = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Projects",
+    href: "/projects/",
+  },
+  {
+    label: "Blog",
+    href: "/blog/",
+  },
+  {
+    label: "Contact",
+    href: "/contact/",
+  },
+];
+---
+
+<header
+  class="sticky -top-px bg-white/80 backdrop-blur-md z-10 transition-shadow"
+  data-header
+>
+  <div
+    class="max-w-6xl mx-auto px-4 flex items-center sm:justify-between relative justify-center gap-2 h-24 flex-col sm:flex-row"
+  >
+    <a
+      href="#content"
+      class="absolute left-1/2 -translate-x-1/2 bg-emerald-400 text-slate-900 px-2 py-1 shadow-md shadow-slate-100 rounded-b-sm top-0 -translate-y-full focus:translate-y-0 outline-none transition-transform hover:underline"
+      >Skip to content</a
+    >
+
+    <span aria-hidden="true" class="font-serif font-bold text-xl text-slate-900"
+      >Andreas Remdt</span
+    >
+
+    <nav class="flex gap-x-8">
+      {
+        items.map((item) => (
+          <a
+            class:list={[
+              "text-slate-900 hover:text-emerald-400 focus:text-emerald-400 outline-none transition-colors",
+              { "font-semibold": isLinkActive(item.href, Astro.url) },
+            ]}
+            href={item.href}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  new IntersectionObserver(
+    ([entry]) => {
+      if (entry) {
+        entry.target.classList.toggle("shadow-md", entry.intersectionRatio < 1);
+      }
+    },
+    { threshold: [1] }
+  ).observe(document.querySelector("[data-header]") as HTMLDivElement);
+</script>

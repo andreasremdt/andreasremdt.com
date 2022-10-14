@@ -1,0 +1,37 @@
+---
+import Image from "components/image.astro";
+import { formatDate } from "lib/helpers";
+import { getAllPosts } from "lib/hygraph";
+
+const posts = await getAllPosts();
+---
+
+{
+  posts.map((post) => (
+    <article class="mt-16 flex flex-col gap-x-8 first-of-type:mt-0 sm:flex-row">
+      <figure class="mb-4 sm:mb-0 sm:w-2/5 sm:flex-shrink-0">
+        <Image
+          image={post.image}
+          alt={post.title}
+          width="450"
+          height="275"
+          class="h-64 w-full rounded-md object-cover shadow-lg"
+        />
+      </figure>
+
+      <div>
+        <h2 class="font-serif text-xl font-bold text-slate-900 md:text-2xl">
+          {post.title}
+        </h2>
+        <time datetime={post.published} class="tag">
+          Published on {formatDate(post.published)}
+        </time>
+        <p class="my-6">{post.excerpt}</p>
+
+        <a href={`/blog/${post.slug}/`} class="btn btn-primary">
+          Read more
+        </a>
+      </div>
+    </article>
+  ))
+}
