@@ -6,8 +6,8 @@ Did you encounter any bugs, got any feedback, or just want to get in touch with 
 
 Built with the following technologies:
 
-- [SvelteKit](https://kit.svelte.dev/)
+- [Astro](https://astro.build/)
 - [Tailwind CSS](tailwindcss.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vercel](https://vercel.com)
-- [GraphCMS](graphcms.com/) & [GraphQL](https://graphql.org/)
+- [Hygraph](https://hygraph.com/)
