@@ -1,4 +1,4 @@
-import type { Project, Post, Meta, Image } from "types/index";
+import type { Project, Post, Meta, Image, Technology } from "types/index";
 import { marked } from "marked";
 
 async function request(query: string) {
@@ -187,4 +187,16 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   `);
 
   return { ...data.post, content: marked(data.post.content_markdown) };
+}
+
+export async function getAllTechnologies(): Promise<Technology[]> {
+  const { data } = await request(`
+    query GetAllTechnologies {
+      technologies {
+        name
+      }
+    }
+  `);
+
+  return data.technologies;
 }

@@ -1,166 +1,24 @@
+---
+import { getAllTechnologies } from "lib/hygraph";
+
+const technologies = await getAllTechnologies();
+---
+
 <section class="section">
   <h2 class="h2">Technologies & Tools</h2>
 
   <ul class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 sm:gap-4">
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#html"></use>
-      </svg>
-      HTML
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#css"></use>
-      </svg>
-      CSS
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#typescript"></use>
-      </svg>
-      TypeScript
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#nodejs"></use>
-      </svg>
-      Node.js
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#react"></use>
-      </svg>
-      React
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#nextjs"></use>
-      </svg>
-      Next.js
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#gatsby"></use>
-      </svg>
-      Gatsby
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#astro"></use>
-      </svg>
-      Astro
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#tailwind"></use>
-      </svg>
-      Tailwind CSS
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#svelte"></use>
-      </svg>
-      Svelte
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#netlify"></use>
-      </svg>
-      Netlify
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#vercel"></use>
-      </svg>
-      Vercel
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#github"></use>
-      </svg>
-      GitHub
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#jest"></use>
-      </svg>
-      Jest
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#cypress"></use>
-      </svg>
-      Cypress
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#eslint"></use>
-      </svg>
-      ESLint
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#graphql"></use>
-      </svg>
-      GraphQL
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#mongodb"></use>
-      </svg>
-      MongoDB
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#figma"></use>
-      </svg>
-      Figma
-    </li>
-    <li
-      class="flex flex-col justify-center items-center py-6 shadow-sm text-sm border border-slate-300 rounded-md"
-    >
-      <svg width="32" height="32" class="mb-3 text-slate-600">
-        <use href="/icons/technology-icons.svg#hygraph"></use>
-      </svg>
-      Hygraph
-    </li>
+    {
+      technologies.map((technology) => (
+        <li class="flex flex-col items-center justify-center rounded-md border border-slate-300 py-6 text-sm shadow-sm">
+          <svg width="32" height="32" class="mb-3 text-slate-700">
+            <use
+              href={`/icons/technology-icons.svg#${technology.name.toLowerCase()}`}
+            />
+          </svg>
+          {technology.name}
+        </li>
+      ))
+    }
   </ul>
 </section>

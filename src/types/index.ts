@@ -31,3 +31,7 @@ export type Meta = {
   title: string;
   description: string;
 };
+
+export type Technology = {
+  name: string;
+};
