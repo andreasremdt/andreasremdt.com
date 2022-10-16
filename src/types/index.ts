@@ -19,6 +19,7 @@ export type Project = {
 
 export type Post = {
   title: string;
+  description: string;
   excerpt: string;
   slug: string;
   published: string;

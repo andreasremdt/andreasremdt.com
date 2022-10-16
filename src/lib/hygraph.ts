@@ -172,6 +172,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
       post(where: { slug: "${slug}" }) {
         published
         title
+        description
         content_markdown
         externalUrl
         image {

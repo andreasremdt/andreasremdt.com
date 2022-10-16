@@ -3,7 +3,6 @@ import Image from "components/image.astro";
 import Content from "components/blog/content.astro";
 import PageLayout from "layouts/page-layout.astro";
 import { getAllPosts, getPostBySlug } from "lib/hygraph";
-import { formatDate } from "lib/helpers";
 
 const post = await getPostBySlug(Astro.params.slug as string);
 
@@ -18,10 +17,7 @@ export async function getStaticPaths() {
 }
 ---
 
-<PageLayout
-  title={post.title}
-  description={`Published on ${formatDate(post.published)}`}
->
+<PageLayout title={post.title} description={post.description}>
   <figure>
     <Image
       image={post.image}
