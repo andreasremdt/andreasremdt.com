@@ -7,9 +7,10 @@ import "styles/base.css";
 export type Props = {
   title: string;
   description: string;
+  image?: string;
 };
 
-const { title, description } = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -21,6 +22,15 @@ const { title, description } = Astro.props;
     <meta name="theme-color" content="#ffffff" />
     <meta name="author" content="Andreas Remdt" />
     <meta name="description" content={description} />
+
+    <meta
+      property="og:url"
+      content={`https://andreasremdt.com${Astro.url.pathname}`}
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${title} - Andreas Remdt`} />
+    <meta property="og:description" content={description} />
+    {image && <meta property="og:image" content={image} />}
 
     <title>{title} - Andreas Remdt</title>
 
