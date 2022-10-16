@@ -25,7 +25,7 @@ const posts = await getFeaturedPosts();
           <h3 class="mb-1 font-serif text-xl font-bold text-gray-800 md:text-2xl">
             {post.title}
           </h3>
-          <time datetime={post.published} class="tag">
+          <time datetime={post.published} class="meta">
             Published on
             {formatDate(post.published)}
           </time>
