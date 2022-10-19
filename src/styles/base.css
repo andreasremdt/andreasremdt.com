@@ -63,7 +63,7 @@
   }
 
   p a {
-    @apply font-semibold text-slate-900 underline transition-colors hover:text-emerald-400 focus:text-emerald-400 focus:outline-none;
+    @apply font-semibold text-slate-900 underline transition-colors hover:text-emerald-400 focus-visible:text-emerald-400 focus-visible:outline-none;
   }
 }
 
@@ -85,11 +85,11 @@
   }
 
   .btn-primary {
-    @apply border border-emerald-400 bg-emerald-400 text-slate-900 hover:border-slate-800 hover:bg-slate-800 hover:text-white focus:border-slate-800 focus:bg-slate-800 focus:text-white disabled:hover:border-emerald-400 disabled:hover:bg-emerald-400 disabled:hover:text-slate-900 disabled:focus:border-emerald-400 disabled:focus:bg-emerald-400 disabled:focus:text-slate-900;
+    @apply border border-emerald-400 bg-emerald-400 text-slate-900 hover:border-slate-800 hover:bg-slate-800 hover:text-white focus-visible:border-slate-800 focus-visible:bg-slate-800 focus-visible:text-white disabled:hover:border-emerald-400 disabled:hover:bg-emerald-400 disabled:hover:text-slate-900 disabled:focus-visible:border-emerald-400 disabled:focus-visible:bg-emerald-400 disabled:focus-visible:text-slate-900;
   }
 
   .btn-secondary {
-    @apply border border-slate-300 bg-white text-slate-800 hover:bg-slate-100 focus-visible:border-gray-800 focus-visible:bg-gray-800 focus-visible:text-white;
+    @apply border border-slate-300 bg-white text-slate-800 hover:bg-slate-100 focus-visible:border-slate-800 focus-visible:bg-slate-800 focus-visible:text-white;
   }
 
   .label {
@@ -111,5 +111,13 @@
     background: transparent url(/icons/check.svg) no-repeat calc(100% - 12px)
       12px;
     background-size: 20px;
+  }
+
+  .bullet {
+    @apply block aspect-square w-6 rounded-full border border-slate-300 bg-white shadow-sm outline-none transition-colors hover:bg-slate-100 focus-visible:border-slate-800 focus-visible:bg-slate-100 focus-visible:ring-1 focus-visible:ring-slate-800 focus-visible:ring-offset-1;
+  }
+
+  .bullet[data-active] {
+    @apply border-slate-800 bg-slate-800 hover:bg-slate-600 focus-visible:bg-slate-600;
   }
 }

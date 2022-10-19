@@ -1,4 +1,12 @@
-import type { Project, Post, Meta, Image, Technology } from "types/index";
+import type {
+  Project,
+  Post,
+  Meta,
+  Image,
+  Technology,
+  Testimonial,
+} from "types/index";
+
 import { marked } from "marked";
 
 async function request(query: string) {
@@ -12,6 +20,22 @@ async function request(query: string) {
   });
 
   return response.json();
+}
+
+export async function getAllTestimonials(): Promise<Testimonial[]> {
+  const { data } = await request(`
+    query GetAllTestimonials {
+      testimonials {
+        website
+        jobTitle
+        company
+        author
+        content
+      }
+    }
+  `);
+
+  return data.testimonials;
 }
 
 export async function getPageMeta(slug: string): Promise<Meta> {

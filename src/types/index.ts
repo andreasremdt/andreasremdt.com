@@ -36,3 +36,11 @@ export type Meta = {
 export type Technology = {
   name: string;
 };
+
+export type Testimonial = {
+  content: string;
+  author: string;
+  jobTitle: string;
+  company?: string;
+  website?: string;
+};

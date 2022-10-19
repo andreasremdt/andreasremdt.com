@@ -4,6 +4,7 @@ import Hero from "components/home/hero.astro";
 import Biography from "components/home/biography.astro";
 import Technologies from "components/home/technologies.astro";
 import FeaturedProjects from "components/home/featured-projects.astro";
+import Testimonials from "components/home/testimonials.astro";
 import BlogPosts from "components/home/blog-posts.astro";
 import Contact from "components/home/contact.astro";
 import { getPageMeta } from "lib/hygraph";
@@ -16,6 +17,7 @@ const meta = await getPageMeta("index");
   <Biography />
   <Technologies />
   <FeaturedProjects />
+  <Testimonials />
   <BlogPosts />
   <Contact />
 </Layout>

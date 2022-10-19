@@ -1,0 +1,84 @@
+---
+import ExternalLink from "components/external-link.astro";
+import { getAllTestimonials } from "lib/hygraph";
+
+const testimonials = await getAllTestimonials();
+---
+
+<section class="section">
+  <h2 class="h2">Testimonials</h2>
+
+  <div
+    class="flex gap-x-12 overflow-hidden snap-x snap-mandatory scroll-smooth"
+  >
+    {
+      testimonials.map((testimonial, index) => (
+        <figure
+          class="shrink-0 basis-full snap-center text-center"
+          id={`testimonial-${index}`}
+        >
+          <blockquote>
+            <p class="mx-auto max-w-2xl">{testimonial.content}</p>
+          </blockquote>
+          <figcaption class="mt-4">
+            <p>
+              <b>{testimonial.author}</b> / {testimonial.jobTitle}
+              {testimonial.company && (
+                <>
+                  -{" "}
+                  <ExternalLink href={testimonial.website}>
+                    {testimonial.company}
+                  </ExternalLink>
+                </>
+              )}
+            </p>
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+
+  <nav class="flex gap-x-2 justify-center mt-6">
+    {
+      testimonials.map((_, index) => (
+        <a
+          href={`#testimonial-${index}`}
+          data-anchor
+          data-active={index === 0 ? true : undefined}
+          class="bullet"
+        >
+          <span class="sr-only">Go to testimonal {index}</span>
+        </a>
+      ))
+    }
+  </nav>
+</section>
+
+<script>
+  const anchors = document.querySelectorAll("[data-anchor]");
+
+  function handleClick(event: Event) {
+    const anchor = event.target as HTMLAnchorElement;
+    const testimonial = document.querySelector(anchor.getAttribute("href")!);
+
+    anchors.forEach((anchor) => anchor.removeAttribute("data-active"));
+
+    if (testimonial) {
+      event.preventDefault();
+
+      anchor.setAttribute("data-active", "true");
+
+      // @ts-ignore
+      if (testimonial.scrollIntoViewIfNeeded) {
+        // @ts-ignore
+        testimonial.scrollIntoViewIfNeeded();
+      } else {
+        testimonial.scrollIntoView({ block: "center" });
+      }
+    }
+  }
+
+  anchors.forEach((anchor) => {
+    anchor.addEventListener("click", handleClick);
+  });
+</script>
