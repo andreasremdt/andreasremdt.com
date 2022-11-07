@@ -27,7 +27,7 @@
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^2.1.1",
     "@tailwindcss/typography": "^0.5.7",
-    "astro": "^1.6.2",
+    "astro": "^1.6.3",
     "astro-compress": "^1.1.1",
     "marked": "^4.2.2",
     "prismjs": "^1.29.0",
