@@ -1,19 +1,27 @@
 ---
 import Image from "components/image.astro";
 import { getGalleryBySlug } from "lib/hygraph";
+import "@fancyapps/ui/dist/fancybox.css";
 
 const images = await getGalleryBySlug("photography-collection");
 ---
 
-<figure data-gallery>
+<figure
+  data-gallery
+  class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+>
   {
     images.map((image) => (
-      <a href={image.original} class="overflow-hidden rounded-md shadow-lg ">
+      <a
+        href={image.original}
+        class="block h-48 overflow-hidden rounded-md shadow-lg outline-none transition-all duration-500 ease-in-out hover:scale-110 hover:opacity-80 focus:scale-110 focus:opacity-80"
+        data-fancybox="gallery"
+      >
         <Image
           image={image}
           width="300"
           height="300"
-          class="transition-all duration-500 ease-in-out hover:scale-110 hover:opacity-80 focus:scale-110 focus:opacity-80"
+          class="h-full w-full object-cover object-center"
         />
       </a>
     ))
@@ -21,10 +29,7 @@ const images = await getGalleryBySlug("photography-collection");
 </figure>
 
 <script>
-  import Macy from "macy";
+  import { Fancybox } from "@fancyapps/ui";
 
-  Macy({
-    container: document.querySelector("[data-gallery]"),
-    margin: 15,
-  });
+  Fancybox.bind("[data-fancybox]", {});
 </script>

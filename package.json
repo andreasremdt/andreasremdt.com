@@ -17,7 +17,6 @@
   "version": "5.0.0",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -26,6 +25,7 @@
   "dependencies": {
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^2.1.2",
+    "@fancyapps/ui": "^4.0.31",
     "@tailwindcss/typography": "^0.5.7",
     "astro": "^1.6.3",
     "astro-compress": "^1.1.1",

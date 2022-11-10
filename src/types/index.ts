@@ -1,6 +1,7 @@
 export type Image = {
   jpg: string;
   webp: string;
+  original?: string;
 };
 
 export type Project = {

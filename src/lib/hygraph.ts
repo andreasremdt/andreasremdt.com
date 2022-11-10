@@ -225,3 +225,23 @@ export async function getAllTechnologies(): Promise<Technology[]> {
 
   return data.technologies;
 }
+
+export async function getGalleryBySlug(slug: string): Promise<Image[]> {
+  const { data } = await request(`
+    query GetGalleryBySlug {
+      gallery(where: {name: "${slug}"}) {
+        images {
+          webp: url(
+            transformation: {image: {resize: {width: 300, fit: max}}, document: {output: {format: webp}}}
+          )
+          jpg: url(
+            transformation: {image: {resize: {width: 300, fit: max}}}
+          )
+          original: url
+        }
+      }
+    }
+  `);
+
+  return data.gallery.images;
+}
