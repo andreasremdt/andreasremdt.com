@@ -1,0 +1,11 @@
+---
+import Gallery from "components/photography/gallery.astro";
+import PageLayout from "layouts/page-layout.astro";
+import { getPageMeta } from "lib/hygraph";
+
+const meta = await getPageMeta("photography");
+---
+
+<PageLayout title={meta.title} description={meta.description}>
+  <Gallery />
+</PageLayout>
