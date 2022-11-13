@@ -12,3 +12,13 @@ export function isLinkActive(href: string, astroUrl: URL) {
     (href !== "/" && astroUrl.pathname.includes(href as string))
   );
 }
+
+export function getButtonText(url: string) {
+  if (url.includes("css-tricks")) {
+    return "Read the complete article on CSS-Tricks";
+  } else if (url.includes("youtube")) {
+    return "Watch on YouTube";
+  } else {
+    return "";
+  }
+}

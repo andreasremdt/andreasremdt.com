@@ -20,17 +20,21 @@ export async function getStaticPaths() {
 <PageLayout
   title={post.title}
   description={post.description}
-  image={post.image.jpg}
+  image={post.image?.jpg}
 >
-  <figure>
-    <Image
-      image={post.image}
-      alt={post.title}
-      width="1120"
-      height="695"
-      class="shadow-lg mb-12 rounded-md"
-    />
-  </figure>
+  {
+    post.image && (
+      <figure>
+        <Image
+          image={post.image}
+          alt={post.title}
+          width="1120"
+          height="695"
+          class="mb-12 rounded-md shadow-lg"
+        />
+      </figure>
+    )
+  }
 
   <Content content={post.content} externalUrl={post.externalUrl} />
 </PageLayout>

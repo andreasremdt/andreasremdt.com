@@ -28,6 +28,15 @@ module.exports = {
             "code::after": {
               content: "",
             },
+            iframe: {
+              borderRadius: "0.375rem",
+              boxShadow:
+                "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+              width: "100%",
+              height: "auto",
+              aspectRatio: "16/9",
+              outline: "none",
+            },
             h2: {
               fontFamily: theme("fontFamily.serif"),
               fontWeight: "bold",

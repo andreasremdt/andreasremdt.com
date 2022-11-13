@@ -9,15 +9,17 @@ const posts = await getAllPosts();
 {
   posts.map((post) => (
     <article class="mt-16 flex flex-col gap-x-8 first-of-type:mt-0 sm:flex-row">
-      <figure class="mb-4 sm:mb-0 sm:w-2/5 sm:flex-shrink-0">
-        <Image
-          image={post.image}
-          alt={post.title}
-          width="450"
-          height="275"
-          class="h-64 w-full rounded-md object-cover shadow-lg"
-        />
-      </figure>
+      {post.image && (
+        <figure class="mb-4 sm:mb-0 sm:w-2/5 sm:flex-shrink-0">
+          <Image
+            image={post.image}
+            alt={post.title}
+            width="450"
+            height="275"
+            class="h-64 w-full rounded-md object-cover shadow-lg"
+          />
+        </figure>
+      )}
 
       <div>
         <h2 class="font-serif text-xl font-bold text-slate-900 md:text-2xl">

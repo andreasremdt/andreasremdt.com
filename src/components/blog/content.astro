@@ -1,5 +1,6 @@
 ---
 import ExternalLink from "components/external-link.astro";
+import { getButtonText } from "lib/helpers";
 import "styles/prism.css";
 
 export type Props = {
@@ -10,13 +11,13 @@ export type Props = {
 const { content, externalUrl } = Astro.props;
 ---
 
-<div set:html={content} class="prose prose-sm sm:prose-base mx-auto"></div>
+<div set:html={content} class="prose prose-sm sm:prose-base mx-auto" />
 
 {
   externalUrl && (
     <div class="mt-8 flex justify-center">
       <ExternalLink href={externalUrl} class="btn btn-primary">
-        Read the complete article on CSS-Tricks
+        {getButtonText(externalUrl)}
         <svg
           aria-hidden="true"
           viewBox="0 0 32 32"
