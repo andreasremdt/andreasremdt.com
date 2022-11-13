@@ -120,4 +120,20 @@
   .bullet[data-active] {
     @apply border-slate-800 bg-slate-800 hover:bg-slate-600 focus-visible:bg-slate-600;
   }
+
+  .menu-toggle:is(.is-open) span:nth-child(1) {
+    @apply top-[10px] rotate-[135deg];
+  }
+
+  .menu-toggle:is(.is-open) span:nth-child(2) {
+    @apply -left-16 opacity-0;
+  }
+
+  .menu-toggle:is(.is-open) span:nth-child(3) {
+    @apply top-[10px] -rotate-[135deg];
+  }
+
+  .menu:is(.is-open) {
+    @apply pointer-events-auto scale-100 opacity-100;
+  }
 }

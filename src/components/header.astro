@@ -30,7 +30,7 @@ const items = [
   data-header
 >
   <div
-    class="max-w-6xl mx-auto px-4 flex items-center sm:justify-between relative justify-center gap-2 h-24 flex-col sm:flex-row"
+    class="max-w-6xl mx-auto px-4 flex items-center justify-between gap-2 h-24 flex-row"
   >
     <a
       href="#content"
@@ -42,7 +42,29 @@ const items = [
       >Andreas Remdt</span
     >
 
-    <nav class="flex gap-x-8">
+    <button
+      type="button"
+      class="sm:hidden relative z-20 h-5 w-10 transition-all ease-in-out menu-toggle outline-none focus:text-emerald-400"
+      aria-label="Open mobile menu"
+      data-action="toggle-menu"
+    >
+      <span
+        aria-hidden="true"
+        class="absolute left-0 block h-[2px] w-full bg-current transition-all ease-in-out top-0"
+      ></span>
+      <span
+        aria-hidden="true"
+        class="absolute left-0 block h-[2px] w-full bg-current transition-all ease-in-out top-[10px]"
+      ></span>
+      <span
+        aria-hidden="true"
+        class="absolute left-0 block h-[2px] w-full bg-current transition-all ease-in-out top-5"
+      ></span>
+    </button>
+    <nav
+      class="flex gap-8 text-xl sm:text-base justify-center items-center flex-col sm:flex-row fixed h-screen sm:h-auto inset-0 sm:static bg-white sm:bg-transparent z-10 menu pointer-events-none sm:pointer-events-auto scale-90 sm:scale-100 opacity-0 sm:opacity-100 transition-all duration-200 ease-in-out"
+      data-element="menu"
+    >
       {
         items.map((item) => (
           <a
@@ -61,6 +83,17 @@ const items = [
 </header>
 
 <script>
+  const toggle = document.querySelector(
+    '[data-action="toggle-menu"]'
+  ) as HTMLElement;
+  const menu = document.querySelector('[data-element="menu"]') as HTMLElement;
+  const links = menu.querySelectorAll("a") as NodeListOf<HTMLAnchorElement>;
+  const firstLink = links[0] as HTMLAnchorElement;
+  const lastLink = links[links.length - 1] as HTMLAnchorElement;
+  const mediaQuery = matchMedia("(max-width: 640px)");
+
+  let menuVisible = false;
+
   new IntersectionObserver(
     ([entry]) => {
       if (entry) {
@@ -69,4 +102,65 @@ const items = [
     },
     { threshold: [1] }
   ).observe(document.querySelector("[data-header]") as HTMLDivElement);
+
+  function toggleMenu() {
+    menuVisible = !menuVisible;
+
+    menu.classList.toggle("is-open");
+    menu.setAttribute("aria-hidden", String(!menuVisible));
+    toggle.classList.toggle("is-open");
+    toggle.setAttribute(
+      "aria-label",
+      `${menuVisible ? "Close" : "Open"} mobile menu`
+    );
+    toggle.setAttribute("aria-expanded", String(menuVisible));
+    links.forEach((link) =>
+      link.setAttribute("tabindex", menuVisible ? "0" : "-1")
+    );
+
+    if (menuVisible) {
+      firstLink.focus();
+    } else {
+      toggle.focus();
+    }
+  }
+
+  function focusTrab(event: KeyboardEvent) {
+    if (event.shiftKey) {
+      if (document.activeElement === toggle) {
+        event.preventDefault();
+        lastLink.focus();
+      }
+    } else if (document.activeElement === lastLink) {
+      event.preventDefault();
+      toggle.focus();
+    }
+  }
+
+  function handleKeyDown(event: KeyboardEvent) {
+    if (event.key === "Escape" && menuVisible) {
+      toggleMenu();
+    }
+
+    if (event.key === "Tab" && menuVisible) {
+      focusTrab(event);
+    }
+  }
+
+  function handleMediaChange(event: MediaQueryList | MediaQueryListEvent) {
+    if (event.matches) {
+      toggle.setAttribute("aria-expanded", String(menuVisible));
+      links.forEach((link) =>
+        link.setAttribute("tabindex", menuVisible ? "0" : "-1")
+      );
+    } else {
+      links.forEach((link) => link.setAttribute("tabindex", "0"));
+    }
+  }
+
+  toggle.addEventListener("click", toggleMenu);
+  document.addEventListener("keydown", handleKeyDown);
+  mediaQuery.addEventListener("change", handleMediaChange);
+
+  handleMediaChange(mediaQuery);
 </script>
