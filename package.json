@@ -23,10 +23,10 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^1.0.1",
-    "@astrojs/tailwind": "^2.1.3",
+    "@astrojs/tailwind": "^3.0.1",
     "@fancyapps/ui": "^4.0.31",
     "@tailwindcss/typography": "^0.5.9",
-    "astro": "^1.9.2",
+    "astro": "^2.0.12",
     "astro-compress": "^1.1.32",
     "marked": "^4.2.12",
     "prismjs": "^1.29.0",
