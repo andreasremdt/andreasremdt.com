@@ -8,7 +8,11 @@ export type Props = astroHTML.JSX.ImgHTMLAttributes & {
 const { image, loading = "lazy", ...props } = Astro.props;
 ---
 
-<picture>
-  <source srcset={image.webp} type="image/webp" />
-  <img {...props} src={image.jpg} loading={loading} />
-</picture>
+{
+  image && (
+    <picture>
+      <source srcset={image.webp} type="image/webp" />
+      <img {...props} src={image.jpg} loading={loading} />
+    </picture>
+  )
+}
