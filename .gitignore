@@ -1,6 +1,7 @@
 # build output
 dist/
 .output/
+puppeteer/screenshots/*.png
 
 # dependencies
 node_modules/
