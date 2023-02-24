@@ -1,5 +1,6 @@
 ---
 import { isLinkActive } from "lib/helpers";
+import ColorSchemeSwitch from "./color-scheme-switch.astro";
 
 const items = [
   {
@@ -26,50 +27,52 @@ const items = [
 ---
 
 <header
-  class="sticky -top-px bg-white/80 backdrop-blur-md z-10 transition-shadow"
+  class="sticky -top-px z-10 bg-white/80 backdrop-blur-md transition-shadow dark:bg-slate-900/80"
   data-header
 >
   <div
-    class="max-w-6xl mx-auto px-4 flex items-center justify-between gap-2 h-24 flex-row"
+    class="mx-auto flex h-24 max-w-6xl flex-row items-center justify-between gap-2 px-4"
   >
     <a
       href="#content"
-      class="absolute left-1/2 -translate-x-1/2 bg-emerald-400 text-slate-900 px-2 py-1 shadow-md shadow-slate-100 rounded-b-sm top-0 -translate-y-full focus:translate-y-0 outline-none transition-transform hover:underline"
+      class="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-full rounded-b-sm bg-emerald-400 px-2 py-1 text-slate-900 shadow-md shadow-slate-100 outline-none transition-transform hover:underline focus:translate-y-0 dark:shadow-slate-700"
       >Skip to content</a
     >
 
-    <span aria-hidden="true" class="font-serif font-bold text-xl text-slate-900"
+    <span
+      aria-hidden="true"
+      class="font-serif text-xl font-bold text-slate-900 dark:text-white"
       >Andreas Remdt</span
     >
 
     <button
       type="button"
-      class="sm:hidden relative z-20 h-5 w-10 transition-all ease-in-out menu-toggle outline-none focus:text-emerald-400"
+      class="menu-toggle relative z-20 h-5 w-10 outline-none transition-all ease-in-out focus:text-emerald-400 sm:hidden"
       aria-label="Open mobile menu"
       data-action="toggle-menu"
     >
       <span
         aria-hidden="true"
-        class="absolute left-0 block h-[2px] w-full bg-current transition-all ease-in-out top-0"
+        class="absolute left-0 top-0 block h-[2px] w-full bg-current transition-all ease-in-out"
       ></span>
       <span
         aria-hidden="true"
-        class="absolute left-0 block h-[2px] w-full bg-current transition-all ease-in-out top-[10px]"
+        class="absolute left-0 top-[10px] block h-[2px] w-full bg-current transition-all ease-in-out"
       ></span>
       <span
         aria-hidden="true"
-        class="absolute left-0 block h-[2px] w-full bg-current transition-all ease-in-out top-5"
+        class="absolute left-0 top-5 block h-[2px] w-full bg-current transition-all ease-in-out"
       ></span>
     </button>
     <nav
-      class="flex gap-8 text-xl sm:text-base justify-center items-center flex-col sm:flex-row fixed h-screen sm:h-auto inset-0 sm:static bg-white sm:bg-transparent z-10 menu pointer-events-none sm:pointer-events-auto scale-90 sm:scale-100 opacity-0 sm:opacity-100 transition-all duration-200 ease-in-out"
+      class="menu pointer-events-none fixed inset-0 z-10 flex h-screen scale-90 flex-col items-center justify-center gap-8 bg-white text-xl opacity-0 transition-all duration-200 ease-in-out dark:bg-slate-900 sm:pointer-events-auto sm:static sm:h-auto sm:scale-100 sm:flex-row sm:bg-transparent sm:text-base sm:opacity-100"
       data-element="menu"
     >
       {
         items.map((item) => (
           <a
             class:list={[
-              "text-slate-900 hover:text-emerald-400 focus:text-emerald-400 outline-none transition-colors",
+              "text-slate-900 hover:text-emerald-400 focus:text-emerald-400 outline-none transition-colors dark:text-white dark:hover:text-emerald-400 dark:focus:text-emerald-400",
               { "font-semibold": isLinkActive(item.href, Astro.url) },
             ]}
             href={item.href}
@@ -78,6 +81,8 @@ const items = [
           </a>
         ))
       }
+
+      <ColorSchemeSwitch />
     </nav>
   </div>
 </header>

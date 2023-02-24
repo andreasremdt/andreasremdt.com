@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,ts}"],
+  darkMode: "class",
   theme: {
     fontFamily: {
       sans: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
@@ -13,12 +14,9 @@ module.exports = {
         DEFAULT: {
           css: {
             pre: {
-              backgroundColor: theme("colors.slate.50"),
               fontFamily: theme("fontFamily.mono"),
-              color: theme("colors.slate.800"),
             },
             code: {
-              backgroundColor: theme("colors.slate.50"),
               padding: "0 .5rem",
               borderRadius: 4,
             },

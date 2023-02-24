@@ -39,7 +39,7 @@ const links = [
 ];
 ---
 
-<section class="section flex flex-col sm:flex-row gap-8 lg:gap-16">
+<section class="section flex flex-col gap-8 sm:flex-row lg:gap-16">
   <figure class="sm:w-1/2">
     <Image
       image={portrait}
@@ -52,11 +52,11 @@ const links = [
   </figure>
   <div>
     <h1
-      class="font-serif text-3xl md:text-4xl lg:text-6xl font-bold text-slate-900 mb-4"
+      class="mb-4 font-serif text-3xl font-bold text-slate-900 dark:text-white md:text-4xl lg:text-6xl"
     >
       Hey, I'm Andreas.
     </h1>
-    <p class="md:text-lg mb-4">
+    <p class="mb-4 md:text-lg">
       Software Engineer based in Germany who loves to build beautiful,
       accessible, and performant web applications using cutting-edge
       technologies.
@@ -65,18 +65,20 @@ const links = [
     <div class="flex gap-1">
       <ExternalLink
         href="https://www.toptal.com/resume/andreas-remdt"
-        class="btn btn-primary">Hire me</ExternalLink
+        class="btn btn-primary"
       >
+        Hire me
+      </ExternalLink>
       <a href="/projects/" class="btn btn-secondary">View my work</a>
     </div>
 
-    <ul class="flex gap-x-3 text-slate-900 mt-8 lg:mt-16">
+    <ul class="mt-8 flex gap-x-3 text-slate-900 lg:mt-16">
       {
         links.map((link) => (
           <li>
             <ExternalLink
               href={link.href}
-              class="outline-none transition-colors hover:text-emerald-400 focus:text-emerald-400"
+              class="outline-none transition-colors hover:text-emerald-400 focus:text-emerald-400 dark:text-slate-200 dark:hover:text-emerald-400 dark:focus:text-emerald-400"
               title={link.title}
             >
               <svg width="24" height="24" aria-hidden="true">

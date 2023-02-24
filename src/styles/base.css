@@ -63,7 +63,15 @@
   }
 
   p a {
-    @apply font-semibold text-slate-900 underline transition-colors hover:text-emerald-400 focus-visible:text-emerald-400 focus-visible:outline-none;
+    @apply font-semibold text-slate-900 underline transition-colors hover:text-emerald-400 focus-visible:text-emerald-400 focus-visible:outline-none dark:text-white dark:hover:text-emerald-400 dark:focus-visible:text-emerald-400;
+  }
+
+  .prose pre {
+    @apply bg-slate-50 text-slate-800 dark:bg-slate-800 dark:text-slate-200;
+  }
+
+  .prose code {
+    @apply bg-slate-50 dark:bg-slate-800;
   }
 }
 
@@ -73,11 +81,11 @@
   }
 
   .h2 {
-    @apply mb-8 text-center font-serif text-2xl font-bold text-slate-900 md:text-4xl;
+    @apply mb-8 text-center font-serif text-2xl font-bold text-slate-900 dark:text-white md:text-4xl;
   }
 
   .meta {
-    @apply text-xs font-semibold uppercase tracking-wider text-slate-500;
+    @apply text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400;
   }
 
   .btn {
@@ -85,19 +93,19 @@
   }
 
   .btn-primary {
-    @apply border border-emerald-400 bg-emerald-400 text-slate-900 hover:border-slate-800 hover:bg-slate-800 hover:text-white focus-visible:border-slate-800 focus-visible:bg-slate-800 focus-visible:text-white disabled:hover:border-emerald-400 disabled:hover:bg-emerald-400 disabled:hover:text-slate-900 disabled:focus-visible:border-emerald-400 disabled:focus-visible:bg-emerald-400 disabled:focus-visible:text-slate-900;
+    @apply border border-emerald-400 bg-emerald-400 text-slate-900 hover:border-slate-800 hover:bg-slate-800 hover:text-white focus-visible:border-slate-800 focus-visible:bg-slate-800 focus-visible:text-white disabled:hover:border-emerald-400 disabled:hover:bg-emerald-400 disabled:hover:text-slate-900 disabled:focus-visible:border-emerald-400 disabled:focus-visible:bg-emerald-400 disabled:focus-visible:text-slate-900 dark:focus-within:bg-slate-600 dark:hover:bg-slate-600;
   }
 
   .btn-secondary {
-    @apply border border-slate-300 bg-white text-slate-800 hover:bg-slate-100 focus-visible:border-slate-800 focus-visible:bg-slate-800 focus-visible:text-white;
+    @apply border border-slate-300 bg-white text-slate-800 hover:bg-slate-100 focus-visible:border-slate-800 focus-visible:bg-slate-800 focus-visible:text-white dark:border-slate-800 dark:bg-slate-800 dark:text-slate-200 dark:focus-within:bg-slate-600 dark:hover:bg-slate-600;
   }
 
   .label {
-    @apply mb-1 block text-sm font-semibold text-slate-900 md:text-base;
+    @apply mb-1 block text-sm font-semibold text-slate-900 dark:text-slate-200 md:text-base;
   }
 
   .input {
-    @apply w-full rounded border border-slate-300 px-4 py-3 text-sm shadow-sm transition-colors hover:border-slate-600 focus:border-slate-600 focus:outline-none;
+    @apply w-full rounded border border-slate-300 px-4 py-3 text-sm shadow-sm transition-colors hover:border-slate-600 focus:border-slate-600 focus:outline-none dark:border-slate-800 dark:bg-slate-800 dark:focus-visible:bg-slate-700;
   }
 
   .input[aria-invalid="true"] {
@@ -114,11 +122,11 @@
   }
 
   .bullet {
-    @apply block aspect-square w-6 rounded-full border border-slate-300 bg-white shadow-sm outline-none transition-colors hover:bg-slate-100 focus-visible:border-slate-800 focus-visible:bg-slate-100 focus-visible:ring-1 focus-visible:ring-slate-800 focus-visible:ring-offset-1;
+    @apply block aspect-square w-6 rounded-full border border-slate-300 bg-white shadow-sm outline-none transition-colors hover:bg-slate-100 focus-visible:border-slate-800 focus-visible:bg-slate-100 focus-visible:ring-1 focus-visible:ring-slate-800 focus-visible:ring-offset-1 dark:border-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600 dark:focus-visible:bg-slate-600;
   }
 
   .bullet[data-active] {
-    @apply border-slate-800 bg-slate-800 hover:bg-slate-600 focus-visible:bg-slate-600;
+    @apply border-slate-800 bg-slate-800 hover:bg-slate-600 focus-visible:bg-slate-600 dark:bg-slate-400 dark:hover:bg-slate-300 dark:focus-visible:bg-slate-300;
   }
 
   .menu-toggle:is(.is-open) span:nth-child(1) {

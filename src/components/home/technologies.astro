@@ -7,11 +7,15 @@ const technologies = await getAllTechnologies();
 <section class="section">
   <h2 class="h2">Technologies & Tools</h2>
 
-  <ul class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 sm:gap-4">
+  <ul class="grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-4 md:grid-cols-6">
     {
       technologies.map((technology) => (
-        <li class="flex flex-col items-center justify-center rounded-md border border-slate-300 py-6 text-sm shadow-sm">
-          <svg width="32" height="32" class="mb-3 text-slate-700">
+        <li class="flex flex-col items-center justify-center rounded-md border border-slate-300 py-6 text-sm shadow-sm dark:border-slate-800 dark:bg-slate-800">
+          <svg
+            width="32"
+            height="32"
+            class="mb-3 text-slate-700 dark:text-slate-500"
+          >
             <use
               href={`/icons/technology-icons.svg#${technology.name.toLowerCase()}`}
             />
