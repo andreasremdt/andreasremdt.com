@@ -26,7 +26,7 @@
     "@astrojs/tailwind": "^3.0.1",
     "@fancyapps/ui": "^4.0.31",
     "@tailwindcss/typography": "^0.5.9",
-    "astro": "^2.0.15",
+    "astro": "^2.1.2",
     "astro-compress": "^1.1.33",
     "marked": "^4.2.12",
     "prismjs": "^1.29.0",
