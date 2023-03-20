@@ -24,7 +24,7 @@
   "dependencies": {
     "@astrojs/sitemap": "^1.0.1",
     "@astrojs/tailwind": "^3.0.1",
-    "@fancyapps/ui": "^4.0.31",
+    "@fancyapps/ui": "^5.0.8",
     "@tailwindcss/typography": "^0.5.9",
     "astro": "^2.0.15",
     "astro-compress": "^1.1.33",
