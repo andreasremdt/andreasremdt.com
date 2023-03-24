@@ -1,14 +1,14 @@
 ---
 import Image from "components/image.astro";
 import { getGalleryBySlug } from "lib/hygraph";
-import "@fancyapps/ui/dist/fancybox.css";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 const images = await getGalleryBySlug("photography-collection");
 ---
 
 <figure
   data-gallery
-  class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+  class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
 >
   {
     images.map((image) => (
@@ -31,5 +31,5 @@ const images = await getGalleryBySlug("photography-collection");
 <script>
   import { Fancybox } from "@fancyapps/ui";
 
-  Fancybox.bind("[data-fancybox]", {});
+  Fancybox.bind("[data-fancybox]");
 </script>
