@@ -35,7 +35,7 @@
   "devDependencies": {
     "@types/marked": "^4.3.0",
     "@types/prismjs": "^1.26.0",
-    "prettier": "^2.8.4",
+    "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.8.0",
     "prettier-plugin-tailwindcss": "^0.2.8",
     "puppeteer": "^19.11.1"
