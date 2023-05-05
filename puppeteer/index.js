@@ -2,6 +2,10 @@ const puppeteer = require("puppeteer");
 
 const sites = [
   [
+    "ecommerce-product-page",
+    "https://fm-challenges-ar.netlify.app/ecommerce-product-page/dist/",
+  ],
+  [
     "single-page-design-portfolio",
     "https://fm-challenges-ar.netlify.app/single-page-design-portfolio/",
   ],
@@ -167,9 +171,9 @@ const sites = [
   console.log("Set viewport size to 1280x720");
 
   for (const site of sites) {
-    try {
-      const [name, url, instructions] = site;
+    const [name, url, instructions] = site;
 
+    try {
       console.log(`Visiting "${name}"`);
       await page.goto(url, { waitUntil: "networkidle0" });
 
@@ -177,7 +181,7 @@ const sites = [
         await instructions(page);
       }
 
-      await page.screenshot({ path: `screenshots/${name}.png` });
+      await page.screenshot({ path: __dirname + `/screenshots/${name}.png` });
       console.log(`\x1b[32mGenerated screenshot for "${name}"\x1b[0m\n`);
 
       counter.success++;
