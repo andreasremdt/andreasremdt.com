@@ -13,6 +13,7 @@ export type Project = {
   image: Image;
   publicUrl?: string;
   githubUrl?: string;
+  category: string;
   tags: string[];
   excerpt: string;
   slug: string;

@@ -99,6 +99,7 @@ export async function getAllProjects(): Promise<Project[]> {
         excerpt
         title
         publicUrl
+        category
         tags
         image {
           webp: url(

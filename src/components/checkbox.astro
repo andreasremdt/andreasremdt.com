@@ -1,0 +1,21 @@
+---
+export type Props = {
+  category: string;
+};
+
+const { category } = Astro.props;
+---
+
+<label class="btn btn-secondary cursor-pointer gap-x-3">
+  <input
+    type="checkbox"
+    data-category-selector
+    id={category}
+    checked
+    class="peer sr-only"
+  />
+  <span
+    class="pointer-events-none relative inline-flex h-4 w-4 translate-x-1 transform items-center justify-center rounded-full bg-slate-900 shadow-lg transition duration-200 ease-in-out before:absolute before:h-3 before:w-3 before:rounded-full before:bg-white after:absolute after:h-2 after:w-2 after:rounded-full after:bg-slate-800 after:opacity-0 after:transition-opacity peer-checked:after:opacity-100 dark:bg-white dark:before:bg-slate-800 dark:after:bg-white"
+    aria-hidden="true"></span>
+  {category}
+</label>
