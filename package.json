@@ -19,7 +19,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "format": "prettier -w ./src/*"
+    "format": "prettier -w ./src/*",
+    "generate-screenshots": "node puppeteer/index.js"
   },
   "dependencies": {
     "@astrojs/sitemap": "^1.3.1",

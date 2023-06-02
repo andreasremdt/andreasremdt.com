@@ -2,6 +2,14 @@ const puppeteer = require("puppeteer");
 
 const sites = [
   [
+    "newsletter-sign-up-form-with-success-message",
+    "https://fm-challenges-ar.netlify.app/newsletter-sign-up-with-success-message/",
+  ],
+  [
+    "workit-landing-page",
+    "https://fm-challenges-ar.netlify.app/workit-landing-page/",
+  ],
+  [
     "ecommerce-product-page",
     "https://fm-challenges-ar.netlify.app/ecommerce-product-page/dist/",
   ],
