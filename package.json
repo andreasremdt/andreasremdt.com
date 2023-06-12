@@ -29,7 +29,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "astro": "^2.5.7",
     "astro-compress": "^1.1.47",
-    "marked": "^5.0.4",
+    "marked": "^5.1.0",
     "prismjs": "^1.29.0",
     "tailwindcss": "^3.3.2"
   },
