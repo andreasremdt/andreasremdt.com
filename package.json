@@ -29,12 +29,12 @@
     "@tailwindcss/typography": "^0.5.9",
     "astro": "^2.5.7",
     "astro-compress": "^1.1.47",
-    "marked": "^5.0.4",
+    "marked": "^5.1.2",
     "prismjs": "^1.29.0",
     "tailwindcss": "^3.3.2"
   },
   "devDependencies": {
-    "@types/marked": "^5.0.0",
+    "@types/marked": "^5.0.1",
     "@types/prismjs": "^1.26.0",
     "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.10.0",
